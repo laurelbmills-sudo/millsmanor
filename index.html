@@ -9,16 +9,11 @@
   <meta name="apple-mobile-web-app-title" content="Mills Manor"/>
   <link rel="apple-touch-icon" href="mm-dark-v1.png"/>
   <title>Mills Manor</title>
-  <style>
-    *{box-sizing:border-box;margin:0;padding:0;}
-    body{background:#FAFAF8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;}
-    input,button,select,textarea{font-family:inherit;}
-  </style>
+  <style>*{box-sizing:border-box;margin:0;padding:0;}body{background:#FAFAF8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;}input,button,select,textarea{font-family:inherit;}</style>
 </head>
 <body>
   <div id="root"></div>
-  <script>
-(() => {
+  <script>(() => {
   var __create = Object.create;
   var __defProp = Object.defineProperty;
   var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -8978,71 +8973,215 @@ button,input,select,textarea{font-family:inherit}
   };
   function buildGroceryItems(meals) {
     const DAYS = ["Sunday", "Tuesday", "Wednesday"];
-    const cookMeals = DAYS.map((d) => (meals[d] || "").toLowerCase());
-    const has = (words) => cookMeals.some((m) => words.some((w) => m.includes(w)));
-    const count = cookMeals.filter((m) => m.trim()).length;
-    const chicken = has(["chicken", "tuscan", "alfredo", "pesto", "california", "honey mustard", "parmesan", "pillows", "poppyseed", "pot pie", "yakisoba", "mississippi", "lemon", "orzo", "italian cream", "crack", "bounty", "wrap"]);
-    const burgerBowl = has(["burger bowl", "burger bowls"]);
-    const groundBeef = has(["smash burger", "smash", "taco", "meatball", "salisbury", "stroganoff", "lasagna", "ziti", "chili", "enchilada", "navajo", "pasta shells", "lion house", "bolognese"]);
-    const roast = has(["pot roast", "french dip", "chuck"]);
-    const steak = has(["steak"]);
-    const beef = burgerBowl || groundBeef || roast || steak || has(["beef"]);
-    const pork = has(["pork", "sausage", "bbq pork", "crockpot meatball", "italian sausage"]);
-    const salmon = has(["salmon"]);
-    const eggsNeeded = has(["egg", "casserole", "goldenrod", "breakfast"]);
-    const pasta = has(["pasta", "alfredo", "ziti", "lasagna", "stroganoff", "orzo", "pesto", "shells", "parmesan pasta", "sausage pasta"]);
-    const taco = has(["taco", "enchilada", "navajo", "chicken taco"]);
-    const soup = has(["soup", "chili", "slow cooker", "taco soup", "lasagna soup"]);
-    const rice = has(["fried rice", "yakisoba", "bounty", "mississippi", "rice bowl"]);
-    const bowl = has(["bowl"]);
-    const casserole = has(["casserole", "tater tot", "poppyseed", "pot pie", "crack", "alfredo"]);
-    const cream = has(["tuscan", "alfredo", "pesto", "cream", "italian cream", "parmesan", "poppyseed"]);
-    const tatortot = has(["tater tot"]);
-    const protein = [];
-    if (chicken) protein.push({ t: `Chicken breast or thighs \xD7 ${casserole || pasta ? "4\u20135 lbs (Costco bag recommended)" : "2\u20133 lbs"}`, opt: false });
-    if (burgerBowl && !groundBeef && !roast) protein.push({ t: "Ground beef \xD7 1.5 lbs (80/20 \u2014 burger bowls)", opt: false });
-    else if (groundBeef && taco) protein.push({ t: "Ground beef \xD7 3 lbs (80/20 \u2014 tacos + other meals)", opt: false });
-    else if (groundBeef) protein.push({ t: "Ground beef \xD7 2 lbs (80/20)", opt: false });
-    else if (beef && !burgerBowl) protein.push({ t: "Ground beef or chuck roast \xD7 2\u20133 lbs", opt: false });
-    if (pork) protein.push({ t: "Pork chops or ground pork \xD7 2\u20133 lbs", opt: false });
-    if (salmon) protein.push({ t: "Salmon fillets \xD7 4\u20136 pieces (~2 lbs \u2014 Costco when available)", opt: false });
-    if (eggsNeeded) protein.push({ t: "Eggs \xD7 2 dozen (extra for casserole cook night)", opt: false });
-    if (!chicken && !beef && !pork && !salmon && !eggsNeeded) protein.push({ t: "No meals entered yet \u2014 add cook night meals to see protein list", opt: false });
-    const produce = [];
-    produce.push({ t: "Garlic \xD7 1 head", opt: false }, { t: "Yellow onion \xD7 2 medium", opt: false });
-    produce.push({ t: "Baby spinach or romaine \xD7 1 bag", opt: false });
-    if (taco) produce.push({ t: "Limes \xD7 4\u20136", opt: false }, { t: "Cilantro \xD7 1 bunch", opt: false }, { t: "Avocados \xD7 2", opt: false });
-    if (bowl || rice) produce.push({ t: "Green onions \xD7 1 bunch", opt: false });
-    if (soup) produce.push({ t: "Celery \xD7 3 stalks", opt: false }, { t: "Carrots \xD7 3\u20134", opt: false }, { t: "Russet potatoes \xD7 2 lbs", opt: false });
-    produce.push({ t: "Cucumbers \xD7 2", opt: true }, { t: "Apples \xD7 4\u20136", opt: true }, { t: "Bananas \xD7 1 bunch", opt: true }, { t: "Seasonal fruit \xD7 1 pint or bag", opt: true });
-    const dairy = [];
-    dairy.push({ t: "Greek yogurt (plain) \xD7 Costco tub (32\u201348 oz)", opt: false });
-    if (pasta || casserole || cream) dairy.push({ t: "Heavy cream or half-and-half \xD7 1 pint", opt: false });
-    if (pasta || cream) dairy.push({ t: "Parmesan \xD7 4 oz block or shredded bag", opt: false });
-    if (taco) dairy.push({ t: "Sour cream \xD7 8 oz", opt: false });
-    dairy.push({ t: "Cream cheese \xD7 8 oz block", opt: true });
-    const pantry = [];
-    if (pasta) pantry.push({ t: `Pasta \xD7 1 lb (${has(["orzo"]) ? "orzo" : has(["ziti", "penne"]) ? "penne" : has(["lasagna"]) ? "lasagna noodles" : "your choice"})`, opt: false });
-    if (rice || bowl) pantry.push({ t: "Jasmine or brown rice \xD7 2 cups dry (check stock first)", opt: false });
-    if (taco) pantry.push({ t: "Corn or flour tortillas \xD7 1 pack", opt: false }, { t: "Taco seasoning \xD7 1\u20132 packets", opt: false });
-    if (soup || casserole) pantry.push({ t: "Chicken broth \xD7 32 oz carton", opt: false }, { t: "Cream of chicken soup \xD7 1\u20132 cans", opt: false });
-    if (soup || has(["chili"])) pantry.push({ t: "Canned diced tomatoes \xD7 1 can", opt: false }, { t: "Canned beans \xD7 1 can", opt: false });
-    if (steak || has(["salisbury"])) pantry.push({ t: "Worcestershire sauce (check stock)", opt: false }, { t: "Beef broth \xD7 1 can", opt: false });
-    pantry.push({ t: "Olive oil (check stock)", opt: false }, { t: "Garlic powder \xB7 onion powder \xB7 Italian seasoning (restock if low)", opt: false });
-    const frozen = [];
-    if (tatortot) frozen.push({ t: "Tater tots \xD7 1 bag (32 oz)", opt: false });
-    if (has(["broccoli", "broccoli beef"])) frozen.push({ t: "Frozen broccoli \xD7 1 bag", opt: false });
-    frozen.push({ t: "Frozen green beans \xD7 1 bag", opt: true });
+    const cookMeals = DAYS.map((d) => (meals[d] || "").toLowerCase().trim());
+    const count = cookMeals.filter(Boolean).length;
+    const RECIPES = {
+      "burger bowls": {
+        protein: [{ t: "Ground beef \xD7 1.5 lbs (80/20)", opt: false }],
+        produce: [{ t: "Romaine lettuce \xD7 1 head", opt: false }, { t: "Tomatoes \xD7 2", opt: false }, { t: "Red onion \xD7 1 small", opt: false }, { t: "Avocados \xD7 2", opt: false }, { t: "Pickles (jar, check stock)", opt: false }, { t: "Jalape\xF1os (jar, check stock)", opt: true }],
+        dairy: [{ t: "Shredded cheddar (already in staples)", opt: false }, { t: "Sour cream \xD7 8 oz", opt: false }],
+        pantry: [{ t: "Burger seasoning / Lawry's (check stock)", opt: false }, { t: "Worcestershire sauce (check stock)", opt: false }, { t: "Ketchup + mustard (check stock)", opt: false }, { t: "Rice \xD7 2 cups dry (base for bowls)", opt: false }],
+        frozen: []
+      },
+      "smash burgers": {
+        protein: [{ t: "Ground beef \xD7 1.5 lbs (80/20 \u2014 smash thin)", opt: false }],
+        produce: [{ t: "Tomatoes \xD7 2", opt: false }, { t: "Romaine or iceberg lettuce \xD7 1 head", opt: false }, { t: "Red onion \xD7 1 small", opt: false }],
+        dairy: [{ t: "American cheese slices \xD7 1 pack", opt: false }],
+        pantry: [{ t: "Brioche burger buns \xD7 1 pack (or skip for low-carb)", opt: false }, { t: "Burger sauce: mayo + ketchup + pickles (check stock)", opt: false }, { t: "Pickles (jar, check stock)", opt: false }],
+        frozen: [{ t: "Frozen sweet potato fries \xD7 1 bag", opt: true }]
+      },
+      "california chicken bake": {
+        protein: [{ t: "Chicken breast \xD7 2 lbs", opt: false }, { t: "Bacon \xD7 6 strips", opt: false }],
+        produce: [{ t: "Green onions \xD7 1 bunch", opt: false }],
+        dairy: [{ t: "Caesar dressing \xD7 1 bottle", opt: false }, { t: "Mozzarella shredded \xD7 8 oz", opt: false }, { t: "Parmesan \xD7 4 oz", opt: false }],
+        pantry: [{ t: "Pizza dough or crescent roll dough \xD7 1 can", opt: false }],
+        frozen: []
+      },
+      "chicken tacos": {
+        protein: [{ t: "Chicken thighs \xD7 2 lbs (boneless)", opt: false }],
+        produce: [{ t: "Limes \xD7 4\u20136", opt: false }, { t: "Cilantro \xD7 1 bunch", opt: false }, { t: "Avocados \xD7 2", opt: false }, { t: "Red cabbage (shredded) \xD7 small head", opt: false }, { t: "Jalape\xF1o \xD7 1", opt: true }],
+        dairy: [{ t: "Sour cream \xD7 8 oz", opt: false }, { t: "Cotija or feta crumbles \xD7 4 oz", opt: true }],
+        pantry: [{ t: "Corn tortillas \xD7 1 pack (small)", opt: false }, { t: "Taco seasoning \xD7 1 packet", opt: false }, { t: "Salsa \xD7 1 jar", opt: false }],
+        frozen: []
+      },
+      "navajo tacos": {
+        protein: [{ t: "Ground beef \xD7 1.5 lbs", opt: false }],
+        produce: [{ t: "Romaine or iceberg lettuce \xD7 1 head", opt: false }, { t: "Tomatoes \xD7 2", opt: false }, { t: "Green onions \xD7 1 bunch", opt: false }],
+        dairy: [{ t: "Sour cream \xD7 8 oz", opt: false }, { t: "Shredded cheddar (already in staples)", opt: false }],
+        pantry: [{ t: "Canned chili or beans \xD7 1 can", opt: false }, { t: "Frozen bread dough or fry bread mix \xD7 1 bag", opt: false }, { t: "Taco seasoning \xD7 1 packet", opt: false }, { t: "Salsa \xD7 1 jar", opt: false }],
+        frozen: [{ t: "Frozen bread dough (Rhodes) \xD7 1 bag", opt: false }]
+      },
+      "sunday pot roast": {
+        protein: [{ t: "Chuck roast \xD7 3 lbs", opt: false }],
+        produce: [{ t: "Carrots \xD7 4\u20135", opt: false }, { t: "Russet potatoes \xD7 1.5 lbs", opt: false }, { t: "Yellow onion \xD7 1 (already in staples)", opt: false }, { t: "Celery \xD7 3 stalks", opt: false }],
+        dairy: [],
+        pantry: [{ t: "Beef broth \xD7 32 oz", opt: false }, { t: "Worcestershire sauce (check stock)", opt: false }, { t: "Ranch seasoning packet \xD7 1", opt: false }, { t: "Au jus or onion soup mix \xD7 1 packet", opt: false }],
+        frozen: []
+      },
+      "salisbury steaks": {
+        protein: [{ t: "Ground beef \xD7 1.5 lbs", opt: false }],
+        produce: [{ t: "Mushrooms \xD7 8 oz", opt: false }, { t: "Yellow onion \xD7 1 (already in staples)", opt: false }],
+        dairy: [{ t: "Butter (already in staples)", opt: false }],
+        pantry: [{ t: "Beef broth \xD7 14 oz can", opt: false }, { t: "Worcestershire sauce (check stock)", opt: false }, { t: "Cornstarch \xD7 (check stock)", opt: false }, { t: "Breadcrumbs \xD7 \xBD cup (check stock)", opt: false }],
+        frozen: [{ t: "Frozen mashed cauliflower or mashed potatoes \xD7 1 bag", opt: false }]
+      },
+      "bbq pork chops": {
+        protein: [{ t: "Bone-in pork chops \xD7 4\u20136", opt: false }],
+        produce: [{ t: "Sweet potatoes \xD7 2\u20133", opt: false }],
+        dairy: [],
+        pantry: [{ t: "BBQ sauce \xD7 1 bottle (check stock)", opt: false }, { t: "Olive oil (check stock)", opt: false }],
+        frozen: [{ t: "Frozen broccoli \xD7 1 bag", opt: false }]
+      },
+      "sweet mustard chicken wrap": {
+        protein: [{ t: "Chicken breast \xD7 2 lbs", opt: false }],
+        produce: [{ t: "Romaine lettuce \xD7 1 head", opt: false }, { t: "Tomatoes \xD7 2", opt: false }, { t: "Red onion \xD7 1 small", opt: false }, { t: "Avocados \xD7 1", opt: true }],
+        dairy: [{ t: "Shredded cheddar (already in staples)", opt: false }],
+        pantry: [{ t: "Flour tortillas \xD7 1 pack (large)", opt: false }, { t: "Dijon or honey mustard \xD7 1 bottle", opt: false }, { t: "Mayo \xD7 (check stock)", opt: false }],
+        frozen: []
+      },
+      "honey mustard chicken": {
+        protein: [{ t: "Chicken thighs or breast \xD7 2 lbs", opt: false }],
+        produce: [{ t: "Fresh garlic (already in staples)", opt: false }],
+        dairy: [{ t: "Butter (already in staples)", opt: false }],
+        pantry: [{ t: "Honey \xD7 (check stock)", opt: false }, { t: "Dijon mustard \xD7 (check stock)", opt: false }, { t: "Chicken broth \xD7 14 oz can", opt: false }],
+        frozen: [{ t: "Frozen broccoli \xD7 1 bag", opt: false }]
+      },
+      "tuscan chicken": {
+        protein: [{ t: "Chicken thighs \xD7 2 lbs", opt: false }],
+        produce: [{ t: "Sun-dried tomatoes \xD7 1 jar", opt: false }, { t: "Baby spinach \xD7 4 oz", opt: false }, { t: "Garlic (already in staples)", opt: false }],
+        dairy: [{ t: "Heavy cream \xD7 1 pint", opt: false }, { t: "Parmesan \xD7 4 oz", opt: false }],
+        pantry: [{ t: "Chicken broth \xD7 14 oz can", opt: false }, { t: "Italian seasoning (check stock)", opt: false }],
+        frozen: []
+      },
+      "lemon chicken orzo": {
+        protein: [{ t: "Chicken breast \xD7 2 lbs", opt: false }],
+        produce: [{ t: "Lemons \xD7 3", opt: false }, { t: "Baby spinach \xD7 4 oz", opt: false }, { t: "Garlic (already in staples)", opt: false }],
+        dairy: [{ t: "Parmesan \xD7 4 oz", opt: false }],
+        pantry: [{ t: "Orzo \xD7 1 lb", opt: false }, { t: "Chicken broth \xD7 32 oz", opt: false }],
+        frozen: []
+      },
+      "philly fried rice": {
+        protein: [{ t: "Ribeye or sirloin steak \xD7 1 lb (thin sliced)", opt: false }],
+        produce: [{ t: "Green bell pepper \xD7 1", opt: false }, { t: "White mushrooms \xD7 8 oz", opt: false }, { t: "Yellow onion \xD7 1 (already in staples)", opt: false }, { t: "Green onions \xD7 1 bunch", opt: false }],
+        dairy: [{ t: "Provolone slices \xD7 4 oz", opt: false }],
+        pantry: [{ t: "Jasmine rice \xD7 2 cups dry", opt: false }, { t: "Soy sauce (check stock)", opt: false }, { t: "Sesame oil (check stock)", opt: false }, { t: "Oyster sauce (check stock)", opt: true }],
+        frozen: []
+      },
+      "chili": {
+        protein: [{ t: "Ground beef \xD7 2 lbs", opt: false }],
+        produce: [{ t: "Yellow onion \xD7 1 (already in staples)", opt: false }, { t: "Garlic (already in staples)", opt: false }],
+        dairy: [{ t: "Sour cream \xD7 8 oz", opt: true }, { t: "Shredded cheddar (already in staples)", opt: false }],
+        pantry: [{ t: "Canned diced tomatoes \xD7 2 cans", opt: false }, { t: "Canned kidney + black beans \xD7 2 cans", opt: false }, { t: "Tomato paste \xD7 1 small can", opt: false }, { t: "Chili powder + cumin + paprika (check stock)", opt: false }, { t: "Beef broth \xD7 14 oz", opt: false }],
+        frozen: []
+      },
+      "lion house meatballs": {
+        protein: [{ t: "Ground beef \xD7 1.5 lbs", opt: false }, { t: "Ground pork \xD7 0.5 lbs", opt: true }],
+        produce: [{ t: "Garlic (already in staples)", opt: false }, { t: "Yellow onion \xD7 1 (already in staples)", opt: false }],
+        dairy: [{ t: "Parmesan \xD7 4 oz", opt: false }, { t: "Milk \xD7 splash (already in staples)", opt: false }],
+        pantry: [{ t: "Breadcrumbs \xD7 \xBD cup", opt: false }, { t: "Italian seasoning (check stock)", opt: false }, { t: "Pasta \xD7 1 lb (spaghetti or rigatoni)", opt: false }, { t: "Marinara sauce \xD7 1 jar", opt: false }],
+        frozen: []
+      },
+      "street tacos": {
+        protein: [{ t: "Carne asada or skirt steak \xD7 1.5 lbs", opt: false }],
+        produce: [{ t: "Limes \xD7 6", opt: false }, { t: "Cilantro \xD7 1 bunch", opt: false }, { t: "White onion \xD7 1", opt: false }, { t: "Avocados \xD7 2", opt: false }, { t: "Jalape\xF1o \xD7 1", opt: true }],
+        dairy: [],
+        pantry: [{ t: "Corn tortillas \xD7 small pack", opt: false }, { t: "Salsa verde \xD7 1 jar", opt: false }, { t: "Carne asada marinade or cumin/garlic/lime (check stock)", opt: false }],
+        frozen: []
+      },
+      "salmon": {
+        protein: [{ t: "Salmon fillets \xD7 4\u20136 pieces (~2 lbs \u2014 Costco when available)", opt: false }],
+        produce: [{ t: "Lemons \xD7 2", opt: false }, { t: "Garlic (already in staples)", opt: false }, { t: "Asparagus \xD7 1 bunch", opt: false }],
+        dairy: [{ t: "Butter (already in staples)", opt: false }],
+        pantry: [{ t: "Soy sauce (check stock)", opt: false }, { t: "Honey (check stock)", opt: false }, { t: "Dijon mustard (check stock)", opt: false }],
+        frozen: []
+      },
+      "steak": {
+        protein: [{ t: "Ribeye or NY strip \xD7 2\u20133 steaks", opt: false }],
+        produce: [{ t: "Asparagus \xD7 1 bunch", opt: false }, { t: "Garlic (already in staples)", opt: false }, { t: "Fresh rosemary or thyme \xD7 1 bunch", opt: true }],
+        dairy: [{ t: "Butter (already in staples)", opt: false }],
+        pantry: [{ t: "Steak seasoning (check stock)", opt: false }],
+        frozen: [{ t: "Frozen twice-baked potato or potato wedges \xD7 1 bag", opt: true }]
+      },
+      "default": {
+        protein: [],
+        produce: [],
+        dairy: [],
+        pantry: [],
+        frozen: []
+      }
+    };
+    function matchRecipe(meal) {
+      const m = meal.toLowerCase();
+      for (const key of Object.keys(RECIPES)) {
+        if (key === "default") continue;
+        if (m.includes(key)) return RECIPES[key];
+      }
+      if (m.includes("burger")) return RECIPES["burger bowls"];
+      if (m.includes("taco")) return RECIPES["chicken tacos"];
+      if (m.includes("roast")) return RECIPES["sunday pot roast"];
+      if (m.includes("pork") || m.includes("bbq")) return RECIPES["bbq pork chops"];
+      if (m.includes("salmon")) return RECIPES["salmon"];
+      if (m.includes("steak")) return RECIPES["steak"];
+      if (m.includes("chili")) return RECIPES["chili"];
+      if (m.includes("meatball")) return RECIPES["lion house meatballs"];
+      if (m.includes("orzo")) return RECIPES["lemon chicken orzo"];
+      if (m.includes("tuscan")) return RECIPES["tuscan chicken"];
+      if (m.includes("wrap") || m.includes("mustard")) return RECIPES["sweet mustard chicken wrap"];
+      if (m.includes("honey mustard")) return RECIPES["honey mustard chicken"];
+      if (m.includes("fried rice")) return RECIPES["philly fried rice"];
+      if (m.includes("salisbury")) return RECIPES["salisbury steaks"];
+      if (m.includes("navajo")) return RECIPES["navajo tacos"];
+      if (m.includes("chicken")) return {
+        protein: [{ t: "Chicken breast or thighs \xD7 2\u20133 lbs", opt: false }],
+        produce: [],
+        dairy: [],
+        pantry: [],
+        frozen: []
+      };
+      return RECIPES["default"];
+    }
+    const matched = cookMeals.filter(Boolean).map(matchRecipe);
+    function merge(key) {
+      const seen = /* @__PURE__ */ new Set();
+      const out = [];
+      for (const r of matched) {
+        for (const item of r[key] || []) {
+          const label = item.t.split(" \xD7")[0].split(" (")[0].toLowerCase();
+          if (!seen.has(label)) {
+            seen.add(label);
+            out.push(item);
+          }
+        }
+      }
+      return out;
+    }
+    const protein = merge("protein");
+    const produce = [
+      ...merge("produce"),
+      { t: "Cucumbers \xD7 2", opt: true },
+      { t: "Apples \xD7 4\u20136", opt: true },
+      { t: "Bananas \xD7 1 bunch", opt: true },
+      { t: "Seasonal fruit \xD7 1 pint or bag", opt: true }
+    ];
+    const dairy = [
+      { t: "Greek yogurt (plain) \xD7 Costco tub (32\u201348 oz)", opt: false },
+      ...merge("dairy"),
+      { t: "Cream cheese \xD7 8 oz block", opt: true }
+    ];
+    const pantry = [
+      ...merge("pantry"),
+      { t: "Olive oil (check stock)", opt: false },
+      { t: "Garlic powder \xB7 onion powder \xB7 Italian seasoning (restock if low)", opt: false }
+    ];
+    const frozen = merge("frozen");
     frozen.push({ t: "Cauliflower rice \xD7 1 bag (Costco)", opt: true });
-    const snacks = [];
-    snacks.push(
+    const snacks = [
       { t: "Cashews or almonds \xD7 1 bag (Costco)", opt: true },
       { t: "Protein ball ingredients (oats, PB, honey, protein powder) \u2014 if running low", opt: true },
       { t: "Sugar-free Jello \xD7 4-pack", opt: true },
       { t: "Granola \xD7 1 bag", opt: true }
-    );
-    const staples = [];
-    staples.push(
+    ];
+    const staples = [
       { t: "Baby food (Stage 2) \xD7 6 pouches", opt: false },
       { t: "Baby puffs \xD7 1 bag", opt: false },
       { t: "Eggs \xD7 1 dozen", opt: false },
@@ -9054,7 +9193,8 @@ button,input,select,textarea{font-family:inherit}
       { t: "String cheese \xD7 1 bag", opt: false },
       { t: "Beef sticks \xD7 6\u20138", opt: false },
       { t: "Toilet paper", opt: false }
-    );
+    ];
+    if (!count) protein.push({ t: "No meals entered yet \u2014 add cook night meals to see ingredients", opt: false });
     return { protein, produce, dairy, pantry, frozen, snacks, staples, count };
   }
   function MacroTips({ today, targets }) {
@@ -9400,11 +9540,24 @@ button,input,select,textarea{font-family:inherit}
     const [open, setOpen] = (0, import_react.useState)(false);
     const [checked, setChecked] = (0, import_react.useState)({});
     const [secOpen, setSecOpen] = (0, import_react.useState)({});
+    const [extras, setExtras] = (0, import_react.useState)({});
+    const [addingTo, setAddingTo] = (0, import_react.useState)(null);
+    const [newItem, setNewItem] = (0, import_react.useState)("");
     const togSec = (k) => setSecOpen((p) => ({ ...p, [k]: !p[k] }));
-    const tog = (sec, item) => setChecked((p) => ({ ...p, [`${sec}_${item}`]: !p[`${sec}_${item}`] }));
+    const tog = (sec, k) => setChecked((p) => ({ ...p, [`${sec}_${k}`]: !p[`${sec}_${k}`] }));
     const data = buildGroceryItems(meals);
     const cookMeals = ["Sunday", "Tuesday", "Wednesday"].map((d) => meals[d]).filter(Boolean);
-    const SECTIONS2 = [
+    function addExtra(secKey) {
+      const t = newItem.trim();
+      if (!t) return;
+      setExtras((p) => ({ ...p, [secKey]: [...p[secKey] || [], { t, opt: false }] }));
+      setNewItem("");
+      setAddingTo(null);
+    }
+    function removeExtra(secKey, t) {
+      setExtras((p) => ({ ...p, [secKey]: (p[secKey] || []).filter((e) => e.t !== t) }));
+    }
+    const BASE = [
       { key: "staples", label: "Weekly Staples", items: data.staples },
       { key: "protein", label: "Protein", items: data.protein },
       { key: "produce", label: "Produce", items: data.produce },
@@ -9413,22 +9566,21 @@ button,input,select,textarea{font-family:inherit}
       { key: "frozen", label: "Frozen", items: data.frozen },
       { key: "snacks", label: "Snacks", items: data.snacks }
     ];
+    const SECTIONS2 = BASE.map((s2) => ({ ...s2, items: [...s2.items, ...extras[s2.key] || []] }));
     const totalDone = Object.values(checked).filter(Boolean).length;
     return /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 10 } }, /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => setOpen((o) => !o), style: { width: "100%", display: "flex", alignItems: "center", gap: 8, background: "none", border: "none", cursor: "pointer", padding: 0 } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 14, fontWeight: 600, color: T.text, flex: 1, textAlign: "left" } }, label), cookMeals.length > 0 && /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 10, color: T.muted, marginRight: 4 } }, cookMeals.length, " cook nights"), totalDone > 0 && /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, color: T.accent, fontWeight: 700 } }, totalDone, " \u2713"), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 16, color: T.hint, transition: "transform .2s", transform: open ? "rotate(45deg)" : "none", marginLeft: 4 } }, "+")), open && /* @__PURE__ */ import_react.default.createElement("div", { style: { paddingTop: 10 } }, cookMeals.length > 0 && /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 11, color: T.muted, marginBottom: 10, padding: "6px 10px", background: `${T.accent}07`, borderRadius: 7, lineHeight: 1.7 } }, "List built for: ", cookMeals.join(" \xB7 ")), SECTIONS2.map((sec) => {
       const isSecOpen = !!secOpen[sec.key];
-      const getKey = (item) => typeof item === "string" ? item : item.t;
-      const getText = (item) => typeof item === "string" ? item : item.t;
-      const isOpt = (item) => typeof item === "object" && item.opt;
-      const done = sec.items.filter((item) => !!checked[`${sec.key}_${getKey(item)}`]).length;
-      const required = sec.items.filter((item) => !isOpt(item)).length;
-      const optional = sec.items.filter((item) => isOpt(item)).length;
+      const extraKeys = new Set((extras[sec.key] || []).map((e) => e.t));
+      const done = sec.items.filter((item) => !!checked[`${sec.key}_${item.t}`]).length;
+      const optional = sec.items.filter((item) => item.opt).length;
       return /* @__PURE__ */ import_react.default.createElement("div", { key: sec.key, style: { marginBottom: 2 } }, /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => togSec(sec.key), style: { width: "100%", display: "flex", alignItems: "center", gap: 8, padding: "7px 0", borderTop: `1px solid ${T.border}`, background: "none", border: "none", cursor: "pointer" } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 13, fontWeight: 500, color: T.text, flex: 1, textAlign: "left" } }, sec.label), optional > 0 && /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 9, color: T.hint, fontWeight: 500, background: T.surface, padding: "1px 5px", borderRadius: 99 } }, optional, " optional"), done > 0 && /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 10, color: T.accent, fontWeight: 700, marginLeft: 4 } }, done, "/", sec.items.length, " \u2713"), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 14, color: T.hint, transition: "transform .2s", transform: isSecOpen ? "rotate(45deg)" : "none", marginLeft: 4 } }, "+")), isSecOpen && /* @__PURE__ */ import_react.default.createElement("div", { style: { paddingBottom: 4 } }, sec.items.map((item, i) => {
-        const k = getKey(item);
-        const txt = getText(item);
-        const opt = isOpt(item);
-        const d = !!checked[`${sec.key}_${k}`];
-        return /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { display: "flex", alignItems: "center", gap: 10, padding: "6px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none", opacity: d ? 0.35 : opt ? 0.65 : 1 } }, /* @__PURE__ */ import_react.default.createElement(Chk, { checked: d, onChange: () => tog(sec.key, k), sz: 18 }), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 13, color: opt ? T.muted : T.text, textDecoration: d ? "line-through" : "none", flex: 1, fontStyle: opt ? "italic" : "normal" } }, txt), opt && !d && /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 9, fontWeight: 600, color: T.hint, background: T.surface, padding: "1px 6px", borderRadius: 99, flexShrink: 0 } }, "if needed"));
-      })));
+        const d = !!checked[`${sec.key}_${item.t}`];
+        const isExtra = extraKeys.has(item.t);
+        return /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { display: "flex", alignItems: "center", gap: 10, padding: "6px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none", opacity: d ? 0.35 : item.opt ? 0.65 : 1 } }, /* @__PURE__ */ import_react.default.createElement(Chk, { checked: d, onChange: () => tog(sec.key, item.t), sz: 18 }), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 13, color: item.opt ? T.muted : T.text, textDecoration: d ? "line-through" : "none", flex: 1, fontStyle: item.opt ? "italic" : "normal" } }, item.t), item.opt && !d && /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 9, fontWeight: 600, color: T.hint, background: T.surface, padding: "1px 6px", borderRadius: 99, flexShrink: 0 } }, "if needed"), isExtra && /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => removeExtra(sec.key, item.t), style: { background: "none", border: "none", cursor: "pointer", color: T.border, fontSize: 16, padding: "0 2px", flexShrink: 0, lineHeight: 1 } }, "\xD7"));
+      }), addingTo === sec.key ? /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 6, paddingTop: 8 } }, /* @__PURE__ */ import_react.default.createElement("input", { value: newItem, onChange: (e) => setNewItem(e.target.value), onKeyDown: (e) => e.key === "Enter" && addExtra(sec.key), placeholder: "Add item\u2026", style: { ...s.input, flex: 1, fontSize: 12, padding: "6px 10px" }, autoFocus: true }), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => addExtra(sec.key), style: s.btnSm }, "+"), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => {
+        setAddingTo(null);
+        setNewItem("");
+      }, style: { ...s.btnSm, background: T.surface, color: T.muted } }, "\u2715")) : /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => setAddingTo(sec.key), style: { marginTop: 6, fontSize: 11, color: T.accent, background: "none", border: "none", cursor: "pointer", padding: "2px 0", fontWeight: 600 } }, "+ add item")));
     }), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => setChecked({}), style: { marginTop: 8, width: "100%", padding: "7px", borderRadius: 10, border: `1px solid ${T.border}`, background: "transparent", color: T.muted, cursor: "pointer", fontSize: 12 } }, "Reset list")));
   }
   function GroceryList({ meals, mealsNext }) {
@@ -10651,7 +10803,6 @@ react-dom/cjs/react-dom.production.min.js:
    * LICENSE file in the root directory of this source tree.
    *)
 */
-
-  </script>
+</script>
 </body>
 </html>
