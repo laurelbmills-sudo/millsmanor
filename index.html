@@ -9,7 +9,7 @@
   <meta name="apple-mobile-web-app-title" content="Mills Manor"/>
   <link rel="apple-touch-icon" href="mm-dark-v1.png"/>
   <title>Mills Manor</title>
-  <style>*{box-sizing:border-box;margin:0;padding:0;}body{background:#FAFAF8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;}input,button,select,textarea{font-family:inherit;}</style>
+  <style>*{box-sizing:border-box;margin:0;padding:0;}body{background:#F9F9F8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;}input,button,select,textarea{font-family:inherit;}</style>
 </head>
 <body>
   <div id="root"></div>
@@ -7260,17 +7260,30 @@
   var import_react = __toESM(require_react());
   var import_client = __toESM(require_client());
   var T = {
-    bg: "#FAFAF8",
+    // Base — near white, barely warm
+    bg: "#F9F9F8",
     card: "#FFFFFF",
-    surface: "#EBE7E3",
-    accent: "#9B8E84",
-    accentDark: "#7D7168",
-    accentLight: "#EBE7E3",
-    text: "#2C2826",
-    muted: "#9B8E84",
-    hint: "#BDB6AF",
-    border: "#E8E3DE",
-    warn: "#C4622D"
+    surface: "#F2F0EF",
+    // Primary — bright red/orange
+    accent: "#E85D3A",
+    accentDark: "#C44A29",
+    accentLight: "#FDEEE9",
+    // Secondary — bright blue (equal weight to red)
+    blue: "#00C2DC",
+    blueDark: "#0098AF",
+    blueLight: "#E0F8FC",
+    blueText: "#005A6B",
+    // Text
+    text: "#1E1A18",
+    muted: "#6B6460",
+    hint: "#A8A4A0",
+    // Structural
+    border: "#E8E4E0",
+    warn: "#E85D3A",
+    // Aliases
+    red: "#E85D3A",
+    redLight: "#FDEEE9",
+    redText: "#7A2010"
   };
   var CHECKIN_QS = [
     "What was the best thing that happened to you this week?",
@@ -7292,7 +7305,7 @@
   var MILESTONES = [{ age: "12 months", target: "1\u20133 words", note: "First real words" }, { age: "15 months", target: "3\u20135 words", note: "Expanding vocabulary" }, { age: "18 months", target: "5\u201320 words", note: "Vocabulary explosion begins" }, { age: "24 months", target: "50+ words, 2-word phrases", note: "Should combine words" }, { age: "30 months", target: "200+ words, short sentences", note: "Strangers understand ~50%" }, { age: "36 months", target: "Sentences, stories", note: "Strangers understand ~75%" }];
   var INIT_MEALS = { Monday: "", Tuesday: "", Wednesday: "", Thursday: "", Friday: "", Saturday: "", Sunday: "" };
   var CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Bebas+Neue&display=swap');
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{background:${T.bg}}
 body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:${T.text};-webkit-font-smoothing:antialiased}
@@ -7303,6 +7316,7 @@ button,input,select,textarea{font-family:inherit}
 @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 @keyframes ckPop{0%{transform:scale(0)}60%{transform:scale(1.25)}100%{transform:scale(1)}}
 .ck-anim{animation:ckPop .2s cubic-bezier(.34,1.56,.64,1) both}
+.chunky{font-family:'Bebas Neue',system-ui,sans-serif;font-weight:400;letter-spacing:0.04em}
 @media(prefers-reduced-motion:reduce){.fade,.ck-anim{animation:none!important}}
 `;
   var s = {
@@ -7330,8 +7344,8 @@ button,input,select,textarea{font-family:inherit}
   function Tabs({ tabs, active, onChange }) {
     return /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 0, borderBottom: `1.5px solid ${T.border}`, marginBottom: 20, overflowX: "auto", WebkitOverflowScrolling: "touch" } }, tabs.map((t) => /* @__PURE__ */ import_react.default.createElement("button", { key: t, onClick: () => onChange(t), style: { fontSize: 12, fontWeight: 600, letterSpacing: "0.02em", padding: "10px 16px 11px", border: "none", borderBottom: active === t ? `2.5px solid ${T.accent}` : "2.5px solid transparent", cursor: "pointer", background: "transparent", color: active === t ? T.text : T.hint, whiteSpace: "nowrap", marginBottom: -1.5 } }, t)));
   }
-  function SecHead({ title }) {
-    return /* @__PURE__ */ import_react.default.createElement("div", { style: { marginBottom: 24 } }, /* @__PURE__ */ import_react.default.createElement("h2", { style: { fontSize: "clamp(26px,5vw,34px)", fontWeight: 700, color: T.text, lineHeight: 1.1, letterSpacing: "-0.02em" } }, title));
+  function SecHead({ title, accent }) {
+    return /* @__PURE__ */ import_react.default.createElement("div", { style: { marginBottom: 24 } }, /* @__PURE__ */ import_react.default.createElement("h2", { className: "chunky", style: { fontSize: "clamp(36px,7vw,48px)", color: T.text, lineHeight: 1 } }, title), /* @__PURE__ */ import_react.default.createElement("div", { style: { width: 32, height: 3, background: accent || T.blue, borderRadius: 2, marginTop: 5 } }));
   }
   function CheckInBanner({ nav }) {
     const now = /* @__PURE__ */ new Date();
@@ -7372,7 +7386,7 @@ button,input,select,textarea{font-family:inherit}
       } catch {
       }
     };
-    return /* @__PURE__ */ import_react.default.createElement("div", { style: { background: `${T.accent}10`, border: `1.5px solid ${T.accent}40`, borderRadius: 12, padding: "14px 16px", marginBottom: 16, display: "flex", alignItems: "flex-start", gap: 12 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { width: 36, height: 36, borderRadius: 10, background: T.accent, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 } }, /* @__PURE__ */ import_react.default.createElement("svg", { width: "18", height: "18", viewBox: "0 0 24 24", fill: "none", stroke: "#fff", strokeWidth: "2.2", strokeLinecap: "round", strokeLinejoin: "round" }, /* @__PURE__ */ import_react.default.createElement("path", { d: "M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" }))), /* @__PURE__ */ import_react.default.createElement("div", { style: { flex: 1 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontWeight: 700, fontSize: 14, color: T.text, marginBottom: 3 } }, "Family Check-In"), /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 12, color: T.muted, lineHeight: 1.5, marginBottom: 10 } }, "Sunday check-in questions are ready. Find a quiet moment with Matt today."), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 8, flexWrap: "wrap" } }, /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => nav("family"), style: { fontSize: 11, fontWeight: 700, padding: "6px 14px", borderRadius: 8, border: "none", background: T.accent, color: "#fff", cursor: "pointer" } }, "Open questions"), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => snooze(60), style: { fontSize: 11, fontWeight: 600, padding: "6px 12px", borderRadius: 8, border: `1px solid ${T.border}`, background: "transparent", color: T.muted, cursor: "pointer" } }, "Remind in 1 hr"), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => snooze(180), style: { fontSize: 11, fontWeight: 600, padding: "6px 12px", borderRadius: 8, border: `1px solid ${T.border}`, background: "transparent", color: T.muted, cursor: "pointer" } }, "Remind in 3 hrs"), /* @__PURE__ */ import_react.default.createElement("button", { onClick: dismiss, style: { fontSize: 11, fontWeight: 600, padding: "6px 10px", borderRadius: 8, border: "none", background: "transparent", color: T.hint, cursor: "pointer" } }, "Done"))));
+    return /* @__PURE__ */ import_react.default.createElement("div", { style: { background: T.redLight, border: `1.5px solid ${T.red}40`, borderRadius: 12, padding: "14px 16px", marginBottom: 16, display: "flex", alignItems: "flex-start", gap: 12 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { width: 36, height: 36, borderRadius: 10, background: T.red, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 } }, /* @__PURE__ */ import_react.default.createElement("svg", { width: "18", height: "18", viewBox: "0 0 24 24", fill: "none", stroke: "#fff", strokeWidth: "2.2", strokeLinecap: "round", strokeLinejoin: "round" }, /* @__PURE__ */ import_react.default.createElement("path", { d: "M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" }))), /* @__PURE__ */ import_react.default.createElement("div", { style: { flex: 1 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontWeight: 700, fontSize: 14, color: T.redText, marginBottom: 3 } }, "Family Check-In"), /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 12, color: T.redText, lineHeight: 1.5, marginBottom: 10, opacity: 0.8 } }, "Sunday check-in questions are ready. Find a quiet moment with Matt today."), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 8, flexWrap: "wrap" } }, /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => nav("family"), style: { fontSize: 11, fontWeight: 700, padding: "6px 14px", borderRadius: 8, border: "none", background: T.red, color: "#fff", cursor: "pointer" } }, "Open questions"), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => snooze(60), style: { fontSize: 11, fontWeight: 600, padding: "6px 12px", borderRadius: 8, border: `1px solid ${T.red}40`, background: "transparent", color: T.redText, cursor: "pointer" } }, "Remind in 1 hr"), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => snooze(180), style: { fontSize: 11, fontWeight: 600, padding: "6px 12px", borderRadius: 8, border: `1px solid ${T.red}40`, background: "transparent", color: T.redText, cursor: "pointer" } }, "Remind in 3 hrs"), /* @__PURE__ */ import_react.default.createElement("button", { onClick: dismiss, style: { fontSize: 11, fontWeight: 600, padding: "6px 10px", borderRadius: 8, border: "none", background: "transparent", color: T.redText, opacity: 0.5, cursor: "pointer" } }, "Done"))));
   }
   function SectionHome({ nav }) {
     const now = /* @__PURE__ */ new Date();
@@ -7383,6 +7397,7 @@ button,input,select,textarea{font-family:inherit}
     const todayKey = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][now.getDay()];
     const homeWo = (PROGRAM.gym || {})[todayKey] || null;
     const isSunday = todayKey === "Sunday";
+    const isSaturday = todayKey === "Saturday";
     const wo = homeWo;
     const [meals] = (0, import_react.useState)(() => {
       try {
@@ -7441,16 +7456,20 @@ button,input,select,textarea{font-family:inherit}
       m.setDate(d.getDate() - (day === 0 ? 6 : day - 1));
       return m.toISOString().slice(0, 10);
     }
-    return /* @__PURE__ */ import_react.default.createElement("div", { className: "fade" }, /* @__PURE__ */ import_react.default.createElement("div", { style: { marginBottom: 24 } }, /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 13, color: T.muted, marginBottom: 2 } }, greet, ", Laurel"), /* @__PURE__ */ import_react.default.createElement("h1", { style: { fontSize: "clamp(30px,7vw,44px)", fontWeight: 700, color: T.text, lineHeight: 1.08, letterSpacing: "-0.03em" } }, dayN, /* @__PURE__ */ import_react.default.createElement("br", null), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontWeight: 300 } }, dateF))), /* @__PURE__ */ import_react.default.createElement(CheckInBanner, { nav }), /* @__PURE__ */ import_react.default.createElement(HomeComingUp, { meals, bdays, todayKey, nav, wo }));
+    return /* @__PURE__ */ import_react.default.createElement("div", { className: "fade" }, /* @__PURE__ */ import_react.default.createElement("div", { style: { marginBottom: 24 } }, /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 13, color: T.muted, marginBottom: 2 } }, greet, ", Laurel"), /* @__PURE__ */ import_react.default.createElement("h1", { className: "chunky", style: { fontSize: "clamp(38px,9vw,56px)", color: T.text, lineHeight: 1 } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { color: T.blue } }, dayN), /* @__PURE__ */ import_react.default.createElement("br", null), /* @__PURE__ */ import_react.default.createElement("span", { style: { color: isSaturday ? T.accent : T.blue } }, dateF))), /* @__PURE__ */ import_react.default.createElement(CheckInBanner, { nav }), /* @__PURE__ */ import_react.default.createElement(HomeComingUp, { meals, bdays, todayKey, nav, wo, isSaturday }));
   }
-  function HomeComingUp({ meals, bdays, todayKey, nav, wo }) {
-    const [view, setView] = (0, import_react.useState)("meals");
+  function HomeComingUp({ meals, bdays, todayKey, nav, wo, isSaturday }) {
     const COOK_DAYS = ["Sunday", "Tuesday", "Wednesday"];
     const mealDays = COOK_DAYS.filter((d) => meals[d]);
-    const btnStyle = (v) => ({ fontSize: 10, fontWeight: 600, padding: "5px 9px", borderRadius: 99, border: `1px solid ${view === v ? T.accent : T.border}`, background: view === v ? T.accent : "transparent", color: view === v ? "#fff" : T.hint, cursor: "pointer", whiteSpace: "nowrap" });
-    return /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 14 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, null, "This week"), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 4, flexWrap: "wrap", justifyContent: "flex-end" } }, /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => setView("workout"), style: btnStyle("workout") }, "Workout"), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => setView("meals"), style: btnStyle("meals") }, "Meals"), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => setView("birthdays"), style: btnStyle("birthdays") }, "Birthdays"), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => setView("events"), style: btnStyle("events") }, "Events"))), view === "workout" && (wo ? /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 16, fontWeight: 600, color: T.text, marginBottom: 4 } }, wo.title), wo.rest ? /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 13, color: T.hint } }, wo.note) : /* @__PURE__ */ import_react.default.createElement("div", null, wo.warmup && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 12, color: T.hint, marginBottom: 8 } }, "Warm-up: ", wo.warmup), [...wo.strength || [], ...wo.core || []].slice(0, 4).map((ex, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { fontSize: 13, color: T.text, padding: "5px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none" } }, typeof ex === "string" ? ex : ex.name, " ", /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, color: T.hint } }, typeof ex === "object" ? ex.sets : ""))), [...wo.strength || [], ...wo.core || []].length > 4 && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 11, color: T.hint, marginTop: 4 } }, "+", [...wo.strength || [], ...wo.core || []].length - 4, " more"), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => nav("health"), style: { fontSize: 11, color: T.accent, background: "none", border: "none", cursor: "pointer", padding: "6px 0", fontWeight: 600 } }, "Open full workout \u2192"))) : /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 13, color: T.hint, padding: "8px 0" } }, "Rest day. Enjoy it.")), view === "meals" && /* @__PURE__ */ import_react.default.createElement("div", null, mealDays.length > 0 ? mealDays.map((day, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: day, style: { display: "flex", gap: 10, padding: "7px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none", alignItems: "baseline" } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, fontWeight: day === todayKey ? 700 : 500, color: day === todayKey ? T.accent : T.hint, minWidth: 28, flexShrink: 0 } }, day.slice(0, 3)), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 13, color: T.text, fontWeight: 500 } }, meals[day]))) : /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 13, color: T.hint, padding: "8px 0 4px" } }, "No meals planned yet."), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => nav("health", "Meals"), style: { fontSize: 11, color: T.accent, background: "none", border: "none", cursor: "pointer", padding: "6px 0", fontWeight: 600, display: "block", marginTop: 4 } }, "Edit meals \u2192")), view === "birthdays" && (bdays.length > 0 ? bdays.slice(0, 4).map((b, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { display: "flex", alignItems: "center", gap: 12, padding: "8px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none" } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { width: 32, height: 32, borderRadius: "50%", background: b.isToday ? T.accent : T.surface, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontSize: 12, color: b.isToday ? "#fff" : T.muted, fontWeight: 700 } }, b.date.split(" ")[1]), /* @__PURE__ */ import_react.default.createElement("div", { style: { flex: 1 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontWeight: 600, fontSize: 13, color: T.text } }, b.name), /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 11, color: T.hint } }, b.date)), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 12, fontWeight: 700, color: b.isToday ? T.accent : T.hint } }, b.isToday ? "Today" : `${b.diff}d`))) : /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 13, color: T.hint, padding: "8px 0" } }, "No birthdays in the next 3 weeks.")), view === "events" && /* @__PURE__ */ import_react.default.createElement(HomeEvents, null));
+    const doy = (() => {
+      const n = /* @__PURE__ */ new Date();
+      const s2 = new Date(n.getFullYear(), 0, 0);
+      return Math.floor((n - s2) / 864e5);
+    })();
+    const q = DAILY_QUOTES[doy % DAILY_QUOTES.length];
+    return /* @__PURE__ */ import_react.default.createElement("div", { style: { marginBottom: 14 } }, /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 10, background: isSaturday ? T.accentLight : T.blueLight, border: `1px solid ${isSaturday ? T.accent : T.blue}30` } }, /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 13, color: isSaturday ? T.redText : T.blueText, lineHeight: 1.55, fontStyle: "italic", marginBottom: 6, display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical", overflow: "hidden" } }, '"', q && q.text ? String(q.text) : "", '"'), /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 11, color: isSaturday ? T.accent : T.blue, fontWeight: 600 } }, "\u2014 ", q && q.source ? String(q.source) : "")), /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 0 } }, bdays.length > 0 && /* @__PURE__ */ import_react.default.createElement("div", { style: { marginBottom: 16 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, null, "Upcoming birthdays"), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => nav("family", "Celebrate & Activities"), style: { fontSize: 11, color: T.blue, background: "none", border: "none", cursor: "pointer", fontWeight: 600 } }, "See all \u2192")), bdays.slice(0, 4).map((b, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { display: "flex", alignItems: "center", gap: 12, padding: "7px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none" } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { width: 30, height: 30, borderRadius: "50%", background: b.isToday ? T.accent : T.surface, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontSize: 12, color: b.isToday ? "#fff" : T.muted, fontWeight: 700 } }, b.date.split(" ")[1]), /* @__PURE__ */ import_react.default.createElement("div", { style: { flex: 1 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontWeight: 600, fontSize: 13, color: T.text } }, b.name), /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 11, color: T.hint } }, b.date)), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, fontWeight: 700, color: b.isToday ? T.accent : T.hint } }, b.isToday ? "Today" : `${b.diff}d`)))), bdays.length > 0 && /* @__PURE__ */ import_react.default.createElement("div", { style: { height: 1, background: T.border, marginBottom: 16 } }), /* @__PURE__ */ import_react.default.createElement("div", { style: { marginBottom: 16 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, null, "Today's workout"), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => nav("health"), style: { fontSize: 11, color: T.blue, background: "none", border: "none", cursor: "pointer", fontWeight: 600 } }, "See all \u2192")), wo ? wo.rest ? /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 13, color: T.hint } }, wo.note) : /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 15, fontWeight: 600, color: isSaturday ? T.accent : T.blue, marginBottom: 6 } }, wo.title), wo.warmup && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 12, color: T.hint, marginBottom: 8 } }, "Warm-up: ", wo.warmup), [...wo.strength || [], ...wo.core || []].slice(0, 4).map((ex, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { fontSize: 13, color: T.text, padding: "5px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none" } }, typeof ex === "string" ? ex : ex.name, " ", /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, color: T.hint } }, typeof ex === "object" ? ex.sets : ""))), [...wo.strength || [], ...wo.core || []].length > 4 && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 11, color: T.hint, marginTop: 4 } }, "+", [...wo.strength || [], ...wo.core || []].length - 4, " more"), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => nav("health"), style: { fontSize: 11, color: T.blue, background: "none", border: "none", cursor: "pointer", padding: "6px 0", fontWeight: 600, display: "block", marginTop: 4 } }, "Open full workout \u2192")) : /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 13, color: T.hint } }, "Rest day.")), /* @__PURE__ */ import_react.default.createElement("div", { style: { height: 1, background: T.border, marginBottom: 16 } }), /* @__PURE__ */ import_react.default.createElement("div", { style: { marginBottom: 16 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, null, "This week's meals"), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => nav("health", "Meals"), style: { fontSize: 11, color: T.blue, background: "none", border: "none", cursor: "pointer", fontWeight: 600 } }, "Edit \u2192")), mealDays.length > 0 ? mealDays.map((day, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: day, style: { display: "flex", gap: 10, padding: "7px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none", alignItems: "baseline" } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, fontWeight: day === todayKey ? 700 : 500, color: day === todayKey ? T.blue : T.hint, minWidth: 28, flexShrink: 0 } }, day.slice(0, 3)), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 13, color: T.text, fontWeight: 500 } }, meals[day]))) : /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 13, color: T.hint, padding: "4px 0" } }, "No meals planned yet.")), /* @__PURE__ */ import_react.default.createElement("div", { style: { height: 1, background: T.border, marginBottom: 16 } }), /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, null, "Events & YW"), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => nav("family", "Celebrate & Activities"), style: { fontSize: 11, color: T.blue, background: "none", border: "none", cursor: "pointer", fontWeight: 600 } }, "See all \u2192")), /* @__PURE__ */ import_react.default.createElement(HomeEvents, { nav }))));
   }
-  function HomeEvents() {
+  function HomeEvents({ nav }) {
     const CUR_MONTH_EVENTS = {
       June: [
         { text: "Lehi Round Up Days \u2014 rodeo, parade, carnival, fireworks", url: "https://www.lehiroundup.com" },
@@ -7479,7 +7498,7 @@ button,input,select,textarea{font-family:inherit}
       { date: "July 7\u201310", title: "Girls Camp \u2014 Wallsburg, UT" },
       { date: "Aug TBD", title: "Back to School activity" }
     ];
-    return /* @__PURE__ */ import_react.default.createElement("div", null, items.map((ev, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { display: "flex", gap: 8, padding: "7px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none", alignItems: "flex-start" } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { color: T.accent, flexShrink: 0, marginTop: 1 } }, "\u2022"), ev.url ? /* @__PURE__ */ import_react.default.createElement("a", { href: ev.url, target: "_blank", rel: "noopener noreferrer", style: { fontSize: 13, color: T.text, textDecoration: "none" } }, ev.text) : /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 13, color: T.text } }, ev.text))), YW_UPCOMING.length > 0 && /* @__PURE__ */ import_react.default.createElement("div", { style: { marginTop: 8, paddingTop: 8, borderTop: `1px solid ${T.border}` } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 10, fontWeight: 700, color: T.accent, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 6 } }, "YW"), YW_UPCOMING.map((e, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { display: "flex", gap: 8, padding: "5px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none" } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, fontWeight: 600, color: T.hint, minWidth: 60, flexShrink: 0 } }, e.date), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 13, color: T.text } }, e.title)))), !items.length && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 13, color: T.hint, padding: "4px 0" } }, "Check the Events tab for upcoming Utah events."));
+    return /* @__PURE__ */ import_react.default.createElement("div", null, items.map((ev, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { display: "flex", gap: 8, padding: "7px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none", alignItems: "flex-start" } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { color: T.blue, flexShrink: 0, marginTop: 1 } }, "\u2022"), ev.url ? /* @__PURE__ */ import_react.default.createElement("a", { href: ev.url, target: "_blank", rel: "noopener noreferrer", style: { fontSize: 13, color: T.text, textDecoration: "none" } }, ev.text) : /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 13, color: T.text } }, ev.text))), YW_UPCOMING.length > 0 && /* @__PURE__ */ import_react.default.createElement("div", { style: { marginTop: 8, paddingTop: 8, borderTop: `1px solid ${T.border}` } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 10, fontWeight: 700, color: T.blue, textTransform: "uppercase", letterSpacing: "0.06em" } }, "YW"), nav && /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => nav("faith", "YW & Worship"), style: { fontSize: 11, color: T.blue, background: "none", border: "none", cursor: "pointer", fontWeight: 600 } }, "YW tab \u2192")), YW_UPCOMING.map((e, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { display: "flex", gap: 8, padding: "5px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none" } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, fontWeight: 600, color: T.hint, minWidth: 60, flexShrink: 0 } }, e.date), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 13, color: T.text } }, e.title)))), !items.length && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 13, color: T.hint, padding: "4px 0" } }, "Check the Events tab for upcoming Utah events."));
   }
   function FamilyTabs({ active, onChange }) {
     const TABS = [
@@ -7508,10 +7527,10 @@ button,input,select,textarea{font-family:inherit}
   }
   function SectionFamily({ initialTab }) {
     const [tab, setTab] = (0, import_react.useState)(initialTab || "Our Family");
-    return /* @__PURE__ */ import_react.default.createElement("div", { className: "fade" }, /* @__PURE__ */ import_react.default.createElement(SecHead, { title: "Family" }), /* @__PURE__ */ import_react.default.createElement(FamilyTabs, { active: tab, onChange: setTab }), tab === "Our Family" && /* @__PURE__ */ import_react.default.createElement(PanelDeclaration, { key: "decl" }), tab === "Goals & Bucket List" && /* @__PURE__ */ import_react.default.createElement(PanelGoals, { key: "goals" }), tab === "Celebrate" && /* @__PURE__ */ import_react.default.createElement(PanelCelebrate, { key: "cel" }));
+    return /* @__PURE__ */ import_react.default.createElement("div", { className: "fade" }, /* @__PURE__ */ import_react.default.createElement(SecHead, { title: "Family", accent: T.accent }), /* @__PURE__ */ import_react.default.createElement(FamilyTabs, { active: tab, onChange: setTab }), tab === "Our Family" && /* @__PURE__ */ import_react.default.createElement(PanelDeclaration, { key: "decl" }), tab === "Goals & Bucket List" && /* @__PURE__ */ import_react.default.createElement(PanelGoals, { key: "goals" }), tab === "Celebrate" && /* @__PURE__ */ import_react.default.createElement(PanelCelebrate, { key: "cel" }));
   }
   function PanelDeclaration() {
-    return /* @__PURE__ */ import_react.default.createElement("div", { className: "fade" }, /* @__PURE__ */ import_react.default.createElement("div", { style: { background: "#F0EBE6", borderRadius: 16, padding: "32px 24px", marginBottom: 20, border: `1px solid ${T.border}` } }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { color: T.muted, marginBottom: 14 } }, "Mills Family Declaration"), /* @__PURE__ */ import_react.default.createElement("div", { style: { width: 24, height: 2, background: T.accent, marginBottom: 18, opacity: 0.5 } }), DECLARATION.map((d, i) => /* @__PURE__ */ import_react.default.createElement("p", { key: i, style: { fontSize: d.bold ? 15 : 13, fontWeight: d.bold ? 600 : 300, fontStyle: d.bold ? "normal" : "italic", color: d.bold ? T.text : T.muted, lineHeight: 2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" } }, d.text))), /* @__PURE__ */ import_react.default.createElement(Card, null, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, null, "Family check-in"), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, color: T.hint } }, "Sundays")), CHECKIN_QS.map((q, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { display: "flex", gap: 12, padding: "10px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none", alignItems: "flex-start" } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { width: 26, height: 26, borderRadius: "50%", border: `1.5px solid ${T.border}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontSize: 11, fontWeight: 600, color: T.muted } }, i + 1), /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 14, color: T.text, lineHeight: 1.5, margin: 0 } }, q)))), /* @__PURE__ */ import_react.default.createElement("div", { style: { marginTop: 20 } }, /* @__PURE__ */ import_react.default.createElement(Card, { style: { background: T.surface, border: `1px solid ${T.border}` } }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 12 } }, "Luke Word Tracking"), /* @__PURE__ */ import_react.default.createElement(PanelLuke, null))));
+    return /* @__PURE__ */ import_react.default.createElement("div", { className: "fade" }, /* @__PURE__ */ import_react.default.createElement("div", { style: { background: T.blueLight, borderRadius: 16, padding: "32px 24px", marginBottom: 20, border: `1px solid ${T.blue}30` } }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { color: T.blueDark, marginBottom: 14 } }, "Mills Family Declaration"), /* @__PURE__ */ import_react.default.createElement("div", { style: { width: 24, height: 2, background: T.blue, marginBottom: 18, opacity: 0.6 } }), DECLARATION.map((d, i) => /* @__PURE__ */ import_react.default.createElement("p", { key: i, style: { fontSize: d.bold ? 15 : 13, fontWeight: d.bold ? 600 : 300, fontStyle: d.bold ? "normal" : "italic", color: d.bold ? T.text : T.muted, lineHeight: 2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" } }, d.text))), /* @__PURE__ */ import_react.default.createElement(Card, null, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, null, "Family check-in"), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, color: T.hint } }, "Sundays")), CHECKIN_QS.map((q, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { display: "flex", gap: 12, padding: "10px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none", alignItems: "flex-start" } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { width: 26, height: 26, borderRadius: "50%", border: `1.5px solid ${T.border}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontSize: 11, fontWeight: 600, color: T.muted } }, i + 1), /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 14, color: T.text, lineHeight: 1.5, margin: 0 } }, q)))), /* @__PURE__ */ import_react.default.createElement("div", { style: { marginTop: 20 } }, /* @__PURE__ */ import_react.default.createElement(Card, { style: { background: T.surface, border: `1px solid ${T.border}` } }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 12 } }, "Luke Word Tracking"), /* @__PURE__ */ import_react.default.createElement(PanelLuke, null))));
   }
   function GoalItem({ g, i, PC, PEOPLE, sv, goals }) {
     const [editing, setEditing] = (0, import_react.useState)(false);
@@ -7659,17 +7678,20 @@ button,input,select,textarea{font-family:inherit}
       return (n.getFullYear() - b.getFullYear()) * 12 + (n.getMonth() - b.getMonth());
     })();
     const ms = MILESTONES.find((m) => ageM <= parseInt(m.age)) || MILESTONES[MILESTONES.length - 1];
-    return /* @__PURE__ */ import_react.default.createElement("div", { className: "fade" }, /* @__PURE__ */ import_react.default.createElement("div", { style: { background: `linear-gradient(135deg,${T.accent},${T.accentDark})`, borderRadius: 16, padding: "22px 20px", marginBottom: 18, color: "#fff" } }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { color: "rgba(255,255,255,0.5)", marginBottom: 8 } }, "Luke \u2014 ", ageM, " months old"), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", alignItems: "flex-end", gap: 14, flexWrap: "wrap" } }, /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 52, fontWeight: 700, lineHeight: 1 } }, words.length), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 15, opacity: 0.65, marginLeft: 8 } }, "words")), /* @__PURE__ */ import_react.default.createElement("div", { style: { paddingBottom: 6 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 11, opacity: 0.6 } }, "Next: ", ms.age), /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 14, fontWeight: 600 } }, ms.target))), /* @__PURE__ */ import_react.default.createElement("div", { style: { marginTop: 12, padding: "8px 12px", background: "rgba(255,255,255,0.14)", borderRadius: 8, fontSize: 12, lineHeight: 1.6 } }, /* @__PURE__ */ import_react.default.createElement("b", null, "For the doctor:"), " ", words.length, " words, target ", ms.target, " by ", ms.age, ". ", ms.note, ".")), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 8, marginBottom: 16, flexWrap: "wrap" } }, /* @__PURE__ */ import_react.default.createElement(Chip, { on: sub === "words", onClick: () => setSub("words") }, "Words (", words.length, ")"), /* @__PURE__ */ import_react.default.createElement(Chip, { on: sub === "notes", onClick: () => setSub("notes") }, "Appt Notes"), /* @__PURE__ */ import_react.default.createElement(Chip, { on: sub === "mile", onClick: () => setSub("mile") }, "Milestones")), sub === "words" && /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 14 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 8 } }, "Add a word Luke says"), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 6 } }, /* @__PURE__ */ import_react.default.createElement("input", { value: nw, onChange: (e) => setNW(e.target.value), onKeyDown: (e) => e.key === "Enter" && addW(), placeholder: "Word\u2026", style: { ...s.input, flex: 1 } }), /* @__PURE__ */ import_react.default.createElement("button", { onClick: addW, style: s.btn }, "Add"))), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", flexWrap: "wrap", gap: 6 } }, words.map((w) => /* @__PURE__ */ import_react.default.createElement("div", { key: w.id, style: { background: T.card, border: `1px solid ${T.border}`, borderRadius: 8, padding: "6px 10px" } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", alignItems: "center", gap: 6 } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontWeight: 600, fontSize: 13, color: T.text } }, w.word), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => svW(words.filter((x) => x.id !== w.id)), style: { background: "none", border: "none", cursor: "pointer", color: T.border, fontSize: 14, padding: 0, lineHeight: 1 } }, "\xD7")))))), sub === "notes" && /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 14 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 6 } }, "Add appointment note"), /* @__PURE__ */ import_react.default.createElement("input", { type: "date", value: nnd, onChange: (e) => setNND(e.target.value), style: { ...s.input, marginBottom: 6 } }), /* @__PURE__ */ import_react.default.createElement("textarea", { value: nn, onChange: (e) => setNN(e.target.value), placeholder: "Observation, behavior, question\u2026", rows: 3, style: { ...s.input, resize: "vertical", marginBottom: 6 } }), /* @__PURE__ */ import_react.default.createElement("button", { onClick: addN, style: { ...s.btn, width: "100%" } }, "Save note")), notes.length === 0 && /* @__PURE__ */ import_react.default.createElement("p", { style: { textAlign: "center", padding: 32, color: T.hint, fontSize: 13 } }, "No notes yet."), notes.map((n) => /* @__PURE__ */ import_react.default.createElement(Card, { key: n.id, style: { marginBottom: 8 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "flex-start" } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { flex: 1 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 4 } }, n.date), /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 14, color: T.text, lineHeight: 1.6 } }, n.text)), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => svN(notes.filter((x) => x.id !== n.id)), style: { background: "none", border: "none", cursor: "pointer", color: T.border, fontSize: 18, padding: 0, marginLeft: 8 } }, "\xD7"))))), sub === "mile" && /* @__PURE__ */ import_react.default.createElement(Card, null, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 12 } }, "Speech & language milestones"), MILESTONES.map((m, i) => {
+    return /* @__PURE__ */ import_react.default.createElement("div", { className: "fade" }, /* @__PURE__ */ import_react.default.createElement("div", { style: { background: T.accentLight, border: `1px solid ${T.accent}30`, borderRadius: 16, padding: "22px 20px", marginBottom: 18 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { color: T.accent, marginBottom: 8 } }, "Luke \u2014 ", ageM, " months old"), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", alignItems: "flex-end", gap: 14, flexWrap: "wrap" } }, /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 52, fontWeight: 700, lineHeight: 1, color: T.accent } }, words.length), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 15, color: T.muted, marginLeft: 8 } }, "words")), /* @__PURE__ */ import_react.default.createElement("div", { style: { paddingBottom: 6 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 11, color: T.muted } }, "Next: ", ms.age), /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 14, fontWeight: 600, color: T.text } }, ms.target))), /* @__PURE__ */ import_react.default.createElement("div", { style: { marginTop: 12, padding: "8px 12px", background: `${T.accent}10`, borderRadius: 8, fontSize: 12, lineHeight: 1.6, color: T.redText } }, /* @__PURE__ */ import_react.default.createElement("b", null, "For the doctor:"), " ", words.length, " words, target ", ms.target, " by ", ms.age, ". ", ms.note, ".")), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 8, marginBottom: 16, flexWrap: "wrap" } }, /* @__PURE__ */ import_react.default.createElement(Chip, { on: sub === "words", onClick: () => setSub("words") }, "Words (", words.length, ")"), /* @__PURE__ */ import_react.default.createElement(Chip, { on: sub === "notes", onClick: () => setSub("notes") }, "Appt Notes"), /* @__PURE__ */ import_react.default.createElement(Chip, { on: sub === "mile", onClick: () => setSub("mile") }, "Milestones")), sub === "words" && /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 14 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 8 } }, "Add a word Luke says"), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 6 } }, /* @__PURE__ */ import_react.default.createElement("input", { value: nw, onChange: (e) => setNW(e.target.value), onKeyDown: (e) => e.key === "Enter" && addW(), placeholder: "Word\u2026", style: { ...s.input, flex: 1 } }), /* @__PURE__ */ import_react.default.createElement("button", { onClick: addW, style: s.btn }, "Add"))), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", flexWrap: "wrap", gap: 6 } }, words.map((w) => /* @__PURE__ */ import_react.default.createElement("div", { key: w.id, style: { background: T.card, border: `1px solid ${T.border}`, borderRadius: 8, padding: "6px 10px" } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", alignItems: "center", gap: 6 } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontWeight: 600, fontSize: 13, color: T.text } }, w.word), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => svW(words.filter((x) => x.id !== w.id)), style: { background: "none", border: "none", cursor: "pointer", color: T.border, fontSize: 14, padding: 0, lineHeight: 1 } }, "\xD7")))))), sub === "notes" && /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 14 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 6 } }, "Add appointment note"), /* @__PURE__ */ import_react.default.createElement("input", { type: "date", value: nnd, onChange: (e) => setNND(e.target.value), style: { ...s.input, marginBottom: 6 } }), /* @__PURE__ */ import_react.default.createElement("textarea", { value: nn, onChange: (e) => setNN(e.target.value), placeholder: "Observation, behavior, question\u2026", rows: 3, style: { ...s.input, resize: "vertical", marginBottom: 6 } }), /* @__PURE__ */ import_react.default.createElement("button", { onClick: addN, style: { ...s.btn, width: "100%" } }, "Save note")), notes.length === 0 && /* @__PURE__ */ import_react.default.createElement("p", { style: { textAlign: "center", padding: 32, color: T.hint, fontSize: 13 } }, "No notes yet."), notes.map((n) => /* @__PURE__ */ import_react.default.createElement(Card, { key: n.id, style: { marginBottom: 8 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "flex-start" } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { flex: 1 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 4 } }, n.date), /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 14, color: T.text, lineHeight: 1.6 } }, n.text)), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => svN(notes.filter((x) => x.id !== n.id)), style: { background: "none", border: "none", cursor: "pointer", color: T.border, fontSize: 18, padding: 0, marginLeft: 8 } }, "\xD7"))))), sub === "mile" && /* @__PURE__ */ import_react.default.createElement(Card, null, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 12 } }, "Speech & language milestones"), MILESTONES.map((m, i) => {
       const mo = parseInt(m.age);
       const past = ageM > mo;
       const cur = ageM <= mo && (i === 0 || ageM > parseInt(MILESTONES[i - 1].age));
-      return /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { display: "flex", gap: 12, padding: "10px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none", opacity: past ? 0.45 : 1 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { width: 32, height: 32, borderRadius: "50%", background: cur ? T.accent : past ? T.accent : T.surface, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontSize: 12, color: cur || past ? "#fff" : T.hint, fontWeight: 700 } }, past ? "\u2713" : cur ? "\u2192" : "\u25CB"), /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontWeight: 700, fontSize: 13, color: T.text } }, m.age), /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 13, color: T.text } }, m.target), /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 11, color: T.hint } }, m.note)));
+      return /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { display: "flex", gap: 12, padding: "10px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none", opacity: past ? 0.45 : 1 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { width: 32, height: 32, borderRadius: "50%", background: cur ? T.accent : past ? T.blue : T.surface, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontSize: 12, color: cur || past ? "#fff" : T.hint, fontWeight: 700 } }, past ? "\u2713" : cur ? "\u2192" : "\u25CB"), /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontWeight: 700, fontSize: 13, color: T.text } }, m.age), /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 13, color: T.text } }, m.target), /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 11, color: T.hint } }, m.note)));
     })));
   }
   function PanelCelebrate() {
     const [sub, setSub] = (0, import_react.useState)("Events");
     const TABS = ["Events", "Traditions", "Birthdays", "Gifts", "Date & Activity Ideas"];
-    return /* @__PURE__ */ import_react.default.createElement("div", { className: "fade" }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 4, marginBottom: 18, overflowX: "auto", WebkitOverflowScrolling: "touch", paddingBottom: 2 } }, TABS.map((t) => /* @__PURE__ */ import_react.default.createElement("button", { key: t, onClick: () => setSub(t), style: { fontSize: 11, fontWeight: 600, padding: "5px 12px", borderRadius: 99, border: `1.5px solid ${sub === t ? T.accent : T.border}`, background: sub === t ? T.accent : "transparent", color: sub === t ? "#fff" : T.muted, cursor: "pointer", whiteSpace: "nowrap", flexShrink: 0 } }, t))), sub === "Birthdays" && /* @__PURE__ */ import_react.default.createElement(BirthdayList, { key: sub }), sub === "Gifts" && /* @__PURE__ */ import_react.default.createElement(GiftList, { key: sub }), sub === "Traditions" && /* @__PURE__ */ import_react.default.createElement(TraditionList, { key: sub }), sub === "Date & Activity Ideas" && /* @__PURE__ */ import_react.default.createElement(DateIdeasList, { key: sub }), sub === "Events" && /* @__PURE__ */ import_react.default.createElement(EventsList, { key: sub }));
+    return /* @__PURE__ */ import_react.default.createElement("div", { className: "fade" }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 4, marginBottom: 18, overflowX: "auto", WebkitOverflowScrolling: "touch", paddingBottom: 2 } }, TABS.map((t, ti) => {
+      const c = ti % 2 === 0 ? T.accent : T.blue;
+      return /* @__PURE__ */ import_react.default.createElement("button", { key: t, onClick: () => setSub(t), style: { fontSize: 11, fontWeight: 600, padding: "5px 12px", borderRadius: 99, border: `1.5px solid ${sub === t ? c : T.border}`, background: sub === t ? c : "transparent", color: sub === t ? "#fff" : T.muted, cursor: "pointer", whiteSpace: "nowrap", flexShrink: 0 } }, t);
+    })), sub === "Birthdays" && /* @__PURE__ */ import_react.default.createElement(BirthdayList, { key: sub }), sub === "Gifts" && /* @__PURE__ */ import_react.default.createElement(GiftList, { key: sub }), sub === "Traditions" && /* @__PURE__ */ import_react.default.createElement(TraditionList, { key: sub }), sub === "Date & Activity Ideas" && /* @__PURE__ */ import_react.default.createElement(DateIdeasList, { key: sub }), sub === "Events" && /* @__PURE__ */ import_react.default.createElement(EventsList, { key: sub }));
   }
   function BirthdayList() {
     const [bdays, setBdays] = (0, import_react.useState)(() => {
@@ -7717,7 +7739,7 @@ button,input,select,textarea{font-family:inherit}
       const isCur = mo === curMonth;
       const isPast = i < curIdx;
       const isOpen = open === mo;
-      return /* @__PURE__ */ import_react.default.createElement(Card, { key: mo, style: { opacity: isPast ? 0.4 : 1, border: isCur ? `1.5px solid ${T.accent}` : void 0 } }, /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => setOpen(isOpen ? null : mo), style: { width: "100%", display: "flex", alignItems: "center", gap: 8, background: "none", border: "none", cursor: "pointer", padding: 0 } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 14, fontWeight: 600, color: isCur ? T.accent : T.text, flex: 1, textAlign: "left" } }, mo), isCur && /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 10, fontWeight: 700, color: T.accent, background: `${T.accent}15`, padding: "2px 8px", borderRadius: 99 } }, "NOW"), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, color: T.hint, marginRight: 4 } }, ppl.length), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 16, color: T.hint, transition: "transform .2s", transform: isOpen ? "rotate(45deg)" : "none" } }, "+")), isOpen && /* @__PURE__ */ import_react.default.createElement("div", { style: { paddingTop: 10 } }, ppl.map((p, j) => /* @__PURE__ */ import_react.default.createElement("div", { key: j, style: { display: "flex", alignItems: "center", gap: 10, padding: "6px 0", borderTop: j > 0 ? `1px solid ${T.border}` : "none" } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 12, fontWeight: 700, color: T.accent, flexShrink: 0, width: 24, textAlign: "right" } }, p.date.split(" ")[1]), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 13, color: T.text, fontWeight: ["Luke", "Matt", "Laurel", "Anniversary"].some((n) => p.name.includes(n)) ? 600 : 400, flex: 1 } }, p.name), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => delBday(mo, j), style: { background: "none", border: "none", cursor: "pointer", color: T.border, fontSize: 16, padding: 0 } }, "\xD7")))));
+      return /* @__PURE__ */ import_react.default.createElement(Card, { key: mo, style: { opacity: isPast ? 0.4 : 1, border: isCur ? `1.5px solid ${T.blue}` : void 0 } }, /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => setOpen(isOpen ? null : mo), style: { width: "100%", display: "flex", alignItems: "center", gap: 8, background: "none", border: "none", cursor: "pointer", padding: 0 } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 14, fontWeight: 600, color: isCur ? T.blue : T.text, flex: 1, textAlign: "left" } }, mo), isCur && /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 10, fontWeight: 700, color: T.blue, background: `${T.blue}20`, padding: "2px 8px", borderRadius: 99 } }, "NOW"), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, color: T.hint, marginRight: 4 } }, ppl.length), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 16, color: T.hint, transition: "transform .2s", transform: isOpen ? "rotate(45deg)" : "none" } }, "+")), isOpen && /* @__PURE__ */ import_react.default.createElement("div", { style: { paddingTop: 10 } }, ppl.map((p, j) => /* @__PURE__ */ import_react.default.createElement("div", { key: j, style: { display: "flex", alignItems: "center", gap: 10, padding: "6px 0", borderTop: j > 0 ? `1px solid ${T.border}` : "none" } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 12, fontWeight: 700, color: T.blue, flexShrink: 0, width: 24, textAlign: "right" } }, p.date.split(" ")[1]), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 13, color: T.text, fontWeight: ["Luke", "Matt", "Laurel", "Anniversary"].some((n) => p.name.includes(n)) ? 600 : 400, flex: 1 } }, p.name), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => delBday(mo, j), style: { background: "none", border: "none", cursor: "pointer", color: T.border, fontSize: 16, padding: 0 } }, "\xD7")))));
     }), adding ? /* @__PURE__ */ import_react.default.createElement(Card, null, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 8 } }, "Add birthday"), /* @__PURE__ */ import_react.default.createElement("select", { value: newMo, onChange: (e) => setNewMo(e.target.value), style: { ...s.input, marginBottom: 8, width: "100%" } }, ALL_MONTHS.map((m) => /* @__PURE__ */ import_react.default.createElement("option", { key: m, value: m }, m))), /* @__PURE__ */ import_react.default.createElement("input", { value: newDate, onChange: (e) => setNewDate(e.target.value), placeholder: "Day (e.g. 14)", style: { ...s.input, marginBottom: 8, width: "100%" } }), /* @__PURE__ */ import_react.default.createElement("input", { value: newName, onChange: (e) => setNewName(e.target.value), onKeyDown: (e) => e.key === "Enter" && addBday(), placeholder: "Name\u2026", style: { ...s.input, marginBottom: 8, width: "100%" } }), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 8 } }, /* @__PURE__ */ import_react.default.createElement("button", { onClick: addBday, style: { ...s.btn, flex: 1 } }, "Add"), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => setAdding(false), style: { ...s.btn, flex: 1, background: T.surface, color: T.muted, border: `1px solid ${T.border}` } }, "Cancel"))) : /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => setAdding(true), style: { fontSize: 13, fontWeight: 600, color: T.accent, background: `${T.accent}10`, border: `1px solid ${T.accent}30`, borderRadius: 10, padding: "10px", cursor: "pointer" } }, "+ Add birthday"));
   }
   function GiftList() {
@@ -7756,7 +7778,7 @@ button,input,select,textarea{font-family:inherit}
       };
       return /* @__PURE__ */ import_react.default.createElement(Card, { key: who }, /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => setOpen(isOpen ? null : who), style: { width: "100%", display: "flex", alignItems: "center", gap: 8, background: "none", border: "none", cursor: "pointer", padding: 0 } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 14, fontWeight: 600, color: T.text, flex: 1, textAlign: "left" } }, who, "'s wishlist"), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, color: T.hint } }, list.length), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 16, color: T.hint, transition: "transform .2s", transform: isOpen ? "rotate(45deg)" : "none", marginLeft: 4 } }, "+")), isOpen && /* @__PURE__ */ import_react.default.createElement("div", { style: { paddingTop: 10 } }, list.map((g, i) => {
         const item = typeof g === "string" ? { text: g, url: null } : g;
-        return /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { display: "flex", justifyContent: "space-between", alignItems: "center", padding: "7px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none" } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { flex: 1, minWidth: 0 } }, item.url ? /* @__PURE__ */ import_react.default.createElement("a", { href: item.url, target: "_blank", rel: "noopener noreferrer", style: { fontSize: 13, color: T.accent, textDecoration: "none", fontWeight: 500, lineHeight: 1.4 } }, item.text, " \u2192") : /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 13, color: T.text, lineHeight: 1.4 } }, item.text)), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => sv({ ...gifts, [who]: list.filter((_, j) => j !== i) }), style: { background: "none", border: "none", cursor: "pointer", color: T.border, fontSize: 16, padding: 0, marginLeft: 8, flexShrink: 0 } }, "\xD7"));
+        return /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { display: "flex", justifyContent: "space-between", alignItems: "center", padding: "7px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none" } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { flex: 1, minWidth: 0 } }, item.url ? /* @__PURE__ */ import_react.default.createElement("a", { href: item.url, target: "_blank", rel: "noopener noreferrer", style: { fontSize: 13, color: T.blue, textDecoration: "none", fontWeight: 500, lineHeight: 1.4 } }, item.text, " \u2192") : /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 13, color: T.text, lineHeight: 1.4 } }, item.text)), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => sv({ ...gifts, [who]: list.filter((_, j) => j !== i) }), style: { background: "none", border: "none", cursor: "pointer", color: T.border, fontSize: 16, padding: 0, marginLeft: 8, flexShrink: 0 } }, "\xD7"));
       }), list.length === 0 && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 13, color: T.hint, fontStyle: "italic", padding: "4px 0" } }, "No ideas yet."), /* @__PURE__ */ import_react.default.createElement("div", { style: { marginTop: 10, display: "flex", flexDirection: "column", gap: 6 } }, /* @__PURE__ */ import_react.default.createElement("input", { value: nv, onChange: (e) => setNV(e.target.value), onKeyDown: (e) => e.key === "Enter" && add(), placeholder: "Gift idea\u2026", style: { ...s.input, fontSize: 12, padding: "7px 10px" } }), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 6 } }, /* @__PURE__ */ import_react.default.createElement("input", { value: nu, onChange: (e) => setNU(e.target.value), placeholder: "Link (optional)", style: { ...s.input, fontSize: 12, padding: "7px 10px", flex: 1 } }), /* @__PURE__ */ import_react.default.createElement("button", { onClick: add, style: s.btnSm }, "+")))));
     }));
   }
@@ -7948,7 +7970,7 @@ button,input,select,textarea{font-family:inherit}
     const [open, setOpen] = (0, import_react.useState)(null);
     return /* @__PURE__ */ import_react.default.createElement("div", null, EVENTS.map((mo, i) => {
       const isCur = i === (/* @__PURE__ */ new Date()).getMonth();
-      return /* @__PURE__ */ import_react.default.createElement(Card, { key: mo.month, style: { marginBottom: 8, border: isCur ? `1.5px solid ${T.accent}` : void 0 } }, /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => setOpen(open === i ? null : i), style: { width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center", background: "none", border: "none", cursor: "pointer", padding: 0 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", alignItems: "center", gap: 8 } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 14, fontWeight: 600, color: isCur ? T.accent : T.text } }, mo.month), isCur && /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 10, fontWeight: 700, color: T.accent, background: `${T.accent}15`, padding: "2px 8px", borderRadius: 99 } }, "NOW")), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", alignItems: "center", gap: 6 } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, color: T.hint } }, mo.items.length), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 16, color: T.hint, transition: "transform .2s", transform: open === i ? "rotate(45deg)" : "none" } }, "+"))), open === i && /* @__PURE__ */ import_react.default.createElement("div", { style: { paddingTop: 10 } }, mo.items.map((ev, j) => /* @__PURE__ */ import_react.default.createElement("div", { key: j, style: { padding: "8px 0", borderTop: j > 0 ? `1px solid ${T.border}` : "none" } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 8 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { flex: 1 } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 13, fontWeight: 600, color: T.text } }, ev.name), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, color: T.hint, marginLeft: 6 } }, ev.loc), ev.note && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 12, color: T.muted, marginTop: 2, lineHeight: 1.5 } }, ev.note)), ev.url && /* @__PURE__ */ import_react.default.createElement("a", { href: ev.url, target: "_blank", rel: "noopener noreferrer", style: { fontSize: 11, color: T.accent, textDecoration: "none", fontWeight: 600, flexShrink: 0, marginTop: 2 } }, "Info \u2192"))))));
+      return /* @__PURE__ */ import_react.default.createElement(Card, { key: mo.month, style: { marginBottom: 8, border: isCur ? `1.5px solid ${T.blue}` : void 0 } }, /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => setOpen(open === i ? null : i), style: { width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center", background: "none", border: "none", cursor: "pointer", padding: 0 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", alignItems: "center", gap: 8 } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 14, fontWeight: 600, color: isCur ? T.blue : T.text } }, mo.month), isCur && /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 10, fontWeight: 700, color: T.blue, background: `${T.blue}20`, padding: "2px 8px", borderRadius: 99 } }, "NOW")), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", alignItems: "center", gap: 6 } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, color: T.hint } }, mo.items.length), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 16, color: T.hint, transition: "transform .2s", transform: open === i ? "rotate(45deg)" : "none" } }, "+"))), open === i && /* @__PURE__ */ import_react.default.createElement("div", { style: { paddingTop: 10 } }, mo.items.map((ev, j) => /* @__PURE__ */ import_react.default.createElement("div", { key: j, style: { padding: "8px 0", borderTop: j > 0 ? `1px solid ${T.border}` : "none" } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 8 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { flex: 1 } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 13, fontWeight: 600, color: T.text } }, ev.name), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, color: T.hint, marginLeft: 6 } }, ev.loc), ev.note && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 12, color: T.muted, marginTop: 2, lineHeight: 1.5 } }, ev.note)), ev.url && /* @__PURE__ */ import_react.default.createElement("a", { href: ev.url, target: "_blank", rel: "noopener noreferrer", style: { fontSize: 11, color: T.blue, textDecoration: "none", fontWeight: 600, flexShrink: 0, marginTop: 2 } }, "Info \u2192"))))));
     }));
   }
   var YEAR_BLOCKS = [
@@ -7987,17 +8009,18 @@ button,input,select,textarea{font-family:inherit}
         ]
       },
       Tuesday: {
-        title: "Upper Body",
+        title: "Shoulders + Arms",
         warmup: "Treadmill walk 10\u201312 min \xB7 incline 3\u20135",
         bgNote: "Upper body = moderate BG drop. Usually stable if BG starts 120\u2013160. Check CGM.",
-        note: "Back is the anchor. Chest is minimal accessory \u2014 DBs/cables only, no flat barbell. Wk3+: superset arm pairs. Fits in 45 min if you move between machine and cable clusters.",
+        note: "Station flow: shoulder machine \u2192 cable station (front raise + pressdown + curl) \u2192 bench (skull crushers). Wk3+: superset pressdown + curl at the cable. 45 min.",
         strength: [
-          { name: "Lat pulldown", sets: "4\xD78", tip: "Primary back movement. Full stretch at top, drive elbows to pockets. Progress every week. Wk5+: 3-0-1 tempo.", swaps: ["Assisted pull-up 4\xD78", "Wide-grip pulldown 4\xD78"] },
-          { name: "Machine row", sets: "3\xD710", tip: "Machine area. Elbows close, squeeze shoulder blades. Heavier variation than cable row.", swaps: ["Chest-supported row 3\xD710", "Cable row 3\xD710"] },
-          { name: "Machine lateral raise", sets: "3\xD712", tip: "Shoulder machine. Lead with elbows, slight lean forward. Light is fine.", swaps: ["DB lateral raise 3\xD712", "Cable lateral raise 3\xD712 each"] },
-          { name: "Cable curl", sets: "3\xD712", tip: "A1 Wk3+. Stay on cable. Slow lowering, full extension.", swaps: ["EZ bar curl 3\xD710", "DB curl 3\xD712"] },
-          { name: "Rope tricep pressdown", sets: "3\xD712", tip: "A2 Wk3+ with curl. Elbows at sides, flare at bottom. Still on cable.", swaps: ["Bar pressdown 3\xD712", "Overhead cable extension 3\xD710"] },
-          { name: "Incline DB fly", sets: "2\xD712", tip: "Chest accessory only. Light weight, full stretch. DBs on incline bench \u2014 not flat barbell.", swaps: ["Pec deck 2\xD712", "Cable fly 2\xD712"] }
+          { name: "Machine lateral raise", sets: "3\xD712", tip: "Start here \u2014 shoulder machine. Lead with elbows, slight forward lean. Warm up the shoulder joint before pressing.", swaps: ["DB lateral raise 3\xD712", "Cable lateral raise 3\xD712 each"] },
+          { name: "Seated DB shoulder press", sets: "4\xD78", tip: "Bench near the DB rack. Full range \u2014 bring to ear height at bottom, lock out at top. Primary lift \u2014 progress every week.", swaps: ["Smith machine press 4\xD78", "Landmine press 4\xD710 each"] },
+          { name: "Cable front raise", sets: "2\xD712", tip: "Move to cable station. Low pulley. One arm at a time or both. Control the lowering.", swaps: ["DB front raise 2\xD712", "Plate front raise 2\xD712"] },
+          { name: "Rope tricep pressdown", sets: "3\xD712", tip: "A1 Wk3+. Stay on cable \u2014 swap to rope. Elbows at sides, flare at bottom.", swaps: ["Bar pressdown 3\xD712", "Single arm pressdown 3\xD712 each"] },
+          { name: "Cable curl", sets: "3\xD712", tip: "A2 Wk3+. Same cable station, swap attachment. Full extension at bottom, 3 sec eccentric.", swaps: ["EZ bar curl 3\xD710", "DB curl 3\xD712"] },
+          { name: "Skull crusher", sets: "3\xD712", tip: "Move to flat bench. EZ bar or DBs. Elbows in, lower to forehead. Finisher \u2014 go here after cables.", swaps: ["Overhead DB extension 3\xD710", "Cable overhead extension 3\xD712"] },
+          { name: "Hammer curl", sets: "2\xD712", tip: "DB rack \u2014 right next to bench. Neutral grip. Cross-body variation for variety. Last exercise.", swaps: ["Rope hammer curl 2\xD712", "Cross-body hammer 2\xD710 each"] }
         ],
         core: []
       },
@@ -8169,256 +8192,371 @@ button,input,select,textarea{font-family:inherit}
     { id: "low", label: "Low", desc: "Reduce intensity. Have fast-acting carbs ready before you start." }
   ];
   var DAILY_QUOTES = [
-    "Your only competition is who you were yesterday.",
-    "Discipline is choosing between what you want now and what you want most.",
-    "Progress, not perfection.",
-    "The work you do in private shows up in public.",
-    "Show up even when you don't feel like it. Especially then.",
-    "Strong is built one rep at a time.",
-    "You don't have to be extreme, just consistent.",
-    "Your future self is watching. Make her proud.",
-    "Hard days build the best version of you.",
-    "Rest is part of the work.",
-    "Every rep is a vote for the person you're becoming.",
-    "The only bad workout is the one that didn't happen.",
-    "You are stronger than your excuses.",
-    "Fuel your body like you respect it.",
-    "Small daily improvements add up to stunning results.",
-    "Pain is temporary. Quitting lasts forever.",
-    "Believe in the process.",
-    "Today's effort is tomorrow's result.",
-    "Move with intention.",
-    "A year from now you'll wish you started today.",
-    "The body achieves what the mind believes.",
-    "Consistency beats intensity every time.",
-    "You are capable of more than you know.",
-    "Make today count.",
-    "Energy flows where attention goes.",
-    "Take care of your body. It's the only place you have to live.",
-    "Strength comes from doing things you thought you couldn't.",
-    "One more rep.",
-    "Do it for the version of you who needs to see it's possible.",
-    "Show up, do the work, go home. Repeat.",
-    "Some days you lift heavy. Some days you just show up. Both count.",
-    "Your health is an investment, not an expense.",
-    "Train smart. Eat well. Rest hard.",
-    "Be the energy you want to attract.",
-    "Whatever you are, be a good one \u2014 including being consistent.",
-    "Trust the process.",
-    "You've done hard things before. This is no different.",
-    "Build the habit, and the motivation will follow.",
-    "Every step forward is a step in the right direction.",
-    "Don't count the days. Make the days count.",
-    "Your body hears everything your mind says.",
-    "Strength is earned, not given.",
-    "Make it happen. Shock everyone \u2014 especially yourself.",
-    "It always seems impossible until it's done.",
-    "One day or day one. You decide.",
-    "Earn your rest.",
-    "Be stronger than your strongest excuse.",
-    "You don't stop when you're tired. You stop when you're done.",
-    "The best time to start was yesterday. The second best time is now.",
-    "Fall in love with the process and the results will come.",
-    "Your habits are your future self in slow motion.",
-    "You owe it to yourself to show up.",
-    "The days you don't want to are the days you need to most.",
-    "Sweat now, shine later.",
-    "Nothing changes if nothing changes.",
-    "Do something today your future self will thank you for.",
-    "You are built for this.",
-    "Strong women lift each other up \u2014 and lift heavy.",
-    "Eat well, move daily, sleep enough. Repeat.",
-    "Health is not a destination. It's a way of living.",
-    "The struggle you're in today is developing the strength you need tomorrow.",
-    "You are one workout away from a better mood.",
-    "Discipline over motivation every time.",
-    "Chase progress, not perfection.",
-    "Your only limit is the one you set for yourself.",
-    "Do it scared. Do it tired. Just do it.",
-    "Every morning is a chance to rebuild.",
-    "Make your body your most reliable tool.",
-    "Nourish to flourish.",
-    "Wake up. Work out. Be grateful.",
-    "You have survived every hard day so far. This one is no different.",
-    "Results happen over time, not overnight.",
-    "Be patient with yourself.",
-    "Stronger every single day.",
-    "When it burns, remember why you started.",
-    "You didn't come this far to only come this far.",
-    "Invest in yourself \u2014 it pays the best interest.",
-    "The best project you'll ever work on is you.",
-    "If it doesn't challenge you, it won't change you.",
-    "Fitness is not about being better than someone else. It's about being better than you used to be.",
-    "Your body can do it. Convince your mind.",
-    "What you do today can improve all of your tomorrows.",
-    "Keep going. You're doing better than you think.",
-    "Don't wish for it. Work for it.",
-    "Every workout is a deposit in your health account.",
-    "Success starts with self-discipline.",
-    "You are your only competition.",
-    "Motivation gets you started. Habit keeps you going.",
-    "It never gets easier. You just get stronger.",
-    "Eat like you love yourself.",
-    "Train hard. Rest harder.",
-    "Your future is created by what you do today, not tomorrow.",
-    "Action is the antidote to anxiety.",
-    "You were made for hard things.",
-    "Be proud of every step forward, no matter how small.",
-    "Don't stop when you're tired. Stop when you're done.",
-    "You deserve to feel good in your body.",
-    "If you're going through something hard, keep going.",
-    "Show up for yourself the way you show up for others.",
-    "Your body is a reflection of your lifestyle.",
-    "You are stronger than you give yourself credit for.",
-    "Success is the sum of small efforts repeated day in and day out.",
-    "The goal is not to be skinny. The goal is to be healthy and strong.",
-    "Eat food that nourishes you. Move in ways that energize you.",
-    "Progress is progress no matter how slow.",
-    "Your health is your most valuable asset.",
-    "It's not about having time. It's about making time.",
-    "Don't let a stumble in the road be the end of the journey.",
-    "You are worth the effort.",
-    "Make wellness a lifestyle, not a chore.",
-    "Growth happens outside your comfort zone.",
-    "The pain of discipline is less than the pain of regret.",
-    "Rest days are part of the program.",
-    "You are in charge of how you feel today.",
-    "Every healthy choice is an act of self-love.",
-    "Move your body because you love it, not because you hate it.",
-    "Be the kind of tired that comes from doing something great.",
-    "One good decision leads to another.",
-    "Your best is enough. Always.",
-    "You've got this \u2014 even on the days it doesn't feel like it.",
-    "Small steps add up to big miles.",
-    "Work in silence. Let results do the talking.",
-    "Push yourself because no one else will do it for you.",
-    "Don't compare your chapter one to someone else's chapter twenty.",
-    "What you eat in private you wear in public.",
-    "Fuel up. Show up. Level up.",
-    "Don't major in minor things.",
-    "Today is a great day to get stronger.",
-    "You are what you repeatedly do.",
-    "Excellence is a habit.",
-    "The secret to getting ahead is getting started.",
-    "You can't out-train a bad diet. But you can fuel a great workout.",
-    "Commitment is doing what you said you'd do long after the mood has passed.",
-    "Dream it. Believe it. Build it.",
-    "The body keeps the score \u2014 so keep investing in it.",
-    "Let your faith be bigger than your fear.",
-    "God made this body. Take care of it.",
-    "You are a temple. Treat yourself like one.",
-    "The Lord is my strength \u2014 and my strength is showing up.",
-    "With God, all things are possible. Including this workout.",
-    "Be still and know \u2014 then get up and move.",
-    "Start each day with gratitude and a good workout.",
-    "Joy is a form of strength.",
-    "You were fearfully and wonderfully made. Move like it.",
-    "Grace covers your worst days. Discipline builds your best ones.",
-    "Surrender the outcome. Control the effort.",
-    "Peace comes after the work.",
-    "God doesn't call the equipped. He equips the called. Same with fitness.",
-    "Rest in Him. Grind for yourself.",
-    "Put on your armor \u2014 and your gym shoes.",
-    "This body carries you through every blessing in your life. Honor it.",
-    "Even on hard days, you can find one thing to be grateful for.",
-    "You are a wife, a mother, a leader. Your energy matters.",
-    "The strongest version of you serves your family best.",
-    "Taking care of yourself isn't selfish. It's necessary.",
-    "What you model, they'll follow.",
-    "You are raising the next generation by the way you live.",
-    "Your health sets the tone for your home.",
-    "A strong mom raises strong kids.",
-    "Love your family by loving yourself first.",
-    "Community is built one act of care at a time.",
-    "Your consistency inspires people you don't even know.",
-    "Lead by example in everything \u2014 including this.",
-    "Invest in your body like you invest in your relationships.",
-    "You show up for everyone. Show up for yourself too.",
-    "The woman who takes care of herself can take care of everyone else.",
-    "Your presence is your power \u2014 show up fully.",
-    "Be the woman who does it anyway.",
-    "She believed she could, so she did.",
-    "Brave enough to start. Consistent enough to finish.",
-    "There is power in the decision to change.",
-    "Change is hard. Not changing is harder.",
-    "You don't have to feel ready. You just have to start.",
-    "One healthy choice at a time. That's all.",
-    "Every day is a fresh start.",
-    "Let today be the day you love yourself enough to change.",
-    "You are always one decision away from a different life.",
-    "Choose hard now so you don't have to choose harder later.",
-    "The hardest part is starting. You've already done that.",
-    "Give your body what it needs. It will give you everything else.",
-    "Eat to fuel, not to fill.",
-    "Protein is not optional.",
-    "Hydrate or suffer the consequences.",
-    "Your gut health is your mood health. Feed it well.",
-    "Every meal is a chance to nourish your body.",
-    "You don't have to eat perfectly. Just eat intentionally.",
-    "Food is medicine. Choose it wisely.",
-    "Whole foods. Real results.",
-    "Your body tells you what it needs. Learn to listen.",
-    "Recovery is where the magic happens.",
-    "Sleep is the most underrated performance enhancer.",
-    "Stress less. Move more. Sleep deeply.",
-    "You cannot pour from an empty cup.",
-    "Rest is not weakness. It's wisdom.",
-    "Your nervous system needs breaks too.",
-    "Recovery is productive.",
-    "Take the rest day without guilt.",
-    "Sleep is not negotiable if results are the goal.",
-    "Stillness is also a form of strength.",
-    "Breathe. Reset. Go again.",
-    "Diabetes does not define you. How you manage it does.",
-    "Every number is information, not judgment.",
-    "Managing your blood sugar is an act of self-respect.",
-    "You are stronger than your diagnosis.",
-    "T1D life means extra planning \u2014 and extra resilience.",
-    "Your body works harder than most. Honor that.",
-    "Stable blood sugar, stable energy, stable mood. Keep going.",
-    "Every good number is a win worth celebrating.",
-    "You are doing something incredibly hard every single day.",
-    "Wear your CGM with pride. You're a warrior.",
-    "The hard days are proof you're in the fight.",
-    "Getting up early is a form of self-belief.",
-    "The quiet morning hours belong to the people who earn them.",
-    "Sunrise workouts are a love letter to your future self.",
-    "You chose the alarm. Now own the day.",
-    "The early bird gets the workout in before the chaos starts.",
-    "Morning movement sets the tone for everything that follows.",
-    "Before the world wakes up, you've already won.",
-    "Start the day strong. Carry it through.",
-    "Rise early. Move. Pray. Conquer.",
-    "Monday is not the enemy. It's the opportunity.",
-    "Wednesday is the halfway point. Make it count.",
-    "Friday workouts hit different \u2014 you earned the weekend.",
-    "Don't let the weekend undo the week.",
-    "Weekend warriors finish what weekday warriors start.",
-    "The week is long enough to get it done.",
-    "Make this week one you're proud of on Sunday.",
-    "Seven days of consistency changes everything.",
-    "This week's work is next month's results.",
-    "Stack the weeks. Stack the wins.",
-    "You are not behind. You are exactly where you need to be.",
-    "There is no perfect time. There is only now.",
-    "You don't need to be perfect. You need to be consistent.",
-    "Done is better than perfect.",
-    "A good enough workout beats no workout every time.",
-    "Messy progress is still progress.",
-    "You can always adjust the plan. You can't undo not trying.",
-    "Give yourself grace on the hard days.",
-    "Perfection is the enemy of done.",
-    "Show up imperfectly. Show up anyway.",
-    "The version of you who quit is not the version who wins.",
-    "You have never regretted a workout. Remember that.",
-    "Your future self will thank you for the choices you made today.",
-    "Ten years from now you'll wish you started now.",
-    "Build the life you want to live in the body that will carry you there.",
-    "Think long term. Act daily.",
-    "Every day is either a step toward the person you want to be, or away.",
-    "Health is not a sprint. It's the longest game you play.",
-    "Invest daily. Reap for decades.",
-    "You are building something that lasts."
+    { text: "I can do all things through Christ which strengtheneth me.", source: "Philippians 4:13" },
+    { text: "The Lord is my shepherd; I shall not want.", source: "Psalm 23:1" },
+    { text: "Be strong and of a good courage; be not afraid, for the Lord thy God is with thee.", source: "Joshua 1:9" },
+    { text: "Trust in the Lord with all thine heart; and lean not unto thine own understanding.", source: "Proverbs 3:5" },
+    { text: "Fear thou not; for I am with thee. I will strengthen thee.", source: "Isaiah 41:10" },
+    { text: "With God, nothing shall be impossible.", source: "Luke 1:37" },
+    { text: "This is my work and my glory \u2014 to bring to pass the immortality and eternal life of man.", source: "Moses 1:39" },
+    { text: "Ask, and it shall be given you; seek, and ye shall find.", source: "Matthew 7:7" },
+    { text: "Come unto me, all ye that labour and are heavy laden, and I will give you rest.", source: "Matthew 11:28" },
+    { text: "God hath not given us the spirit of fear; but of power, and of love, and of a sound mind.", source: "2 Timothy 1:7" },
+    { text: "The Lord thy God in the midst of thee is mighty; he will save, he will rejoice over thee with joy.", source: "Zephaniah 3:17" },
+    { text: "They that wait upon the Lord shall renew their strength; they shall mount up with wings as eagles.", source: "Isaiah 40:31" },
+    { text: "Be still, and know that I am God.", source: "Psalm 46:10" },
+    { text: "I know that my Redeemer liveth.", source: "Job 19:25" },
+    { text: "Let your light so shine before men, that they may see your good works.", source: "Matthew 5:16" },
+    { text: "I know the thoughts that I think toward you, saith the Lord, thoughts of peace, and not of evil.", source: "Jeremiah 29:11" },
+    { text: "The Lord bless thee, and keep thee: the Lord make his face shine upon thee.", source: "Numbers 6:24\u201325" },
+    { text: "Fear not: for I have redeemed thee, I have called thee by thy name; thou art mine.", source: "Isaiah 43:1" },
+    { text: "I have loved thee with an everlasting love.", source: "Jeremiah 31:3" },
+    { text: "Create in me a clean heart, O God; and renew a right spirit within me.", source: "Psalm 51:10" },
+    { text: "Thou wilt keep him in perfect peace, whose mind is stayed on thee.", source: "Isaiah 26:3" },
+    { text: "As for me and my house, we will serve the Lord.", source: "Joshua 24:15" },
+    { text: "The Lord is my light and my salvation; whom shall I fear?", source: "Psalm 27:1" },
+    { text: "This is the day which the Lord hath made; we will rejoice and be glad in it.", source: "Psalm 118:24" },
+    { text: "My grace is sufficient for thee: for my strength is made perfect in weakness.", source: "2 Corinthians 12:9" },
+    { text: "I will not leave you comfortless: I will come to you.", source: "John 14:18" },
+    { text: "She is clothed with strength and dignity; she can laugh at the days to come.", source: "Proverbs 31:25" },
+    { text: "Before I formed thee in the belly I knew thee.", source: "Jeremiah 1:5" },
+    { text: "Who can find a virtuous woman? for her price is far above rubies.", source: "Proverbs 31:10" },
+    { text: "Blessed is she who has believed that the Lord would fulfill his promises to her.", source: "Luke 1:45" },
+    { text: "To everything there is a season, and a time to every purpose under the heaven.", source: "Ecclesiastes 3:1" },
+    { text: "The Lord is my shepherd; I shall not want. He maketh me to lie down in green pastures.", source: "Psalm 23:1\u20132" },
+    { text: "Love bears all things, believes all things, hopes all things, endures all things.", source: "1 Corinthians 13:7" },
+    { text: "And we know that all things work together for good to them that love God.", source: "Romans 8:28" },
+    { text: "A soft answer turneth away wrath.", source: "Proverbs 15:1" },
+    { text: "Train up a child in the way he should go: and when he is old, he will not depart from it.", source: "Proverbs 22:6" },
+    { text: "Even the darkest night will end and the sun will rise.", source: "Victor Hugo" },
+    { text: "The most important of the Lord's work you will ever do will be within the walls of your own home.", source: "Harold B. Lee" },
+    { text: "No success can compensate for failure in the home.", source: "David O. McKay" },
+    { text: "The influence of a mother in the lives of her children is beyond calculation.", source: "James E. Faust" },
+    { text: "To the mothers of the Church: you are doing better than you think you are.", source: "Jeffrey R. Holland" },
+    { text: "There is no role in life more essential and more eternal than that of motherhood.", source: "M. Russell Ballard" },
+    { text: "What can you do to promote world peace? Go home and love your family.", source: "Mother Teresa" },
+    { text: "Family is not an important thing. It's everything.", source: "Michael J. Fox" },
+    { text: "The greatest thing a father can do for his children is to love their mother.", source: "Howard W. Hunter" },
+    { text: "You gain strength, courage, and confidence by every experience in which you look fear in the face.", source: "Eleanor Roosevelt" },
+    { text: "You are braver than you believe, stronger than you seem, and smarter than you think.", source: "A.A. Milne" },
+    { text: "Do not wait for someone else to come and speak for you. It's you who can change the world.", source: "Malala Yousafzai" },
+    { text: "You were born to lead, you were born for glory.", source: "Sheri Dew" },
+    { text: "The most courageous act is still to think for yourself. Aloud.", source: "Coco Chanel" },
+    { text: "I never dreamed about success. I worked for it.", source: "Est\xE9e Lauder" },
+    { text: "The only way to do great work is to love what you do.", source: "Steve Jobs" },
+    { text: "Success usually comes to those who are too busy to be looking for it.", source: "Henry David Thoreau" },
+    { text: "It always seems impossible until it's done.", source: "Nelson Mandela" },
+    { text: "Hardships often prepare ordinary people for an extraordinary destiny.", source: "C.S. Lewis" },
+    { text: "You don't have to be great to start, but you have to start to be great.", source: "Zig Ziglar" },
+    { text: "When you feel like quitting, think about why you started.", source: "Unknown" },
+    { text: "Success is the sum of small efforts, repeated day in and day out.", source: "Robert Collier" },
+    { text: "Little by little, one travels far.", source: "J.R.R. Tolkien" },
+    { text: "The future belongs to those who believe in the beauty of their dreams.", source: "Eleanor Roosevelt" },
+    { text: "Act as if what you do makes a difference. It does.", source: "William James" },
+    { text: "Believe you can and you're halfway there.", source: "Theodore Roosevelt" },
+    { text: "You are never too old to set another goal or dream a new dream.", source: "C.S. Lewis" },
+    { text: "Start where you are. Use what you have. Do what you can.", source: "Arthur Ashe" },
+    { text: "Courage doesn't always roar. Sometimes it's the quiet voice saying, 'I will try again tomorrow.'", source: "Mary Anne Radmacher" },
+    { text: "Fall seven times, stand up eight.", source: "Japanese Proverb" },
+    { text: "In the middle of every difficulty lies opportunity.", source: "Albert Einstein" },
+    { text: "The only person you are destined to become is the person you decide to be.", source: "Ralph Waldo Emerson" },
+    { text: "The man who moves a mountain begins by carrying away small stones.", source: "Confucius" },
+    { text: "Count your blessings, not your problems.", source: "Unknown" },
+    { text: "Joy does not simply happen to us. We have to choose joy and keep choosing it every day.", source: "Henri Nouwen" },
+    { text: "Gratitude turns what we have into enough.", source: "Melody Beattie" },
+    { text: "He is rich who is content with the least; for contentment is the wealth of nature.", source: "Socrates" },
+    { text: "Be thankful for what you have; you'll end up having more.", source: "Oprah Winfrey" },
+    { text: "Enjoy the little things, for one day you may look back and realize they were the big things.", source: "Robert Brault" },
+    { text: "Joy is the simplest form of gratitude.", source: "Karl Barth" },
+    { text: "Happiness is not something readymade. It comes from your own actions.", source: "Dalai Lama" },
+    { text: "There is always, always, always something to be thankful for.", source: "Unknown" },
+    { text: "The present moment is filled with joy and happiness. If you are attentive, you will see it.", source: "Thich Nhat Hanh" },
+    { text: "Integrity is doing the right thing even when no one is watching.", source: "C.S. Lewis" },
+    { text: "In matters of principle, stand like a rock.", source: "Thomas Jefferson" },
+    { text: "It takes courage to grow up and become who you really are.", source: "E.E. Cummings" },
+    { text: "Live so that when your children think of fairness and integrity, they think of you.", source: "H. Jackson Brown Jr." },
+    { text: "The time is always right to do what is right.", source: "Martin Luther King Jr." },
+    { text: "Character is doing the right thing when nobody's looking.", source: "J.C. Watts" },
+    { text: "Our greatest glory is not in never falling, but in rising every time we fall.", source: "Confucius" },
+    { text: "Take care of your body. It's the only place you have to live.", source: "Jim Rohn" },
+    { text: "Your body hears everything your mind says.", source: "Naomi Judd" },
+    { text: "Strength does not come from the body. It comes from the will.", source: "Unknown" },
+    { text: "Progress, not perfection.", source: "Unknown" },
+    { text: "You don't have to be extreme, just consistent.", source: "Unknown" },
+    { text: "The groundwork for all happiness is good health.", source: "Leigh Hunt" },
+    { text: "An early morning walk is a blessing for the whole day.", source: "Henry David Thoreau" },
+    { text: "Your health is an investment, not an expense.", source: "Unknown" },
+    { text: "Be patient with yourself. Self-growth is tender; it's holy ground.", source: "Stephen Covey" },
+    { text: "Eat like you love yourself. Move like you love yourself. Speak like you love yourself.", source: "Tara Stiles" },
+    { text: "Service to others is the rent you pay for your room here on earth.", source: "Muhammad Ali" },
+    { text: "The best way to find yourself is to lose yourself in the service of others.", source: "Mahatma Gandhi" },
+    { text: "We rise by lifting others.", source: "Robert Ingersoll" },
+    { text: "No act of kindness, no matter how small, is ever wasted.", source: "Aesop" },
+    { text: "You have not lived today until you have done something for someone who can never repay you.", source: "John Bunyan" },
+    { text: "The purpose of human life is to serve, and to show compassion.", source: "Albert Schweitzer" },
+    { text: "If your actions inspire others to dream more and become more, you are a leader.", source: "John Quincy Adams" },
+    { text: "Do not wait for leaders; do it alone, person to person.", source: "Mother Teresa" },
+    { text: "Most of us spend too much time on what is urgent and not enough time on what is important.", source: "Stephen Covey" },
+    { text: "The key is not to prioritize what's on your schedule, but to schedule your priorities.", source: "Stephen Covey" },
+    { text: "Done is better than perfect.", source: "Sheryl Sandberg" },
+    { text: "Simplicity is the ultimate sophistication.", source: "Leonardo da Vinci" },
+    { text: "The bad news is time flies. The good news is you're the pilot.", source: "Michael Altshuler" },
+    { text: "A year from now you may wish you had started today.", source: "Karen Lamb" },
+    { text: "We must use time wisely and forever realize that the time is always ripe to do right.", source: "Nelson Mandela" },
+    { text: "Today is the day you've been waiting for.", source: "Unknown" },
+    { text: "You are enough. You have always been enough.", source: "Unknown" },
+    { text: "You are a child of God, with more capacity than you have yet realized.", source: "Russell M. Nelson" },
+    { text: "Don't let anyone rob you of your imagination, your creativity, or your curiosity.", source: "Mae Jemison" },
+    { text: "You were made on purpose, for a purpose.", source: "Unknown" },
+    { text: "Your value doesn't decrease based on someone's inability to see your worth.", source: "Unknown" },
+    { text: "You have been assigned this mountain to show others it can be moved.", source: "Mel Robbins" },
+    { text: "The world needs who you were made to be.", source: "Joanna Gaines" },
+    { text: "Your story is what you have, what you will always have.", source: "Michelle Obama" },
+    { text: "You were born original. Don't die a copy.", source: "John Mason" },
+    { text: "Every season is one of becoming, but not always one of blooming.", source: "Victoria Erickson" },
+    { text: "The oak fought the wind and was broken, the willow bent when it must and survived.", source: "Robert Jordan" },
+    { text: "Life is not about waiting for the storm to pass, but learning to dance in the rain.", source: "Vivian Greene" },
+    { text: "You can't go back and change the beginning, but you can start where you are and change the ending.", source: "C.S. Lewis" },
+    { text: "Just when the caterpillar thought the world was over, it became a butterfly.", source: "Unknown" },
+    { text: "Sometimes the smallest step in the right direction ends up being the biggest step of your life.", source: "Unknown" },
+    { text: "She stood in the storm, and when the wind did not blow her away, she adjusted her sails.", source: "Elizabeth Edwards" },
+    { text: "A great marriage is not when the perfect couple comes together, but when an imperfect couple learns to enjoy their differences.", source: "Dave Meurer" },
+    { text: "The best thing to hold onto in life is each other.", source: "Audrey Hepburn" },
+    { text: "A successful marriage requires falling in love many times, always with the same person.", source: "Mignon McLaughlin" },
+    { text: "In all the world, there is no heart for me like yours.", source: "Maya Angelou" },
+    { text: "Love is not finding someone to live with; it's finding someone you can't imagine living without.", source: "Rafael Ortiz" },
+    { text: "A happy marriage is a long conversation which always seems too short.", source: "Andr\xE9 Maurois" },
+    { text: "The gem cannot be polished without friction, nor man perfected without trials.", source: "Chinese Proverb" },
+    { text: "Character cannot be developed in ease and quiet. Only through trial can the soul be strengthened.", source: "Helen Keller" },
+    { text: "The wound is the place where the Light enters you.", source: "Rumi" },
+    { text: "Everything you've ever wanted is on the other side of fear.", source: "George Addair" },
+    { text: "Rock bottom became the solid foundation on which I rebuilt my life.", source: "J.K. Rowling" },
+    { text: "Pain is inevitable. Suffering is optional.", source: "Haruki Murakami" },
+    { text: "You never know how strong you are until being strong is your only choice.", source: "Bob Marley" },
+    { text: "The darkest nights produce the brightest stars.", source: "John Green" },
+    { text: "Whether you think you can or you think you can't, you're right.", source: "Henry Ford" },
+    { text: "Your mind is a garden. Your thoughts are the seeds. You can grow flowers or weeds.", source: "Unknown" },
+    { text: "The mind is everything. What you think you become.", source: "Buddha" },
+    { text: "Feed your faith and your doubts will starve to death.", source: "Unknown" },
+    { text: "What you focus on expands.", source: "Oprah Winfrey" },
+    { text: "Change your thoughts and you change your world.", source: "Norman Vincent Peale" },
+    { text: "Every accomplishment starts with the decision to try.", source: "John F. Kennedy" },
+    { text: "Small things done with great love can change the world.", source: "Mother Teresa" },
+    { text: "The most wasted of all days is one without laughter.", source: "E.E. Cummings" },
+    { text: "Do what you can, with what you have, where you are.", source: "Theodore Roosevelt" },
+    { text: "One day or day one. You decide.", source: "Unknown" },
+    { text: "Your energy introduces you before you even speak.", source: "Unknown" },
+    { text: "Show up. Even when it's hard. Especially when it's hard.", source: "Unknown" },
+    { text: "Be somebody who makes everybody feel like a somebody.", source: "Kid President" },
+    { text: "You carry so much love in your heart. Give some to yourself.", source: "R.Z." },
+    { text: "In a world where you can be anything, be kind.", source: "Unknown" },
+    { text: "Go confidently in the direction of your dreams.", source: "Henry David Thoreau" },
+    { text: "The simple things are also the most extraordinary things.", source: "Paulo Coelho" },
+    { text: "We are what we repeatedly do. Excellence, then, is not an act, but a habit.", source: "Aristotle" },
+    { text: "Be yourself; everyone else is already taken.", source: "Oscar Wilde" },
+    { text: "You owe yourself the love that you so freely give to other people.", source: "Unknown" },
+    { text: "Wherever you are, be all there.", source: "Jim Elliot" },
+    { text: "Live as if you were to die tomorrow. Learn as if you were to live forever.", source: "Mahatma Gandhi" },
+    { text: "When you can't find the sunshine, be the sunshine.", source: "Unknown" },
+    { text: "Keep your face always toward the sunshine, and shadows will fall behind you.", source: "Walt Whitman" },
+    { text: "Do small things with great love.", source: "Mother Teresa" },
+    { text: "You have exactly one life in which to do everything you'll ever do. Act accordingly.", source: "Colin Wright" },
+    { text: "In three words I can sum up everything I've learned about life: it goes on.", source: "Robert Frost" },
+    { text: "Yesterday is history, tomorrow is a mystery, today is a gift \u2014 that's why we call it the present.", source: "Bil Keane" },
+    { text: "The two most important days in your life are the day you are born and the day you find out why.", source: "Mark Twain" },
+    { text: "Do not go where the path may lead; go instead where there is no path and leave a trail.", source: "Ralph Waldo Emerson" },
+    { text: "I am not afraid of storms, for I am learning how to sail my ship.", source: "Louisa May Alcott" },
+    { text: "What lies within us is far greater than what lies behind or before us.", source: "Ralph Waldo Emerson" },
+    { text: "The best and most beautiful things must be felt with the heart.", source: "Helen Keller" },
+    { text: "We must accept finite disappointment, but never lose infinite hope.", source: "Martin Luther King Jr." },
+    { text: "Darkness cannot drive out darkness; only light can do that.", source: "Martin Luther King Jr." },
+    { text: "Life is 10% what happens to us and 90% how we react to it.", source: "Charles R. Swindoll" },
+    { text: "Nothing is impossible. The word itself says 'I'm possible!'", source: "Audrey Hepburn" },
+    { text: "Don't count the days, make the days count.", source: "Muhammad Ali" },
+    { text: "All our dreams can come true, if we have the courage to pursue them.", source: "Walt Disney" },
+    { text: "If you want to lift yourself up, lift up someone else.", source: "Booker T. Washington" },
+    { text: "Give every day the chance to become the most beautiful day of your life.", source: "Mark Twain" },
+    { text: "Gratitude is the fairest blossom which springs from the soul.", source: "Henry Ward Beecher" },
+    { text: "Let us make our future now, and let us make our dreams tomorrow's reality.", source: "Malala Yousafzai" },
+    { text: "We do not remember days, we remember moments.", source: "Cesare Pavese" },
+    { text: "No matter what people tell you, words and ideas can change the world.", source: "Robin Williams" },
+    { text: "I've learned that people will never forget how you made them feel.", source: "Maya Angelou" },
+    { text: "The measure of intelligence is the ability to change.", source: "Albert Einstein" },
+    { text: "Either write something worth reading or do something worth writing.", source: "Benjamin Franklin" },
+    { text: "A person who never made a mistake never tried anything new.", source: "Albert Einstein" },
+    { text: "You only live once, but if you do it right, once is enough.", source: "Mae West" },
+    { text: "The only journey is the one within.", source: "Rainer Maria Rilke" },
+    { text: "Not everything that is faced can be changed, but nothing can be changed until it is faced.", source: "James Baldwin" },
+    { text: "Too many of us are not living our dreams because we are living our fears.", source: "Les Brown" },
+    { text: "I can't change the direction of the wind, but I can adjust my sails to always reach my destination.", source: "Jimmy Dean" },
+    { text: "Learn from yesterday, live for today, hope for tomorrow.", source: "Albert Einstein" },
+    { text: "You have brains in your head. You have feet in your shoes. You can steer yourself any direction you choose.", source: "Dr. Seuss" },
+    { text: "If you look at what you have in life, you'll always have more.", source: "Oprah Winfrey" },
+    { text: "Things work out best for those who make the best of how things work out.", source: "John Wooden" },
+    { text: "When you reach the end of your rope, tie a knot in it and hang on.", source: "Franklin D. Roosevelt" },
+    { text: "Don't judge each day by the harvest you reap but by the seeds that you plant.", source: "Robert Louis Stevenson" },
+    { text: "Tell me and I forget. Teach me and I remember. Involve me and I learn.", source: "Benjamin Franklin" },
+    { text: "An unexamined life is not worth living.", source: "Socrates" },
+    { text: "Spread love everywhere you go. Let no one ever come to you without leaving happier.", source: "Mother Teresa" },
+    { text: "You were made for this season.", source: "Unknown" },
+    { text: "God gave you this life because you are strong enough to live it.", source: "Unknown" },
+    { text: "Peace begins with a smile.", source: "Mother Teresa" },
+    { text: "If the plan doesn't work, change the plan but never the goal.", source: "Unknown" },
+    { text: "A smooth sea never made a skilled sailor.", source: "Franklin D. Roosevelt" },
+    { text: "Inhale confidence. Exhale doubt.", source: "Unknown" },
+    { text: "She who is brave is free.", source: "Seneca" },
+    { text: "The comeback is always stronger than the setback.", source: "Unknown" },
+    { text: "You are capable of more than you know.", source: "E.O. Wilson" },
+    { text: "Grit is passion and perseverance for long-term goals.", source: "Angela Duckworth" },
+    { text: "Showing up is half the battle.", source: "Woody Allen" },
+    { text: "Do it with passion or not at all.", source: "Rosa Nouchette Carey" },
+    { text: "Make today so awesome that yesterday gets jealous.", source: "Unknown" },
+    { text: "Rise up. Start fresh. See the bright opportunity in each new day.", source: "Unknown" },
+    { text: "I am strong. I am capable. I am enough.", source: "Unknown" },
+    { text: "Wake up with determination. Go to bed with satisfaction.", source: "Unknown" },
+    { text: "The only person you should try to be better than is who you were yesterday.", source: "Unknown" },
+    { text: "Nothing worth having was ever achieved without effort.", source: "Theodore Roosevelt" },
+    { text: "It's not whether you get knocked down; it's whether you get up.", source: "Vince Lombardi" },
+    { text: "Successful people do what unsuccessful people are not willing to do.", source: "Jim Rohn" },
+    { text: "Be so good they can't ignore you.", source: "Steve Martin" },
+    { text: "Hustle in silence and let your success make the noise.", source: "Unknown" },
+    { text: "She was not fragile like a flower; she was fragile like a bomb.", source: "Unknown" },
+    { text: "Your time is limited, so don't waste it living someone else's life.", source: "Steve Jobs" },
+    { text: "I am not a product of my circumstances. I am a product of my decisions.", source: "Stephen Covey" },
+    { text: "The greatest wealth is to live content with little.", source: "Plato" },
+    { text: "Life is short, and it is up to you to make it sweet.", source: "Sarah Louise Delany" },
+    { text: "Sometimes the heart sees what is invisible to the eye.", source: "H. Jackson Brown Jr." },
+    { text: "Keep love in your heart. A life without it is like a sunless garden when the flowers are dead.", source: "Oscar Wilde" },
+    { text: "I am thankful for all those who said no. It's because of them I'm doing it myself.", source: "Albert Einstein" },
+    { text: "You must be the change you wish to see in the world.", source: "Mahatma Gandhi" },
+    { text: "She believed she could, so she did.", source: "R.S. Grey" },
+    { text: "The privilege of a lifetime is being who you are.", source: "Joseph Campbell" },
+    { text: "She is clothed in strength and dignity, and she laughs without fear of the future.", source: "Proverbs 31:25" },
+    { text: "Speak your truth quietly and clearly; and listen to others.", source: "Max Ehrmann" },
+    { text: "We are most alive in those moments when our hearts are conscious of our treasures.", source: "Thornton Wilder" },
+    { text: "The real act of marriage takes place in the heart.", source: "Barbara De Angelis" },
+    { text: "It is not how much we have, but how much we enjoy, that makes happiness.", source: "Charles Spurgeon" },
+    { text: "The purpose of life is to live it, to taste experience to the utmost.", source: "Eleanor Roosevelt" },
+    { text: "Sometimes you have to get knocked down lower than you have ever been to stand back up taller than you ever were.", source: "Unknown" },
+    { text: "When one door of happiness closes, another opens; but often we look so long at the closed door that we do not see the one which has been opened.", source: "Helen Keller" },
+    { text: "To love and be loved is to feel the sun from both sides.", source: "David Viscott" },
+    { text: "The most important thing in the world is family and love.", source: "John Wooden" },
+    { text: "Be yourself, love yourself, because life is too short to be anyone else.", source: "Unknown" },
+    { text: "You have exactly one life. Make it extraordinary.", source: "Unknown" },
+    { text: "Some people dream of success, others wake up and work hard at it.", source: "Unknown" },
+    { text: "Push yourself, because no one else is going to do it for you.", source: "Unknown" },
+    { text: "Great things never came from comfort zones.", source: "Unknown" },
+    { text: "Dream it. Wish it. Do it.", source: "Unknown" },
+    { text: "Discipline is the bridge between goals and accomplishment.", source: "Jim Rohn" },
+    { text: "Work while they sleep. Learn while they party. Save while they spend.", source: "Unknown" },
+    { text: "The secret of your future is hidden in your daily routine.", source: "Mike Murdock" },
+    { text: "Small daily improvements over time lead to stunning results.", source: "Robin Sharma" },
+    { text: "Your life does not get better by chance, it gets better by change.", source: "Jim Rohn" },
+    { text: "Be stronger than your strongest excuse.", source: "Unknown" },
+    { text: "Don't stop when you're tired. Stop when you're done.", source: "Unknown" },
+    { text: "Motivation gets you started. Habit keeps you going.", source: "Jim Rohn" },
+    { text: "Hard days are the best because that's when champions are made.", source: "Unknown" },
+    { text: "If you're not willing to risk the usual, you will have to settle for the ordinary.", source: "Jim Rohn" },
+    { text: "Decide. Commit. Succeed.", source: "Unknown" },
+    { text: "You were given this life because you are strong enough to live it.", source: "Unknown" },
+    { text: "Become so confident in who you are that no one's opinion, rejection, or behavior can rock you.", source: "Unknown" },
+    { text: "The universe is not outside of you. Look inside yourself; everything that you want, you already are.", source: "Rumi" },
+    { text: "She overcame everything that was meant to destroy her.", source: "Unknown" },
+    { text: "Do not let what you cannot do interfere with what you can do.", source: "John Wooden" },
+    { text: "Good things come to those who work for them.", source: "Unknown" },
+    { text: "Strength grows in the moments when you think you can't go on but you keep going anyway.", source: "Unknown" },
+    { text: "One step at a time is all it takes to get you there.", source: "Emily Dickinson" },
+    { text: "Even the longest journey begins with a single step.", source: "Lao Tzu" },
+    { text: "You're allowed to be both a masterpiece and a work in progress simultaneously.", source: "Sophia Bush" },
+    { text: "Be a voice, not an echo.", source: "Albert Einstein" },
+    { text: "The most reliable way to predict the future is to create it.", source: "Abraham Lincoln" },
+    { text: "I can and I will. Watch me.", source: "Carrie Green" },
+    { text: "Life is not about how fast you run or how high you climb but how well you bounce.", source: "Vivian Komori" },
+    { text: "Your talent determines what you can do. Your motivation determines how much you're willing to do. Your attitude determines how well you do it.", source: "Lou Holtz" },
+    { text: "Arise, shine; for thy light is come.", source: "Isaiah 60:1" },
+    { text: "Do justly, love mercy, and walk humbly with thy God.", source: "Micah 6:8" },
+    { text: "The Lord will fight for you; you need only to be still.", source: "Exodus 14:14" },
+    { text: "He heals the brokenhearted and binds up their wounds.", source: "Psalm 147:3" },
+    { text: "Delight yourself in the Lord, and he will give you the desires of your heart.", source: "Psalm 37:4" },
+    { text: "For where your treasure is, there your heart will be also.", source: "Matthew 6:21" },
+    { text: "Be strong, and let your heart take courage.", source: "Psalm 31:24" },
+    { text: "God is within her, she will not fall.", source: "Psalm 46:5" },
+    { text: "Weeping may stay for the night, but rejoicing comes in the morning.", source: "Psalm 30:5" },
+    { text: "He will cover you with his feathers, and under his wings you will find refuge.", source: "Psalm 91:4" },
+    { text: "The Lord your God is with you, the Mighty Warrior who saves.", source: "Zephaniah 3:17" },
+    { text: "Cast all your anxiety on him because he cares for you.", source: "1 Peter 5:7" },
+    { text: "I praise you because I am fearfully and wonderfully made.", source: "Psalm 139:14" },
+    { text: "She is more precious than rubies; nothing you desire can compare with her.", source: "Proverbs 3:15" },
+    { text: "Let us not become weary in doing good, for at the proper time we will reap a harvest.", source: "Galatians 6:9" },
+    { text: "The joy of the Lord is your strength.", source: "Nehemiah 8:10" },
+    { text: "Your word is a lamp for my feet, a light on my path.", source: "Psalm 119:105" },
+    { text: "Greater love has no one than this: to lay down one's life for one's friends.", source: "John 15:13" },
+    { text: "Whoever is happy will make others happy too.", source: "Anne Frank" },
+    { text: "It is never too late to be what you might have been.", source: "George Eliot" },
+    { text: "Life shrinks or expands in proportion to one's courage.", source: "Ana\xEFs Nin" },
+    { text: "The most difficult thing is the decision to act; the rest is merely tenacity.", source: "Amelia Earhart" },
+    { text: "All limitations are self-imposed.", source: "Oliver Wendell Holmes" },
+    { text: "Tough times never last, but tough people do.", source: "Robert H. Schuller" },
+    { text: "Problems are not stop signs, they are guidelines.", source: "Robert H. Schuller" },
+    { text: "One way to keep momentum going is to have constantly greater goals.", source: "Michael Korda" },
+    { text: "If you genuinely want something, don't wait for it \u2014 teach yourself to be impatient.", source: "Gurbaksh Chahal" },
+    { text: "If you don't value your time, neither will others. Stop giving away your time and talents.", source: "Kim Garst" },
+    { text: "When everything seems to be going against you, remember that the airplane takes off against the wind, not with it.", source: "Henry Ford" },
+    { text: "Too many of us are not living our dreams because we are living our fears.", source: "Les Brown" },
+    { text: "I wake up every morning and think to myself: how far can I push this company in the next 24 hours.", source: "Leah Busque" },
+    { text: "If you genuinely want something, don't wait for it.", source: "Gurbaksh Chahal" },
+    { text: "No masterpiece was ever created by a lazy artist.", source: "Salvador Dali" },
+    { text: "Embrace the glorious mess that you are.", source: "Elizabeth Gilbert" },
+    { text: "The most common form of despair is not being who you are.", source: "S\xF8ren Kierkegaard" },
+    { text: "You cannot always control what goes on outside. But you can always control what goes on inside.", source: "Wayne Dyer" },
+    { text: "What we achieve inwardly will change outer reality.", source: "Plutarch" },
+    { text: "You have to be burning with an idea, or a problem, or a wrong that you want to right.", source: "Steve Jobs" },
+    { text: "I'm not going to continue knocking that old door that doesn't open for me.", source: "Asha Tyson" },
+    { text: "Whether you think you can, or you think you can't, you're right.", source: "Henry Ford" },
+    { text: "Normality is a paved road: it's comfortable to walk, but no flowers grow.", source: "Vincent van Gogh" },
+    { text: "While we may not be able to control all that happens to us, we can control what happens inside us.", source: "Benjamin Franklin" },
+    { text: "If you want to fly, you have to give up the things that weigh you down.", source: "Toni Morrison" },
+    { text: "She flies with her own wings.", source: "Oregon State Motto" },
+    { text: "I am grateful for all of those who said no to me. It's because of them I'm doing it myself.", source: "Albert Einstein" },
+    { text: "Every sunset brings the promise of a new dawn.", source: "Ralph Waldo Emerson" },
+    { text: "Courage is like a muscle. We strengthen it with use.", source: "Ruth Gordon" },
+    { text: "If you cannot do great things, do small things in a great way.", source: "Napoleon Hill" },
+    { text: "We are stronger in the places that we have been broken.", source: "Ernest Hemingway" },
+    { text: "What seems to us as bitter trials are often blessings in disguise.", source: "Oscar Wilde" },
+    { text: "Not until we are lost do we begin to find ourselves.", source: "Henry David Thoreau" },
+    { text: "He who has a 'why' to live can bear almost any 'how.'", source: "Friedrich Nietzsche" },
+    { text: "Once you choose hope, anything is possible.", source: "Christopher Reeve" },
+    { text: "The key to abundance is meeting limited circumstances with unlimited thoughts.", source: "Marianne Williamson" },
+    { text: "If you hear a voice within you say 'you cannot paint,' then by all means paint, and that voice will be silenced.", source: "Vincent van Gogh" },
+    { text: "Never limit yourself because of others' limited imagination; never limit others because of your own limited imagination.", source: "Mae Jemison" },
+    { text: "Life is not about finding yourself. Life is about creating yourself.", source: "Lolly Daskal" },
+    { text: "Become the hardest working person you know.", source: "Unknown" },
+    { text: "Doubt kills more dreams than failure ever will.", source: "Suzy Kassem" },
+    { text: "First, think. Then dream. Then dare.", source: "Walt Disney" },
+    { text: "Without hard work, nothing grows but weeds.", source: "Gordon B. Hinckley" },
+    { text: "Set your goals high, and don't stop till you get there.", source: "Bo Jackson" },
+    { text: "The secret of getting ahead is getting started.", source: "Mark Twain" },
+    { text: "It's hard to beat a person who never gives up.", source: "Babe Ruth" },
+    { text: "We become what we think about most of the time, and that's the strangest secret.", source: "Earl Nightingale" },
+    { text: "Your life only gets better when you get better.", source: "Brian Tracy" },
+    { text: "The difference between successful people and others is how long they spend time feeling sorry for themselves.", source: "Barbara Corcoran" },
+    { text: "Optimism is the faith that leads to achievement.", source: "Helen Keller" },
+    { text: "You are the author of your own life story.", source: "Unknown" },
+    { text: "She turned her can'ts into cans and her dreams into plans.", source: "Kobi Yamada" },
+    { text: "A woman with a voice is by definition a strong woman.", source: "Melinda Gates" },
+    { text: "Do what you feel in your heart to be right \u2014 for you'll be criticized anyway.", source: "Eleanor Roosevelt" },
+    { text: "Well done is better than well said.", source: "Benjamin Franklin" },
+    { text: "If you want something said, ask a man; if you want something done, ask a woman.", source: "Margaret Thatcher" },
+    { text: "Every flower must grow through dirt.", source: "Unknown" },
+    { text: "The bravest thing I ever did was continuing my life when I wanted to die.", source: "Juliette Lewis" },
+    { text: "Your value doesn't decrease based on someone's inability to see your worth.", source: "Unknown" },
+    { text: "Sometimes you win, sometimes you learn.", source: "John Maxwell" },
+    { text: "A little progress each day adds up to big results.", source: "Unknown" },
+    { text: "Nothing will work unless you do.", source: "Maya Angelou" },
+    { text: "Clarity comes from action, not thought.", source: "Unknown" },
+    { text: "Motivation is what gets you started. Commitment is what keeps you going.", source: "Jim Rohn" },
+    { text: "Quality is not an act. It is a habit.", source: "Aristotle" },
+    { text: "The struggle you're in today is developing the strength you need for tomorrow.", source: "Unknown" }
   ];
   var CYCLE_TIPS = {
     Menstrual: {
@@ -8502,7 +8640,7 @@ button,input,select,textarea{font-family:inherit}
   };
   function OffPlanExRow({ ex, isDone, onCheck }) {
     const [showTip, setShowTip] = (0, import_react.useState)(false);
-    return /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", alignItems: "flex-start", gap: 10, padding: "8px 0", borderTop: "1px solid " + T.border, opacity: isDone ? 0.4 : 1 } }, /* @__PURE__ */ import_react.default.createElement(Chk, { checked: isDone, onChange: onCheck, sz: 18 }), /* @__PURE__ */ import_react.default.createElement("div", { style: { flex: 1 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", alignItems: "baseline", gap: 8, flexWrap: "wrap" } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 14, fontWeight: 500, color: T.text, textDecoration: isDone ? "line-through" : "none" } }, ex.name), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, color: T.hint } }, ex.sets), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => setShowTip((p) => !p), style: { fontSize: 10, color: T.accent, background: "none", border: "none", cursor: "pointer", padding: 0 } }, "tip")), showTip && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 11, color: T.muted, marginTop: 2, fontStyle: "italic", lineHeight: 1.5 } }, ex.tip), showTip && ex.swaps && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 10, color: T.hint, marginTop: 2 } }, "Swaps: ", ex.swaps.join(" \xB7 "))));
+    return /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", alignItems: "flex-start", gap: 10, padding: "8px 0", borderTop: "1px solid " + T.border, opacity: isDone ? 0.4 : 1 } }, /* @__PURE__ */ import_react.default.createElement(Chk, { checked: isDone, onChange: onCheck, sz: 18 }), /* @__PURE__ */ import_react.default.createElement("div", { style: { flex: 1 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", alignItems: "baseline", gap: 8, flexWrap: "wrap" } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 14, fontWeight: 500, color: T.text, textDecoration: isDone ? "line-through" : "none" } }, ex.name), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, color: T.hint } }, ex.sets), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => setShowTip((p) => !p), style: { fontSize: 10, color: T.blue, background: "none", border: "none", cursor: "pointer", padding: 0 } }, "tip")), showTip && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 11, color: T.muted, marginTop: 2, fontStyle: "italic", lineHeight: 1.5 } }, ex.tip), showTip && ex.swaps && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 10, color: T.hint, marginTop: 2 } }, "Swaps: ", ex.swaps.join(" \xB7 "))));
   }
   function OffPlanWorkout() {
     const [done, setDone] = (0, import_react.useState)({});
@@ -8511,11 +8649,11 @@ button,input,select,textarea{font-family:inherit}
     return /* @__PURE__ */ import_react.default.createElement("div", { style: { marginTop: 12 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { padding: "8px 12px", background: `${T.accent}08`, borderRadius: 8, marginBottom: 12, borderLeft: `3px solid ${T.accent}` } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 12, fontWeight: 700, color: T.accent, marginBottom: 2 } }, "Off Plan \u2014 Full Body"), /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 12, color: T.muted, lineHeight: 1.5 } }, OFF_PLAN_WORKOUT.note), /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 11, color: T.muted, marginTop: 4 } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontWeight: 600, color: T.text } }, "BG: "), OFF_PLAN_WORKOUT.bgNote)), /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 12, color: T.hint, marginBottom: 12, padding: "6px 10px", background: T.surface, borderRadius: 7 } }, "Warm-up: ", OFF_PLAN_WORKOUT.warmup), OFF_PLAN_WORKOUT.sections.map((sec, si) => {
       const isOpen = !!secOpen[si];
       const secDone = sec.exercises.filter((_, i) => done[`${si}_${i}`]).length;
-      return /* @__PURE__ */ import_react.default.createElement("div", { key: si, style: { marginBottom: 8, border: `1px solid ${T.border}`, borderRadius: 12, overflow: "hidden" } }, /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => setSecOpen((p) => ({ ...p, [si]: !p[si] })), style: { width: "100%", display: "flex", alignItems: "center", gap: 8, padding: "12px 14px", background: isOpen ? `${T.accent}06` : T.card, border: "none", cursor: "pointer" } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 13, fontWeight: 600, color: T.text, flex: 1, textAlign: "left" } }, sec.label), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, color: T.hint } }, secDone, "/", sec.exercises.length), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 15, color: T.hint, transition: "transform .2s", transform: isOpen ? "rotate(45deg)" : "none", marginLeft: 4 } }, "+")), isOpen && /* @__PURE__ */ import_react.default.createElement("div", { style: { padding: "0 14px 10px" } }, sec.note && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 11, color: T.hint, margin: "6px 0 8px", fontStyle: "italic" } }, sec.note), sec.exercises.map((ex, i) => /* @__PURE__ */ import_react.default.createElement(OffPlanExRow, { key: i, ex, isDone: !!done[`${si}_${i}`], onCheck: () => tog(si, i) }))));
+      return /* @__PURE__ */ import_react.default.createElement("div", { key: si, style: { marginBottom: 8, border: `1px solid ${T.border}`, borderRadius: 12, overflow: "hidden" } }, /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => setSecOpen((p) => ({ ...p, [si]: !p[si] })), style: { width: "100%", display: "flex", alignItems: "center", gap: 8, padding: "12px 14px", background: isOpen ? `${T.blue}08` : T.card, border: "none", cursor: "pointer" } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 13, fontWeight: 600, color: T.text, flex: 1, textAlign: "left" } }, sec.label), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, color: T.hint } }, secDone, "/", sec.exercises.length), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 15, color: T.hint, transition: "transform .2s", transform: isOpen ? "rotate(45deg)" : "none", marginLeft: 4 } }, "+")), isOpen && /* @__PURE__ */ import_react.default.createElement("div", { style: { padding: "0 14px 10px" } }, sec.note && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 11, color: T.hint, margin: "6px 0 8px", fontStyle: "italic" } }, sec.note), sec.exercises.map((ex, i) => /* @__PURE__ */ import_react.default.createElement(OffPlanExRow, { key: i, ex, isDone: !!done[`${si}_${i}`], onCheck: () => tog(si, i) }))));
     }));
   }
-  function SectionHealth() {
-    const [tab, setTab] = (0, import_react.useState)("Workout");
+  function SectionHealth({ initialTab }) {
+    const [tab, setTab] = (0, import_react.useState)(initialTab || "Workout");
     return /* @__PURE__ */ import_react.default.createElement("div", { className: "fade" }, /* @__PURE__ */ import_react.default.createElement(SecHead, { title: "Health" }), /* @__PURE__ */ import_react.default.createElement(Tabs, { tabs: ["Workout", "Meals", "Glucose & Cycle"], active: tab, onChange: setTab }), tab === "Workout" && /* @__PURE__ */ import_react.default.createElement(PanelWorkout, { key: "wo" }), tab === "Meals" && /* @__PURE__ */ import_react.default.createElement(PanelMeals, { key: "meals" }), tab === "Glucose & Cycle" && /* @__PURE__ */ import_react.default.createElement(PanelGlucoseCycle, { key: "gc" }));
   }
   function DailyHabitsCard({ wo, selDay, walkDone, toggleWalk }) {
@@ -8705,12 +8843,12 @@ button,input,select,textarea{font-family:inherit}
     const allItems = wo ? [...wo.strength || [], ...wo.core || []] : [];
     const doneCount = applyMode(allItems).filter((_, i) => done[`${location}_${selDay}_${dateKey}_${i}`]).length;
     const bgInfo = BG_MODES.find((b) => b.id === bg);
-    return /* @__PURE__ */ import_react.default.createElement("div", { className: "mm-fade" }, /* @__PURE__ */ import_react.default.createElement("div", { style: { padding: "12px 16px", background: T.surface, borderRadius: 12, marginBottom: 16, borderLeft: `3px solid ${T.accent}` } }, /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 13, color: T.muted, fontStyle: "italic", lineHeight: 1.6 } }, '"', quote, '"')), /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 14 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 8 } }, "BG status"), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 6 } }, BG_MODES.map((b) => /* @__PURE__ */ import_react.default.createElement("button", { key: b.id, onClick: () => saveBg(b.id), style: { flex: 1, padding: "7px 4px", borderRadius: 9, border: `1.5px solid ${bg === b.id ? T.accent : T.border}`, background: bg === b.id ? T.accent : "transparent", color: bg === b.id ? "#fff" : T.muted, fontSize: 11, fontWeight: 600, cursor: "pointer" } }, b.label))), bg !== "stable" && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 12, color: T.warn, marginTop: 8, lineHeight: 1.5 } }, bgInfo.desc)), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 14 } }, /* @__PURE__ */ import_react.default.createElement(Card, { p: 12 }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 8 } }, "Location"), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 6 } }, ["gym", "home"].map((l) => /* @__PURE__ */ import_react.default.createElement("button", { key: l, onClick: () => saveLocation(l), style: { flex: 1, padding: "7px", borderRadius: 9, border: `1.5px solid ${location === l ? T.accent : T.border}`, background: location === l ? T.accent : "transparent", color: location === l ? "#fff" : T.muted, fontSize: 12, fontWeight: 600, cursor: "pointer", textTransform: "capitalize" } }, l)))), /* @__PURE__ */ import_react.default.createElement(Card, { p: 12 }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 8 } }, "Mode"), /* @__PURE__ */ import_react.default.createElement("select", { value: mode, onChange: (e) => saveMode(e.target.value), style: { width: "100%", fontSize: 12, fontWeight: 600, padding: "7px 8px", border: `1.5px solid ${T.border}`, borderRadius: 9, background: T.surface, color: T.text, outline: "none", cursor: "pointer" } }, WORKOUT_MODES.map((m) => /* @__PURE__ */ import_react.default.createElement("option", { key: m.id, value: m.id }, m.label))), /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 11, color: T.hint, marginTop: 5, lineHeight: 1.4 } }, WORKOUT_MODES.find((m) => m.id === mode)?.desc))), /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 14 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 } }, /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", alignItems: "center", gap: 8 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, null, "Program week"), blockData && /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 10, fontWeight: 700, color: T.accent, background: `${T.accent}15`, padding: "1px 8px", borderRadius: 99 } }, "Block ", yearBlock, " \u2014 ", blockData.label)), weekData && /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 13, color: T.text, fontWeight: 600, marginTop: 2 } }, weekData.label, " \u2014 ", weekData.focus)), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", alignItems: "center", gap: 8 } }, /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => saveWeek(currentWeek === 1 ? 6 : currentWeek - 1), style: { width: 28, height: 28, borderRadius: "50%", border: `1.5px solid ${T.border}`, background: "transparent", cursor: "pointer", fontSize: 16, color: T.muted, display: "flex", alignItems: "center", justifyContent: "center" } }, "\u2039"), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 18, fontWeight: 700, color: T.accent, minWidth: 20, textAlign: "center" } }, currentWeek), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => saveWeek(currentWeek === 6 ? 1 : currentWeek + 1), style: { width: 28, height: 28, borderRadius: "50%", border: `1.5px solid ${T.border}`, background: "transparent", cursor: "pointer", fontSize: 16, color: T.muted, display: "flex", alignItems: "center", justifyContent: "center" } }, "\u203A"))), weekData && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 12, color: T.hint, lineHeight: 1.5, marginBottom: 10 } }, weekData.note), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" } }, /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => saveWeek(currentWeek), style: { ...s.btnSm, background: T.surface, color: T.muted, border: `1px solid ${T.border}` } }, "\u21BA Repeat week ", currentWeek), weekOverride !== null && /* @__PURE__ */ import_react.default.createElement("button", { onClick: resetWeek, style: { fontSize: 11, color: T.accent, background: "none", border: "none", cursor: "pointer", textDecoration: "underline" } }, "Reset to auto")), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 8, marginTop: 10, alignItems: "center", flexWrap: "wrap" } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, color: T.hint } }, "Program start:"), /* @__PURE__ */ import_react.default.createElement("input", { type: "date", value: programStart, onChange: (e) => saveStart(e.target.value), style: { fontSize: 12, padding: "4px 8px", border: `1px solid ${T.border}`, borderRadius: 7, background: T.surface, color: T.text, outline: "none" } }))), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "grid", gridTemplateColumns: "repeat(7,1fr)", gap: 4, marginBottom: 16, background: T.card, borderRadius: 12, padding: 4, border: `1px solid ${T.border}` } }, ["M", "T", "W", "T", "F", "S", "S"].map((d, i) => {
+    return /* @__PURE__ */ import_react.default.createElement("div", { className: "mm-fade" }, /* @__PURE__ */ import_react.default.createElement("div", { style: { padding: "12px 16px", background: T.blueLight, borderRadius: 12, marginBottom: 16, border: `1px solid ${T.blue}30` } }, /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 13, color: T.blueText, fontStyle: "italic", lineHeight: 1.6 } }, '"', quote && quote.text ? String(quote.text) : typeof quote === "string" ? quote : "", '"'), quote && quote.source && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 11, color: T.blue, fontWeight: 600, marginTop: 4 } }, "\u2014 ", String(quote.source))), /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 14 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 8 } }, "BG status"), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 6 } }, BG_MODES.map((b) => /* @__PURE__ */ import_react.default.createElement("button", { key: b.id, onClick: () => saveBg(b.id), style: { flex: 1, padding: "7px 4px", borderRadius: 9, border: `1.5px solid ${bg === b.id ? T.accent : T.border}`, background: bg === b.id ? T.accent : "transparent", color: bg === b.id ? "#fff" : T.muted, fontSize: 11, fontWeight: 600, cursor: "pointer" } }, b.label))), bg !== "stable" && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 12, color: T.warn, marginTop: 8, lineHeight: 1.5 } }, bgInfo.desc)), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 14 } }, /* @__PURE__ */ import_react.default.createElement(Card, { p: 12 }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 8 } }, "Location"), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 6 } }, ["gym", "home"].map((l) => /* @__PURE__ */ import_react.default.createElement("button", { key: l, onClick: () => saveLocation(l), style: { flex: 1, padding: "7px", borderRadius: 9, border: `1.5px solid ${location === l ? T.accent : T.border}`, background: location === l ? T.accent : "transparent", color: location === l ? "#fff" : T.muted, fontSize: 12, fontWeight: 600, cursor: "pointer", textTransform: "capitalize" } }, l)))), /* @__PURE__ */ import_react.default.createElement(Card, { p: 12 }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 8 } }, "Mode"), /* @__PURE__ */ import_react.default.createElement("select", { value: mode, onChange: (e) => saveMode(e.target.value), style: { width: "100%", fontSize: 12, fontWeight: 600, padding: "7px 8px", border: `1.5px solid ${T.border}`, borderRadius: 9, background: T.surface, color: T.text, outline: "none", cursor: "pointer" } }, WORKOUT_MODES.map((m) => /* @__PURE__ */ import_react.default.createElement("option", { key: m.id, value: m.id }, m.label))), /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 11, color: T.hint, marginTop: 5, lineHeight: 1.4 } }, WORKOUT_MODES.find((m) => m.id === mode)?.desc))), /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 14 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 } }, /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", alignItems: "center", gap: 8 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, null, "Program week"), blockData && /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 10, fontWeight: 700, color: T.accent, background: `${T.accent}15`, padding: "1px 8px", borderRadius: 99 } }, "Block ", yearBlock, " \u2014 ", blockData.label)), weekData && /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 13, color: T.text, fontWeight: 600, marginTop: 2 } }, weekData.label, " \u2014 ", weekData.focus)), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", alignItems: "center", gap: 8 } }, /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => saveWeek(currentWeek === 1 ? 6 : currentWeek - 1), style: { width: 28, height: 28, borderRadius: "50%", border: `1.5px solid ${T.border}`, background: "transparent", cursor: "pointer", fontSize: 16, color: T.muted, display: "flex", alignItems: "center", justifyContent: "center" } }, "\u2039"), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 18, fontWeight: 700, color: T.accent, minWidth: 20, textAlign: "center" } }, currentWeek), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => saveWeek(currentWeek === 6 ? 1 : currentWeek + 1), style: { width: 28, height: 28, borderRadius: "50%", border: `1.5px solid ${T.border}`, background: "transparent", cursor: "pointer", fontSize: 16, color: T.muted, display: "flex", alignItems: "center", justifyContent: "center" } }, "\u203A"))), weekData && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 12, color: T.hint, lineHeight: 1.5, marginBottom: 10 } }, weekData.note), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" } }, /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => saveWeek(currentWeek), style: { ...s.btnSm, background: T.surface, color: T.muted, border: `1px solid ${T.border}` } }, "\u21BA Repeat week ", currentWeek), weekOverride !== null && /* @__PURE__ */ import_react.default.createElement("button", { onClick: resetWeek, style: { fontSize: 11, color: T.accent, background: "none", border: "none", cursor: "pointer", textDecoration: "underline" } }, "Reset to auto")), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 8, marginTop: 10, alignItems: "center", flexWrap: "wrap" } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, color: T.hint } }, "Program start:"), /* @__PURE__ */ import_react.default.createElement("input", { type: "date", value: programStart, onChange: (e) => saveStart(e.target.value), style: { fontSize: 12, padding: "4px 8px", border: `1px solid ${T.border}`, borderRadius: 7, background: T.surface, color: T.text, outline: "none" } }))), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "grid", gridTemplateColumns: "repeat(7,1fr)", gap: 4, marginBottom: 16, background: T.card, borderRadius: 12, padding: 4, border: `1px solid ${T.border}` } }, ["M", "T", "W", "T", "F", "S", "S"].map((d, i) => {
       const full = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"][i];
       const on = selDay === full;
       const isToday = full === todayName;
       return /* @__PURE__ */ import_react.default.createElement("button", { key: i, onClick: () => setSelDay(full), style: { fontSize: 12, fontWeight: 600, padding: "8px 2px", borderRadius: 8, border: "none", cursor: "pointer", background: on ? T.accent : "transparent", color: on ? "#fff" : isToday ? T.accent : T.hint, position: "relative" } }, d, isToday && !on && /* @__PURE__ */ import_react.default.createElement("div", { style: { position: "absolute", bottom: 2, left: "50%", transform: "translateX(-50%)", width: 4, height: 4, borderRadius: "50%", background: T.accent } }));
-    })), /* @__PURE__ */ import_react.default.createElement(DailyHabitsCard, { wo, selDay, walkDone, toggleWalk }), wo && wo.rest ? /* @__PURE__ */ import_react.default.createElement(Card, null, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 18, fontWeight: 600, color: T.text, marginBottom: 6 } }, wo.title), /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 14, color: T.hint, lineHeight: 1.6 } }, wo.note)) : wo && /* @__PURE__ */ import_react.default.createElement(Card, null, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 14 } }, /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 4 } }, selDay, " \xB7 ", location), /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 20, fontWeight: 700, color: T.text } }, wo.title)), /* @__PURE__ */ import_react.default.createElement("div", { style: { textAlign: "right" } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 28, fontWeight: 700, color: T.accent, lineHeight: 1 } }, doneCount, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 13, color: T.hint } }, "/", applyMode(allItems).length)), /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 10, color: T.hint } }, "done"))), wo.warmup && /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 12, color: T.hint, marginBottom: 10, padding: "8px 12px", background: T.surface, borderRadius: 8, lineHeight: 1.5 } }, "Warm-up: ", wo.warmup), (wo.bgNote || wo.note) && /* @__PURE__ */ import_react.default.createElement("div", { style: { marginBottom: 12, padding: "8px 12px", background: `${T.accent}07`, borderRadius: 8, borderLeft: `3px solid ${T.accent}` } }, blockData && /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 10, fontWeight: 700, color: T.accent, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 4 } }, "Block ", yearBlock, " \u2014 ", blockData.label, " \xB7 ", weekData?.label), wo.note && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 12, color: T.muted, lineHeight: 1.6, marginBottom: wo.bgNote ? 6 : 0 } }, wo.note), wo.bgNote && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 11, color: T.muted, lineHeight: 1.6, borderTop: `1px solid ${T.border}`, paddingTop: 6, marginTop: wo.note ? 0 : 0 } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontWeight: 700, color: T.text } }, "BG: "), wo.bgNote)), workoutNote && /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", alignItems: "flex-start", gap: 8, fontSize: 12, padding: "8px 12px", background: bg === "low" ? `${T.warn}12` : bg === "high" ? `${T.accent}10` : T.surface, borderRadius: 8, marginBottom: 14, color: bg !== "stable" ? T.warn : T.muted, lineHeight: 1.6, borderLeft: `3px solid ${bg === "low" ? T.warn : bg === "high" ? T.accent : T.muted}` } }, (bg === "low" || bg === "high") && /* @__PURE__ */ import_react.default.createElement("svg", { width: "14", height: "14", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2.5", strokeLinecap: "round", strokeLinejoin: "round", style: { flexShrink: 0, marginTop: 2 } }, /* @__PURE__ */ import_react.default.createElement("path", { d: "M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" }), /* @__PURE__ */ import_react.default.createElement("line", { x1: "12", y1: "9", x2: "12", y2: "13" }), /* @__PURE__ */ import_react.default.createElement("line", { x1: "12", y1: "17", x2: "12.01", y2: "17" })), /* @__PURE__ */ import_react.default.createElement("span", null, workoutNote)), applyMode(wo.strength || []).length > 0 && /* @__PURE__ */ import_react.default.createElement("div", { style: { marginBottom: (wo.core || []).length > 0 ? 16 : 0 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 10 } }, "Strength"), applyMode(wo.strength).map((ex, i) => {
+    })), /* @__PURE__ */ import_react.default.createElement(DailyHabitsCard, { wo, selDay, walkDone, toggleWalk }), wo && wo.rest ? /* @__PURE__ */ import_react.default.createElement(Card, null, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 18, fontWeight: 600, color: T.text, marginBottom: 6 } }, wo.title), /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 14, color: T.hint, lineHeight: 1.6 } }, wo.note)) : wo && /* @__PURE__ */ import_react.default.createElement(Card, null, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 14 } }, /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 4 } }, selDay, " \xB7 ", location), /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 20, fontWeight: 700, color: T.text } }, wo.title)), /* @__PURE__ */ import_react.default.createElement("div", { style: { textAlign: "right" } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 28, fontWeight: 700, color: T.accent, lineHeight: 1 } }, doneCount, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 13, color: T.hint } }, "/", applyMode(allItems).length)), /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 10, color: T.hint } }, "done"))), wo.warmup && /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 12, color: T.hint, marginBottom: 10, padding: "8px 12px", background: T.surface, borderRadius: 8, lineHeight: 1.5 } }, "Warm-up: ", wo.warmup), (wo.bgNote || wo.note) && /* @__PURE__ */ import_react.default.createElement("div", { style: { marginBottom: 12, padding: "8px 12px", background: `${T.accent}07`, borderRadius: 8, borderLeft: `3px solid ${T.accent}` } }, blockData && /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 10, fontWeight: 700, color: T.accent, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 4 } }, "Block ", yearBlock, " \u2014 ", blockData.label, " \xB7 ", weekData?.label), wo.note && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 12, color: T.muted, lineHeight: 1.6, marginBottom: wo.bgNote ? 6 : 0 } }, wo.note), wo.bgNote && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 11, color: T.muted, lineHeight: 1.6, borderTop: `1px solid ${T.border}`, paddingTop: 6, marginTop: wo.note ? 0 : 0 } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontWeight: 700, color: T.text } }, "BG: "), wo.bgNote)), workoutNote && /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", alignItems: "flex-start", gap: 8, fontSize: 12, padding: "8px 12px", background: bg === "low" ? `${T.warn}12` : bg === "high" ? `${T.accent}10` : T.blueLight, borderRadius: 8, marginBottom: 14, color: bg === "stable" ? T.blue : T.warn, lineHeight: 1.6, borderLeft: `3px solid ${bg === "low" ? T.warn : bg === "high" ? T.accent : T.blue}` } }, (bg === "low" || bg === "high") && /* @__PURE__ */ import_react.default.createElement("svg", { width: "14", height: "14", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2.5", strokeLinecap: "round", strokeLinejoin: "round", style: { flexShrink: 0, marginTop: 2 } }, /* @__PURE__ */ import_react.default.createElement("path", { d: "M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" }), /* @__PURE__ */ import_react.default.createElement("line", { x1: "12", y1: "9", x2: "12", y2: "13" }), /* @__PURE__ */ import_react.default.createElement("line", { x1: "12", y1: "17", x2: "12.01", y2: "17" })), /* @__PURE__ */ import_react.default.createElement("span", null, workoutNote)), applyMode(wo.strength || []).length > 0 && /* @__PURE__ */ import_react.default.createElement("div", { style: { marginBottom: (wo.core || []).length > 0 ? 16 : 0 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 10 } }, "Strength"), applyMode(wo.strength).map((ex, i) => {
       const k = `${location}_${selDay}_${dateKey}_${i}`;
       const isDone = !!done[k];
       const wKey = `w${currentWeek}_${selDay}_${ex.name}`;
@@ -9360,11 +9498,11 @@ button,input,select,textarea{font-family:inherit}
       if (!weeks) return null;
       const isCur = mo === curMonthName;
       const isOpen = openMonth === mo;
-      return /* @__PURE__ */ import_react.default.createElement(Card, { key: mo, style: { marginBottom: 8, border: isCur ? `1.5px solid ${T.accent}` : void 0 } }, /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => {
+      return /* @__PURE__ */ import_react.default.createElement(Card, { key: mo, style: { marginBottom: 8, border: isCur ? `1.5px solid ${T.blue}` : void 0 } }, /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => {
         setOpenMonth(isOpen ? null : mo);
         setOpenWeek(null);
         setSwapKey(null);
-      }, style: { width: "100%", display: "flex", alignItems: "center", gap: 8, background: "none", border: "none", cursor: "pointer", padding: 0 } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 14, fontWeight: 600, color: isCur ? T.accent : T.text, flex: 1, textAlign: "left" } }, mo), isCur && /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 10, fontWeight: 700, color: T.accent, background: `${T.accent}15`, padding: "2px 8px", borderRadius: 99 } }, "NOW"), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 16, color: T.hint, transition: "transform .2s", transform: isOpen ? "rotate(45deg)" : "none" } }, "+")), isOpen && /* @__PURE__ */ import_react.default.createElement("div", { style: { paddingTop: 12 } }, weeks.map((wk, i) => {
+      }, style: { width: "100%", display: "flex", alignItems: "center", gap: 8, background: "none", border: "none", cursor: "pointer", padding: 0 } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 14, fontWeight: 600, color: isCur ? T.blue : T.text, flex: 1, textAlign: "left" } }, mo), isCur && /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 10, fontWeight: 700, color: T.blue, background: `${T.blue}20`, padding: "2px 8px", borderRadius: 99 } }, "NOW"), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 16, color: T.hint, transition: "transform .2s", transform: isOpen ? "rotate(45deg)" : "none" } }, "+")), isOpen && /* @__PURE__ */ import_react.default.createElement("div", { style: { paddingTop: 12 } }, weeks.map((wk, i) => {
         const wkKey = `${mo}${i}`;
         const isWkOpen = openWeek === wkKey;
         const planIdx = weekIdxMap[wk.week];
@@ -9463,10 +9601,10 @@ button,input,select,textarea{font-family:inherit}
       const extraKeys = new Set((extras[sec.key] || []).map((e) => e.t));
       const done = sec.items.filter((item) => !!checked[`${sec.key}_${item.t}`]).length;
       const optional = sec.items.filter((item) => item.opt).length;
-      return /* @__PURE__ */ import_react.default.createElement("div", { key: sec.key, style: { marginBottom: 2 } }, /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => togSec(sec.key), style: { width: "100%", display: "flex", alignItems: "center", gap: 8, padding: "7px 0", borderTop: `1px solid ${T.border}`, background: "none", border: "none", cursor: "pointer" } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 13, fontWeight: 500, color: T.text, flex: 1, textAlign: "left" } }, sec.label), optional > 0 && /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 9, color: T.hint, fontWeight: 500, background: T.surface, padding: "1px 5px", borderRadius: 99 } }, optional, " optional"), done > 0 && /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 10, color: T.accent, fontWeight: 700, marginLeft: 4 } }, done, "/", sec.items.length, " \u2713"), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 14, color: T.hint, transition: "transform .2s", transform: isSecOpen ? "rotate(45deg)" : "none", marginLeft: 4 } }, "+")), isSecOpen && /* @__PURE__ */ import_react.default.createElement("div", { style: { paddingBottom: 4 } }, sec.items.map((item, i) => {
+      return /* @__PURE__ */ import_react.default.createElement("div", { key: sec.key, style: { marginBottom: 2 } }, /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => togSec(sec.key), style: { width: "100%", display: "flex", alignItems: "center", gap: 8, padding: "7px 0", borderTop: `1px solid ${T.border}`, background: "none", border: "none", cursor: "pointer" } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 13, fontWeight: 500, color: T.text, flex: 1, textAlign: "left" } }, sec.label), optional > 0 && /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 9, color: T.blue, fontWeight: 500, background: T.blueLight, padding: "1px 5px", borderRadius: 99 } }, optional, " optional"), done > 0 && /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 10, color: T.accent, fontWeight: 700, marginLeft: 4 } }, done, "/", sec.items.length, " \u2713"), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 14, color: T.hint, transition: "transform .2s", transform: isSecOpen ? "rotate(45deg)" : "none", marginLeft: 4 } }, "+")), isSecOpen && /* @__PURE__ */ import_react.default.createElement("div", { style: { paddingBottom: 4 } }, sec.items.map((item, i) => {
         const d = !!checked[`${sec.key}_${item.t}`];
         const isExtra = extraKeys.has(item.t);
-        return /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { display: "flex", alignItems: "center", gap: 10, padding: "6px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none", opacity: d ? 0.35 : item.opt ? 0.65 : 1 } }, /* @__PURE__ */ import_react.default.createElement(Chk, { checked: d, onChange: () => tog(sec.key, item.t), sz: 18 }), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 13, color: item.opt ? T.muted : T.text, textDecoration: d ? "line-through" : "none", flex: 1, fontStyle: item.opt ? "italic" : "normal" } }, item.t), item.opt && !d && /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 9, fontWeight: 600, color: T.hint, background: T.surface, padding: "1px 6px", borderRadius: 99, flexShrink: 0 } }, "if needed"), isExtra && /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => removeExtra(sec.key, item.t), style: { background: "none", border: "none", cursor: "pointer", color: T.border, fontSize: 16, padding: "0 2px", flexShrink: 0, lineHeight: 1 } }, "\xD7"));
+        return /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { display: "flex", alignItems: "center", gap: 10, padding: "6px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none", opacity: d ? 0.35 : item.opt ? 0.65 : 1 } }, /* @__PURE__ */ import_react.default.createElement(Chk, { checked: d, onChange: () => tog(sec.key, item.t), sz: 18 }), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 13, color: item.opt ? T.muted : T.text, textDecoration: d ? "line-through" : "none", flex: 1, fontStyle: item.opt ? "italic" : "normal" } }, item.t), item.opt && !d && /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 9, fontWeight: 600, color: T.blue, background: T.blueLight, padding: "1px 6px", borderRadius: 99, flexShrink: 0 } }, "if needed"), isExtra && /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => removeExtra(sec.key, item.t), style: { background: "none", border: "none", cursor: "pointer", color: T.border, fontSize: 16, padding: "0 2px", flexShrink: 0, lineHeight: 1 } }, "\xD7"));
       }), addingTo === sec.key ? /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 6, paddingTop: 8 } }, /* @__PURE__ */ import_react.default.createElement("input", { value: newItem, onChange: (e) => setNewItem(e.target.value), onKeyDown: (e) => e.key === "Enter" && addExtra(sec.key), placeholder: "Add item\u2026", style: { ...s.input, flex: 1, fontSize: 12, padding: "6px 10px" }, autoFocus: true }), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => addExtra(sec.key), style: s.btnSm }, "+"), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => {
         setAddingTo(null);
         setNewItem("");
@@ -10444,25 +10582,28 @@ button,input,select,textarea{font-family:inherit}
     const doneKey = `cfm_${selWeek}_${selDay}`;
     const isDone = !!ck[doneKey];
     const isSatSun = selDay === "Saturday";
-    return /* @__PURE__ */ import_react.default.createElement("div", { className: "fade" }, /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 12, background: `${T.accent}06`, border: `1px solid ${T.accent}20` } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8 } }, /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => setSelWeek((w) => Math.max(1, w - 1)), style: { width: 28, height: 28, borderRadius: "50%", border: `1.5px solid ${T.border}`, background: "transparent", cursor: "pointer", fontSize: 16, color: T.muted, display: "flex", alignItems: "center", justifyContent: "center" } }, "\u2039"), /* @__PURE__ */ import_react.default.createElement("div", { style: { textAlign: "center" } }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 2 } }, "Week ", wkData.week, " \xB7 ", wkData.dates), /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 15, fontWeight: 700, color: T.text } }, wkData.title), /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 11, color: T.hint, marginTop: 2 } }, wkData.ref)), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => setSelWeek((w) => Math.min(52, w + 1)), style: { width: 28, height: 28, borderRadius: "50%", border: `1.5px solid ${T.border}`, background: "transparent", cursor: "pointer", fontSize: 16, color: T.muted, display: "flex", alignItems: "center", justifyContent: "center" } }, "\u203A")), /* @__PURE__ */ import_react.default.createElement("div", { style: { padding: "7px 10px", background: "rgba(155,142,132,0.08)", borderRadius: 8, fontSize: 12, color: T.muted, fontStyle: "italic", lineHeight: 1.5 } }, wkData.theme), selWeek !== currentWeek.week && /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => setSelWeek(currentWeek.week), style: { marginTop: 6, fontSize: 11, color: T.accent, background: "none", border: "none", cursor: "pointer", textDecoration: "underline" } }, "Back to current week")), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 4, marginBottom: 12 } }, STUDY_DAYS.map((d) => /* @__PURE__ */ import_react.default.createElement(
-      "button",
-      {
-        key: d.key,
-        onClick: () => setSelDay(d.key),
-        style: {
-          flex: 1,
-          fontSize: 11,
-          fontWeight: 600,
-          padding: "6px 4px",
-          borderRadius: 8,
-          border: `1.5px solid ${selDay === d.key ? T.accent : T.border}`,
-          background: selDay === d.key ? T.accent : "transparent",
-          color: selDay === d.key ? "#fff" : T.muted,
-          cursor: "pointer"
-        }
-      },
-      d.label
-    ))), isSatSun && /* @__PURE__ */ import_react.default.createElement("div", null, entry && /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 10 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 8 } }, "Sunday study \xB7 ", entry.scripture), /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 13, color: T.muted, fontStyle: "italic", lineHeight: 1.6, marginBottom: 10, padding: "7px 10px", background: "rgba(155,142,132,0.07)", borderRadius: 8 } }, entry.keyPrinciple), [{ k: "Reflect", v: entry.reflect }, { k: "Pray", v: entry.pray }, { k: "Act", v: entry.act }].map(({ k, v }) => /* @__PURE__ */ import_react.default.createElement("div", { key: k, style: { fontSize: 13, color: T.text, lineHeight: 1.5, padding: "5px 0", borderTop: `1px solid ${T.border}` } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontWeight: 700, color: T.accent, fontSize: 11, textTransform: "uppercase" } }, k, " \xB7 "), v))), /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 10, borderLeft: `3px solid ${T.accent}` } }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.06em", fontSize: 10, color: T.accent } }, "Young Women Meeting Prep"), wkData.ywPrep ? /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 14, color: T.text, lineHeight: 1.7, marginBottom: 14 } }, wkData.ywPrep.summary), /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 8 } }, "Discussion prompts"), wkData.ywPrep.prompts.map((p, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { display: "flex", gap: 10, padding: "8px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none", alignItems: "flex-start" } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, fontWeight: 700, color: T.accent, flexShrink: 0, width: 14, marginTop: 2 } }, i + 1), /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 13, color: T.muted, fontStyle: "italic", lineHeight: 1.6, margin: 0 } }, p)))) : /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 13, color: T.hint } }, "YW prep not available for this week yet."))), !isSatSun && entry && /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 10, borderLeft: `3px solid ${T.accent}` } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 10 } }, /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 3 } }, selDay, " \xB7 15\u201320 min"), /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 14, fontWeight: 700, color: T.text } }, entry.scripture)), /* @__PURE__ */ import_react.default.createElement(
+    return /* @__PURE__ */ import_react.default.createElement("div", { className: "fade" }, /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 12, background: T.blueLight, border: `1px solid ${T.blue}40` } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8 } }, /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => setSelWeek((w) => Math.max(1, w - 1)), style: { width: 28, height: 28, borderRadius: "50%", border: `1.5px solid ${T.border}`, background: "transparent", cursor: "pointer", fontSize: 16, color: T.muted, display: "flex", alignItems: "center", justifyContent: "center" } }, "\u2039"), /* @__PURE__ */ import_react.default.createElement("div", { style: { textAlign: "center" } }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 2 } }, "Week ", wkData.week, " \xB7 ", wkData.dates), /* @__PURE__ */ import_react.default.createElement("div", { className: "chunky", style: { fontSize: 22, color: T.text, lineHeight: 1.1 } }, wkData.title), /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 11, color: T.hint, marginTop: 2 } }, wkData.ref)), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => setSelWeek((w) => Math.min(52, w + 1)), style: { width: 28, height: 28, borderRadius: "50%", border: `1.5px solid ${T.border}`, background: "transparent", cursor: "pointer", fontSize: 16, color: T.muted, display: "flex", alignItems: "center", justifyContent: "center" } }, "\u203A")), /* @__PURE__ */ import_react.default.createElement("div", { style: { padding: "7px 10px", background: `${T.blue}18`, borderRadius: 8, fontSize: 12, color: T.blueText, fontStyle: "italic", lineHeight: 1.5 } }, wkData.theme), selWeek !== currentWeek.week && /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => setSelWeek(currentWeek.week), style: { marginTop: 6, fontSize: 11, color: T.blue, background: "none", border: "none", cursor: "pointer", textDecoration: "underline" } }, "Back to current week")), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 4, marginBottom: 12 } }, STUDY_DAYS.map((d, di) => {
+      const dayColor = di % 2 === 0 ? T.blue : T.accent;
+      return /* @__PURE__ */ import_react.default.createElement(
+        "button",
+        {
+          key: d.key,
+          onClick: () => setSelDay(d.key),
+          style: {
+            flex: 1,
+            fontSize: 11,
+            fontWeight: 600,
+            padding: "6px 4px",
+            borderRadius: 8,
+            border: `1.5px solid ${selDay === d.key ? dayColor : T.border}`,
+            background: selDay === d.key ? dayColor : "transparent",
+            color: selDay === d.key ? "#fff" : T.muted,
+            cursor: "pointer"
+          }
+        },
+        d.label
+      );
+    })), isSatSun && /* @__PURE__ */ import_react.default.createElement("div", null, entry && /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 10 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 8 } }, "Sunday study \xB7 ", entry.scripture), /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 13, color: T.muted, fontStyle: "italic", lineHeight: 1.6, marginBottom: 10, padding: "7px 10px", background: "rgba(155,142,132,0.07)", borderRadius: 8 } }, entry.keyPrinciple), [{ k: "Reflect", v: entry.reflect }, { k: "Pray", v: entry.pray }, { k: "Act", v: entry.act }].map(({ k, v }) => /* @__PURE__ */ import_react.default.createElement("div", { key: k, style: { fontSize: 13, color: T.text, lineHeight: 1.5, padding: "5px 0", borderTop: `1px solid ${T.border}` } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontWeight: 700, color: T.accent, fontSize: 11, textTransform: "uppercase" } }, k, " \xB7 "), v))), /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 10, borderLeft: `3px solid ${T.blue}` } }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.06em", fontSize: 10, color: T.blueDark } }, "Young Women Meeting Prep"), wkData.ywPrep ? /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 14, color: T.text, lineHeight: 1.7, marginBottom: 14 } }, wkData.ywPrep.summary), /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 8 } }, "Discussion prompts"), wkData.ywPrep.prompts.map((p, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { display: "flex", gap: 10, padding: "8px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none", alignItems: "flex-start" } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, fontWeight: 700, color: T.accent, flexShrink: 0, width: 14, marginTop: 2 } }, i + 1), /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 13, color: T.muted, fontStyle: "italic", lineHeight: 1.6, margin: 0 } }, p)))) : /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 13, color: T.hint } }, "YW prep not available for this week yet."))), !isSatSun && entry && /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 10, borderLeft: `3px solid ${T.accent}` } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 10 } }, /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 3 } }, selDay, " \xB7 15\u201320 min"), /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 14, fontWeight: 700, color: T.text } }, entry.scripture)), /* @__PURE__ */ import_react.default.createElement(
       "button",
       {
         onClick: () => tog(doneKey),
@@ -10480,7 +10621,7 @@ button,input,select,textarea{font-family:inherit}
         }
       },
       isDone ? "\u2713 Done" : "Mark done"
-    )), /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 13, color: T.muted, fontStyle: "italic", lineHeight: 1.6, marginBottom: 12, padding: "7px 10px", background: "rgba(155,142,132,0.07)", borderRadius: 8 } }, entry.keyPrinciple), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "grid", gap: 8 } }, [{ k: "Reflect", v: entry.reflect }, { k: "Pray", v: entry.pray }, { k: "Act", v: entry.act }].map(({ k, v }) => /* @__PURE__ */ import_react.default.createElement("div", { key: k, style: { fontSize: 13, color: T.text, lineHeight: 1.5 } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontWeight: 700, color: T.accent, fontSize: 11, textTransform: "uppercase", letterSpacing: "0.05em" } }, k, " \xB7 "), v))), entry.dailyQuote && /* @__PURE__ */ import_react.default.createElement("div", { style: { marginTop: 12, padding: "8px 10px", background: `${T.accent}08`, borderRadius: 8, fontSize: 12, color: T.muted, fontStyle: "italic", lineHeight: 1.6 } }, '"', entry.dailyQuote.text, '"', /* @__PURE__ */ import_react.default.createElement("div", { style: { fontStyle: "normal", fontWeight: 600, fontSize: 11, marginTop: 3, color: T.hint } }, "\u2014 ", entry.dailyQuote.source))), entry.resources && entry.resources.length > 0 && /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 10 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 8 } }, "Go deeper"), entry.resources.map((r, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { padding: "7px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none", display: "flex", alignItems: "flex-start", gap: 8 } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, color: T.accent, fontWeight: 700, flexShrink: 0, marginTop: 1 } }, "\u25B8"), /* @__PURE__ */ import_react.default.createElement("div", { style: { flex: 1 } }, /* @__PURE__ */ import_react.default.createElement("a", { href: r.url, target: "_blank", rel: "noopener noreferrer", style: { fontSize: 13, fontWeight: 600, color: T.accent, textDecoration: "none" } }, r.title), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, color: T.hint, marginLeft: 6 } }, r.type), r.who && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 11, color: T.muted, marginTop: 1 } }, r.who)))))), !entry && !isSatSun && /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 10 } }, /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 13, color: T.hint, padding: "8px 0", textAlign: "center" } }, "Daily content for this week coming in the CFM rebuild.")), /* @__PURE__ */ import_react.default.createElement(CFMScheduleList, { currentWeek: currentWeek.week }));
+    )), /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 13, color: T.muted, fontStyle: "italic", lineHeight: 1.6, marginBottom: 12, padding: "7px 10px", background: "rgba(155,142,132,0.07)", borderRadius: 8 } }, entry.keyPrinciple), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "grid", gap: 8 } }, [{ k: "Reflect", v: entry.reflect }, { k: "Pray", v: entry.pray }, { k: "Act", v: entry.act }].map(({ k, v }) => /* @__PURE__ */ import_react.default.createElement("div", { key: k, style: { fontSize: 13, color: T.text, lineHeight: 1.5 } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontWeight: 700, color: T.accent, fontSize: 11, textTransform: "uppercase", letterSpacing: "0.05em" } }, k, " \xB7 "), v))), entry.dailyQuote && /* @__PURE__ */ import_react.default.createElement("div", { style: { marginTop: 12, padding: "8px 10px", background: `${T.accent}08`, borderRadius: 8, fontSize: 12, color: T.muted, fontStyle: "italic", lineHeight: 1.6 } }, '"', entry.dailyQuote.text, '"', /* @__PURE__ */ import_react.default.createElement("div", { style: { fontStyle: "normal", fontWeight: 600, fontSize: 11, marginTop: 3, color: T.hint } }, "\u2014 ", entry.dailyQuote.source))), entry.resources && entry.resources.length > 0 && /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 10 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 8 } }, "Go deeper"), entry.resources.map((r, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { padding: "7px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none", display: "flex", alignItems: "flex-start", gap: 8 } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, color: T.blue, fontWeight: 700, flexShrink: 0, marginTop: 1 } }, "\u25B8"), /* @__PURE__ */ import_react.default.createElement("div", { style: { flex: 1 } }, /* @__PURE__ */ import_react.default.createElement("a", { href: r.url, target: "_blank", rel: "noopener noreferrer", style: { fontSize: 13, fontWeight: 600, color: T.blue, textDecoration: "none" } }, r.title), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, color: T.hint, marginLeft: 6 } }, r.type), r.who && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 11, color: T.muted, marginTop: 1 } }, r.who)))))), !entry && !isSatSun && /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 10 } }, /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 13, color: T.hint, padding: "8px 0", textAlign: "center" } }, "Daily content for this week coming in the CFM rebuild.")), /* @__PURE__ */ import_react.default.createElement(CFMScheduleList, { currentWeek: currentWeek.week }));
   }
   function CFMScheduleList({ currentWeek }) {
     const [open, setOpen] = (0, import_react.useState)(false);
