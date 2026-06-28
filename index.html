@@ -13,7 +13,7 @@
 </head>
 <body>
   <div id="root"></div>
-  <script>/* v1782680020 */
+  <script>/* v1782687458 */
 (() => {
   var __create = Object.create;
   var __defProp = Object.defineProperty;
@@ -7464,38 +7464,45 @@ button,input,select,textarea{font-family:inherit}
       return Math.floor((n - s2) / 864e5);
     })();
     const q = DAILY_QUOTES[doy % DAILY_QUOTES.length];
-    return /* @__PURE__ */ import_react.default.createElement("div", { style: { marginBottom: 14 } }, /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 10, background: T.blueLight, border: `1px solid ${T.blue}30` } }, /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 13, color: T.blueText, lineHeight: 1.55, fontStyle: "italic", marginBottom: 6, display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical", overflow: "hidden" } }, '"', q && q.text ? String(q.text) : "", '"'), /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 11, color: T.blue, fontWeight: 600 } }, "\u2014 ", q && q.source ? String(q.source) : "")), /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 0 } }, bdays.length > 0 && /* @__PURE__ */ import_react.default.createElement("div", { style: { marginBottom: 16 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, null, "Upcoming birthdays"), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => nav("family", "Celebrate & Activities"), style: { fontSize: 11, color: T.blue, background: "none", border: "none", cursor: "pointer", fontWeight: 600 } }, "See all \u2192")), bdays.slice(0, 4).map((b, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { display: "flex", alignItems: "center", gap: 12, padding: "7px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none" } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { width: 30, height: 30, borderRadius: "50%", background: b.isToday ? T.accent : T.surface, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontSize: 12, color: b.isToday ? "#fff" : T.muted, fontWeight: 700 } }, b.date.split(" ")[1]), /* @__PURE__ */ import_react.default.createElement("div", { style: { flex: 1 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontWeight: 600, fontSize: 13, color: T.text } }, b.name), /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 11, color: T.hint } }, b.date)), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, fontWeight: 700, color: b.isToday ? T.accent : T.hint } }, b.isToday ? "Today" : `${b.diff}d`)))), bdays.length > 0 && /* @__PURE__ */ import_react.default.createElement("div", { style: { height: 1, background: T.border, marginBottom: 16 } }), /* @__PURE__ */ import_react.default.createElement("div", { style: { marginBottom: 16 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, null, "Today's workout"), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => nav("health"), style: { fontSize: 11, color: T.blue, background: "none", border: "none", cursor: "pointer", fontWeight: 600 } }, "See all \u2192")), wo ? wo.rest ? /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 13, color: T.hint } }, wo.note) : /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 15, fontWeight: 600, color: T.blue, marginBottom: 6 } }, wo.title), wo.warmup && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 12, color: T.hint, marginBottom: 8 } }, "Warm-up: ", wo.warmup), [...wo.strength || [], ...wo.core || []].slice(0, 4).map((ex, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { fontSize: 13, color: T.text, padding: "5px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none" } }, typeof ex === "string" ? ex : ex.name, " ", /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, color: T.hint } }, typeof ex === "object" ? ex.sets : ""))), [...wo.strength || [], ...wo.core || []].length > 4 && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 11, color: T.hint, marginTop: 4 } }, "+", [...wo.strength || [], ...wo.core || []].length - 4, " more"), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => nav("health"), style: { fontSize: 11, color: T.blue, background: "none", border: "none", cursor: "pointer", padding: "6px 0", fontWeight: 600, display: "block", marginTop: 4 } }, "Open full workout \u2192")) : /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 13, color: T.hint } }, "Rest day.")), /* @__PURE__ */ import_react.default.createElement("div", { style: { height: 1, background: T.border, marginBottom: 16 } }), /* @__PURE__ */ import_react.default.createElement("div", { style: { marginBottom: 16 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, null, "This week's meals"), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => nav("health", "Meals"), style: { fontSize: 11, color: T.blue, background: "none", border: "none", cursor: "pointer", fontWeight: 600 } }, "Edit \u2192")), mealDays.length > 0 ? mealDays.map((day, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: day, style: { display: "flex", gap: 10, padding: "7px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none", alignItems: "baseline" } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, fontWeight: day === todayKey ? 700 : 500, color: day === todayKey ? T.blue : T.hint, minWidth: 28, flexShrink: 0 } }, day.slice(0, 3)), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 13, color: T.text, fontWeight: 500 } }, meals[day]))) : /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 13, color: T.hint, padding: "4px 0" } }, "No meals planned yet.")), /* @__PURE__ */ import_react.default.createElement("div", { style: { height: 1, background: T.border, marginBottom: 16 } }), /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, null, "Events & YW"), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => nav("family", "Celebrate & Activities"), style: { fontSize: 11, color: T.blue, background: "none", border: "none", cursor: "pointer", fontWeight: 600 } }, "See all \u2192")), /* @__PURE__ */ import_react.default.createElement(HomeEvents, { nav }))));
+    return /* @__PURE__ */ import_react.default.createElement("div", { style: { marginBottom: 14 } }, /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 10, background: T.blueLight, border: `1px solid ${T.blue}30` } }, /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 13, color: T.blueText, lineHeight: 1.55, fontStyle: "italic", marginBottom: 6, display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical", overflow: "hidden" } }, '"', q && q.text ? String(q.text) : "", '"'), /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 11, color: T.blue, fontWeight: 600 } }, "\u2014 ", q && q.source ? String(q.source) : "")), /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 0 } }, bdays.length > 0 && /* @__PURE__ */ import_react.default.createElement("div", { style: { marginBottom: 16 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, null, "Upcoming birthdays"), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => nav("family", "Celebrate & Activities"), style: { fontSize: 11, color: T.blue, background: "none", border: "none", cursor: "pointer", fontWeight: 600 } }, "See all \u2192")), bdays.slice(0, 4).map((b, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { display: "flex", alignItems: "center", gap: 12, padding: "7px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none" } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { width: 30, height: 30, borderRadius: "50%", background: b.isToday ? T.accent : T.surface, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontSize: 12, color: b.isToday ? "#fff" : T.muted, fontWeight: 700 } }, b.date.split(" ")[1]), /* @__PURE__ */ import_react.default.createElement("div", { style: { flex: 1 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontWeight: 600, fontSize: 13, color: T.text } }, b.name), /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 11, color: T.hint } }, b.date)), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, fontWeight: 700, color: b.isToday ? T.accent : T.hint } }, b.isToday ? "Today" : `${b.diff}d`)))), bdays.length > 0 && /* @__PURE__ */ import_react.default.createElement("div", { style: { height: 1, background: T.border, marginBottom: 16 } }), /* @__PURE__ */ import_react.default.createElement("div", { style: { marginBottom: 16 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, null, "Today's workout"), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => nav("health"), style: { fontSize: 11, color: T.blue, background: "none", border: "none", cursor: "pointer", fontWeight: 600 } }, "See all \u2192")), wo ? wo.rest ? /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 13, color: T.hint } }, wo.note) : /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 15, fontWeight: 600, color: T.blue, marginBottom: 6 } }, wo.title), wo.warmup && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 12, color: T.hint, marginBottom: 8 } }, "Warm-up: ", wo.warmup), [...wo.strength || [], ...wo.core || []].slice(0, 4).map((ex, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { fontSize: 13, color: T.text, padding: "5px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none" } }, typeof ex === "string" ? ex : ex.name, " ", /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, color: T.hint } }, typeof ex === "object" ? ex.sets : ""))), [...wo.strength || [], ...wo.core || []].length > 4 && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 11, color: T.hint, marginTop: 4 } }, "+", [...wo.strength || [], ...wo.core || []].length - 4, " more"), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => nav("health"), style: { fontSize: 11, color: T.blue, background: "none", border: "none", cursor: "pointer", padding: "6px 0", fontWeight: 600, display: "block", marginTop: 4 } }, "Open full workout \u2192")) : /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 13, color: T.hint } }, "Rest day.")), /* @__PURE__ */ import_react.default.createElement("div", { style: { height: 1, background: T.border, marginBottom: 16 } }), /* @__PURE__ */ import_react.default.createElement("div", { style: { marginBottom: 16 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, null, "This week's meals"), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => nav("health", "Meals"), style: { fontSize: 11, color: T.blue, background: "none", border: "none", cursor: "pointer", fontWeight: 600 } }, "See all \u2192")), mealDays.length > 0 ? mealDays.map((day, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: day, style: { display: "flex", gap: 10, padding: "7px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none", alignItems: "baseline" } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, fontWeight: day === todayKey ? 700 : 500, color: day === todayKey ? T.blue : T.hint, minWidth: 28, flexShrink: 0 } }, day.slice(0, 3)), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 13, color: T.text, fontWeight: 500 } }, meals[day]))) : /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 13, color: T.hint, padding: "4px 0" } }, "No meals planned yet.")), /* @__PURE__ */ import_react.default.createElement("div", { style: { height: 1, background: T.border, marginBottom: 16 } }), /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, null, "Events"), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => nav("family", "Celebrate & Activities"), style: { fontSize: 11, color: T.blue, background: "none", border: "none", cursor: "pointer", fontWeight: 600 } }, "See all \u2192")), /* @__PURE__ */ import_react.default.createElement(HomeEvents, { nav }))));
   }
   function HomeEvents({ nav }) {
     const CUR_MONTH_EVENTS = {
       June: [
-        { text: "Lehi Round Up Days \u2014 rodeo, parade, carnival, fireworks", url: "https://www.lehiroundup.com" },
-        { text: "Utah Arts Festival \u2014 Library Square, SLC", url: "" },
-        { text: "Downtown SLC Farmers Market \u2014 Saturdays through October", url: "" },
-        { text: "Red Butte Garden Concert Series", url: "https://redbuttegarden.org" },
-        { text: "Park Silly Sunday Market \u2014 Park City, Sundays", url: "" }
+        { text: "Utah Arts Festival \u2014 Library Square, SLC", end: "Jun 22" },
+        { text: "Downtown SLC Farmers Market \u2014 Saturdays through October", end: "Oct 31" },
+        { text: "Red Butte Garden Concert Series", url: "https://redbuttegarden.org", end: "Sep 30" },
+        { text: "Park Silly Sunday Market \u2014 Park City, Sundays", end: "Oct 31" }
       ],
       July: [
-        { text: "Freedom Festival & Stadium of Fire \u2014 Provo, July 4th", url: "https://www.provocity.org/freedom-festival" },
-        { text: "Days of '47 Pioneer Day Parade \u2014 SLC, July 24th", url: "" },
-        { text: "Twilight Concert Series \u2014 Pioneer Park, Thursdays", url: "https://www.twilightconcert.com" },
-        { text: "Hogle Zoo summer nights \u2014 extended evening hours", url: "https://www.hoglezoo.org" },
-        { text: "Payson Onion Days \u2014 late July", url: "" }
+        { text: "Freedom Festival & Stadium of Fire \u2014 Provo, July 4th", url: "https://www.provocity.org/freedom-festival", end: "Jul 4" },
+        { text: "Days of '47 Pioneer Day Parade \u2014 SLC, July 24th", end: "Jul 24" },
+        { text: "Twilight Concert Series \u2014 Pioneer Park, Thursdays", url: "https://www.twilightconcert.com", end: "Aug 31" },
+        { text: "Hogle Zoo summer nights \u2014 extended evening hours", url: "https://www.hoglezoo.org", end: "Aug 31" },
+        { text: "Payson Onion Days \u2014 late July", end: "Jul 31" }
       ],
       August: [
-        { text: "Salt Lake County Fair \u2014 rides, animals, food", url: "" },
-        { text: "Back to school prep \u2014 Alpine District starts mid-August", url: "" },
-        { text: "Red Butte Garden final summer concerts", url: "https://redbuttegarden.org" },
-        { text: "Late summer Moab trip", url: "" }
+        { text: "Salt Lake County Fair \u2014 rides, animals, food", end: "Aug 31" },
+        { text: "Back to school prep \u2014 Alpine District starts mid-August", end: "Aug 20" },
+        { text: "Red Butte Garden final summer concerts", url: "https://redbuttegarden.org", end: "Sep 30" },
+        { text: "Late summer Moab trip", end: "Aug 31" }
       ]
     };
-    const now = (/* @__PURE__ */ new Date()).toLocaleString("en-US", { month: "long" });
-    const items = CUR_MONTH_EVENTS[now] || [];
-    const YW_UPCOMING = [
-      { date: "July 7\u201310", title: "Girls Camp \u2014 Wallsburg, UT" },
-      { date: "Aug TBD", title: "Back to School activity" }
-    ];
-    return /* @__PURE__ */ import_react.default.createElement("div", null, items.map((ev, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { display: "flex", gap: 8, padding: "7px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none", alignItems: "flex-start" } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { color: T.blue, flexShrink: 0, marginTop: 1 } }, "\u2022"), ev.url ? /* @__PURE__ */ import_react.default.createElement("a", { href: ev.url, target: "_blank", rel: "noopener noreferrer", style: { fontSize: 13, color: T.text, textDecoration: "none" } }, ev.text) : /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 13, color: T.text } }, ev.text))), YW_UPCOMING.length > 0 && /* @__PURE__ */ import_react.default.createElement("div", { style: { marginTop: 8, paddingTop: 8, borderTop: `1px solid ${T.border}` } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 10, fontWeight: 700, color: T.blue, textTransform: "uppercase", letterSpacing: "0.06em" } }, "YW"), nav && /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => nav("faith", "YW & Worship"), style: { fontSize: 11, color: T.blue, background: "none", border: "none", cursor: "pointer", fontWeight: 600 } }, "YW tab \u2192")), YW_UPCOMING.map((e, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { display: "flex", gap: 8, padding: "5px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none" } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, fontWeight: 600, color: T.hint, minWidth: 60, flexShrink: 0 } }, e.date), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 13, color: T.text } }, e.title)))), !items.length && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 13, color: T.hint, padding: "4px 0" } }, "Check the Events tab for upcoming Utah events."));
+    const today = /* @__PURE__ */ new Date();
+    const now = today.toLocaleString("en-US", { month: "long" });
+    const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    function parseEnd(str) {
+      if (!str) return null;
+      const parts = str.trim().split(" ");
+      const mon = MONTHS.indexOf(parts[0]);
+      const day = parseInt(parts[1]);
+      return new Date(today.getFullYear(), mon, day, 23, 59, 59);
+    }
+    const allItems = (CUR_MONTH_EVENTS[now] || []).filter((ev) => {
+      const end = parseEnd(ev.end);
+      return !end || today <= end;
+    });
+    return /* @__PURE__ */ import_react.default.createElement("div", null, allItems.map((ev, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { display: "flex", gap: 8, padding: "7px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none", alignItems: "flex-start" } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { color: T.blue, flexShrink: 0, marginTop: 1 } }, "\u2022"), ev.url ? /* @__PURE__ */ import_react.default.createElement("a", { href: ev.url, target: "_blank", rel: "noopener noreferrer", style: { fontSize: 13, color: T.text, textDecoration: "none" } }, ev.text) : /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 13, color: T.text } }, ev.text))), !allItems.length && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 13, color: T.hint, padding: "4px 0" } }, "No upcoming events this month."));
   }
   function FamilyTabs({ active, onChange }) {
     const TABS = [
@@ -10499,7 +10506,39 @@ button,input,select,textarea{font-family:inherit}
   }
   function SectionFaith() {
     const [tab, setTab] = (0, import_react.useState)("Come Follow Me");
-    return /* @__PURE__ */ import_react.default.createElement("div", { className: "fade" }, /* @__PURE__ */ import_react.default.createElement(SecHead, { title: "Faith" }), /* @__PURE__ */ import_react.default.createElement(Tabs, { tabs: ["Come Follow Me", "YW & Worship", "Prayer List"], active: tab, onChange: setTab }), tab === "Come Follow Me" && /* @__PURE__ */ import_react.default.createElement(PanelCFM, { key: "cfm" }), tab === "YW & Worship" && /* @__PURE__ */ import_react.default.createElement(PanelYWWorship, { key: "ywworship" }), tab === "Prayer List" && /* @__PURE__ */ import_react.default.createElement(PanelPrayer, { key: "pray" }));
+    return /* @__PURE__ */ import_react.default.createElement("div", { className: "fade" }, /* @__PURE__ */ import_react.default.createElement(SecHead, { title: "Faith" }), /* @__PURE__ */ import_react.default.createElement(Tabs, { tabs: ["Come Follow Me", "Prayer List"], active: tab, onChange: setTab }), tab === "Come Follow Me" && /* @__PURE__ */ import_react.default.createElement(PanelCFM, { key: "cfm" }), tab === "Prayer List" && /* @__PURE__ */ import_react.default.createElement(PanelPrayer, { key: "pray" }));
+  }
+  function PanelPrayer() {
+    const [items, setItems] = (0, import_react.useState)(() => {
+      try {
+        return JSON.parse(localStorage.getItem("mm3_prayer") || "[]");
+      } catch {
+        return [];
+      }
+    });
+    const [newItem, setNewItem] = (0, import_react.useState)("");
+    const [adding, setAdding] = (0, import_react.useState)(false);
+    const save = (v) => {
+      setItems(v);
+      try {
+        localStorage.setItem("mm3_prayer", JSON.stringify(v));
+      } catch {
+      }
+    };
+    function add() {
+      const t = newItem.trim();
+      if (!t) return;
+      save([...items, { text: t, date: (/* @__PURE__ */ new Date()).toLocaleDateString("en-US", { month: "short", day: "numeric" }) }]);
+      setNewItem("");
+      setAdding(false);
+    }
+    function remove(i) {
+      save(items.filter((_, j) => j !== i));
+    }
+    return /* @__PURE__ */ import_react.default.createElement("div", { className: "fade" }, /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 10 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, null, "Prayer list"), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => setAdding((a) => !a), style: { ...s.btnSm, background: T.accent } }, "+ Add")), adding && /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 6, marginBottom: 12 } }, /* @__PURE__ */ import_react.default.createElement("input", { value: newItem, onChange: (e) => setNewItem(e.target.value), onKeyDown: (e) => e.key === "Enter" && add(), placeholder: "Who or what to pray for\u2026", style: { ...s.input, flex: 1, fontSize: 13 }, autoFocus: true }), /* @__PURE__ */ import_react.default.createElement("button", { onClick: add, style: s.btnSm }, "Save"), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => {
+      setAdding(false);
+      setNewItem("");
+    }, style: { ...s.btnSm, background: T.surface, color: T.muted } }, "\u2715")), items.length === 0 && !adding && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 13, color: T.hint, padding: "8px 0" } }, "No items yet. Tap + Add to begin your list."), items.map((item, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { display: "flex", alignItems: "flex-start", gap: 10, padding: "9px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none" } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, color: T.blue, fontWeight: 700, flexShrink: 0, marginTop: 2 } }, "\u2665"), /* @__PURE__ */ import_react.default.createElement("div", { style: { flex: 1 } }, /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 13, color: T.text, lineHeight: 1.5 } }, item.text), item.date && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 11, color: T.hint, marginTop: 2 } }, "Added ", item.date)), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => remove(i), style: { background: "none", border: "none", cursor: "pointer", color: T.border, fontSize: 16, padding: 0, flexShrink: 0 } }, "\xD7")))));
   }
   function PanelCFM() {
     const currentWeek = getCurrentCFMWeek();
@@ -10599,213 +10638,19 @@ button,input,select,textarea{font-family:inherit}
       return /* @__PURE__ */ import_react.default.createElement("div", { key: w.week, style: { display: "flex", gap: 10, padding: "7px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none", opacity: isPast ? 0.4 : 1 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { width: 22, height: 22, borderRadius: "50%", background: isCur ? T.accent : T.surface, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontSize: 9, fontWeight: 700, color: isCur ? "#fff" : T.hint } }, w.week), /* @__PURE__ */ import_react.default.createElement("div", { style: { flex: 1 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 12, fontWeight: isCur ? 700 : 500, color: isCur ? T.accent : T.text } }, w.title), /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 10, color: T.hint } }, w.dates, " \xB7 ", w.ref)));
     })));
   }
-  function PanelYWWorship() {
-    const [sub, setSub] = (0, import_react.useState)("YW");
-    return /* @__PURE__ */ import_react.default.createElement("div", { className: "fade" }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 4, marginBottom: 16 } }, [["YW", T.blue], ["Worship", T.accent]].map(([t, c]) => /* @__PURE__ */ import_react.default.createElement(
-      "button",
-      {
-        key: t,
-        onClick: () => setSub(t),
-        style: {
-          fontSize: 11,
-          fontWeight: 600,
-          padding: "5px 14px",
-          borderRadius: 99,
-          border: `1.5px solid ${sub === t ? c : T.border}`,
-          background: sub === t ? c : "transparent",
-          color: sub === t ? "#fff" : T.muted,
-          cursor: "pointer"
-        }
-      },
-      t
-    ))), sub === "YW" && /* @__PURE__ */ import_react.default.createElement(PanelYW, null), sub === "Worship" && /* @__PURE__ */ import_react.default.createElement(PanelChurch, null));
-  }
-  function PanelYW() {
-    const [tab, setTab] = (0, import_react.useState)("Events & Info");
-    const YW_TABS = ["Events & Info", "Teaching Outline", "Contacts", "Themes & Covenants"];
-    const YW_DATA = {
-      presidency: [
-        { role: "President", name: "Sister Bell" },
-        { role: "1st Counselor", name: "Sister Fackrell" },
-        { role: "2nd Counselor", name: "Sister Kunz" },
-        { role: "Secretary", name: "Sister Michael" },
-        { role: "You", name: "Laurel" }
-      ],
-      upcoming: [
-        { date: "June 17", title: "Gaga Ball & 9 Square", loc: "At the Church", time: "7pm", prep: "" },
-        { date: "July 7\u201310", title: "Girls Camp", loc: "Wallsburg, UT", time: "All day", prep: "Packing list, permission slips, check first aid kit" },
-        { date: "Aug TBD", title: "Back to School activity", loc: "TBD", time: "TBD", prep: "" }
-      ],
-      sundayFlow: [
-        "Opening song + prayer",
-        "Announcements",
-        "Introduce teacher",
-        "Lesson",
-        "Closing + challenge"
-      ],
-      conductingTips: [
-        "Send reminder Thursday to teacher: confirm topic and any needs",
-        "Send Sunday reminder to presidency morning of",
-        "Have opening song chosen before class starts",
-        "Keep transitions smooth \u2014 fill quiet moments with a question",
-        "End with a clear challenge the girls can act on this week"
-      ],
-      themes: [
-        { year: "2026", theme: "I Am a Beloved Child of God", scripture: "1 Nephi 17:3", note: "The annual YW theme" },
-        { label: "Individual Worth", desc: "I am of infinite worth with my own divine mission." },
-        { label: "Faith", desc: "I trust in God and act even when I cannot see the whole picture." },
-        { label: "Divine Nature", desc: "I have inherited divine qualities and potential." },
-        { label: "Knowledge", desc: "I seek learning by study and also by faith." },
-        { label: "Choice and Accountability", desc: "I am free to choose and I accept responsibility for my choices." },
-        { label: "Good Works", desc: "I serve others and do my part to build God's kingdom." },
-        { label: "Integrity", desc: "I do what is right regardless of the cost." },
-        { label: "Virtue", desc: "I live a pure and righteous life." }
-      ],
-      covenantPath: [
-        { step: "Baptism", note: "Covenant to take Christ's name, keep His commandments, serve others" },
-        { step: "Gift of the Holy Ghost", note: "Receive the constant companionship of the Spirit" },
-        { step: "Endowment", note: "Receive additional covenants, power, and knowledge in the temple" },
-        { step: "Sealing", note: "Eternal family sealed through priesthood authority" }
-      ]
-    };
-    return /* @__PURE__ */ import_react.default.createElement("div", { className: "fade" }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 4, marginBottom: 16, flexWrap: "wrap" } }, YW_TABS.map((t) => /* @__PURE__ */ import_react.default.createElement(
-      "button",
-      {
-        key: t,
-        onClick: () => setTab(t),
-        style: {
-          fontSize: 11,
-          fontWeight: 600,
-          padding: "5px 10px",
-          borderRadius: 99,
-          border: `1.5px solid ${tab === t ? T.accent : T.border}`,
-          background: tab === t ? T.accent : "transparent",
-          color: tab === t ? "#fff" : T.muted,
-          cursor: "pointer",
-          whiteSpace: "nowrap",
-          flexShrink: 0
-        }
-      },
-      t
-    ))), tab === "Events & Info" && /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 10 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 10 } }, "Upcoming activities"), YW_DATA.upcoming.map((e, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { padding: "10px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none" } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 12, alignItems: "flex-start" } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { minWidth: 64, flexShrink: 0 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 13, fontWeight: 700, color: T.blue } }, e.date), /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 10, color: T.hint } }, e.time)), /* @__PURE__ */ import_react.default.createElement("div", { style: { flex: 1 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontWeight: 600, fontSize: 13, color: T.text, marginBottom: 2 } }, e.title), /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 11, color: T.hint } }, e.loc), e.prep && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 11, color: T.muted, fontStyle: "italic", marginTop: 3, lineHeight: 1.4 } }, e.prep)))))), /* @__PURE__ */ import_react.default.createElement(Card, null, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 8 } }, "Sunday conducting order"), YW_DATA.sundayFlow.map((s2, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { display: "flex", gap: 10, padding: "6px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none" } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, fontWeight: 700, color: T.accent, flexShrink: 0, width: 18 } }, i + 1), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 13, color: T.text } }, s2))), /* @__PURE__ */ import_react.default.createElement("div", { style: { marginTop: 12, paddingTop: 12, borderTop: `1px solid ${T.border}` } }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 8 } }, "Prep tips"), YW_DATA.conductingTips.map((t, i) => /* @__PURE__ */ import_react.default.createElement("p", { key: i, style: { fontSize: 12, color: T.muted, padding: "4px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none", lineHeight: 1.5 } }, "\u2022 ", t))))), tab === "Teaching Outline" && /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 10, background: `${T.accent}05`, borderLeft: `3px solid ${T.accent}` } }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 4 } }, "This week's prep"), /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 13, color: T.muted, lineHeight: 1.6 } }, "Use the Come Follow Me tab to get the YW Meeting Prep summary and discussion prompts for this week's lesson. Tailored for your class.")), /* @__PURE__ */ import_react.default.createElement(Card, null, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 10 } }, "Lesson idea bank"), [
-      "Why temple covenants matter for my generation",
-      "Digital boundaries and the Spirit \u2014 social media fast challenge",
-      "My testimony \u2014 how to share it naturally",
-      "Personal revelation: how to hear God's voice",
-      "Faith vs fear \u2014 acting when you can't see the whole staircase",
-      "Seeking the gifts of the Spirit",
-      "What it means to be a covenant keeper",
-      "The Atonement for perfectionism and shame",
-      "Preparing now for an eternal marriage",
-      "Being a light in your school"
-    ].map((l, i) => /* @__PURE__ */ import_react.default.createElement("p", { key: i, style: { fontSize: 13, color: T.text, padding: "6px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none", lineHeight: 1.5 } }, "\u2022 ", l)))), tab === "Contacts" && /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 10 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 10 } }, "Presidency"), YW_DATA.presidency.map((p, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { display: "flex", justifyContent: "space-between", padding: "7px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none" } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 13, color: T.muted, fontWeight: 500 } }, p.role), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 13, color: T.text, fontWeight: 600 } }, p.name)))), /* @__PURE__ */ import_react.default.createElement(Card, null, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 8 } }, "Quick links"), [
-      { label: "LDS Tools \u2014 ward directory", url: "https://www.churchofjesuschrist.org/tools" },
-      { label: "Gospel Library", url: "https://www.churchofjesuschrist.org/study" },
-      { label: "Come Follow Me 2026", url: "https://www.churchofjesuschrist.org/study/come-follow-me/old-testament" },
-      { label: "For the Strength of Youth", url: "https://www.churchofjesuschrist.org/study/manual/for-the-strength-of-youth" }
-    ].map((l, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { display: "flex", justifyContent: "space-between", alignItems: "center", padding: "7px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none" } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 13, color: T.text } }, l.label), /* @__PURE__ */ import_react.default.createElement("a", { href: l.url, target: "_blank", rel: "noopener noreferrer", style: { fontSize: 11, color: T.accent, fontWeight: 600, textDecoration: "none" } }, "Open \u2192"))))), tab === "Themes & Covenants" && /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 10 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 4 } }, YW_DATA.themes[0].year, " Theme"), /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 16, fontWeight: 700, color: T.text, marginBottom: 4, lineHeight: 1.4 } }, YW_DATA.themes[0].theme), /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 12, color: T.accent, fontWeight: 600 } }, YW_DATA.themes[0].scripture)), /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 10 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 10 } }, "YW Values"), YW_DATA.themes.slice(1).map((t, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { padding: "8px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none" } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 13, fontWeight: 700, color: T.accent, marginBottom: 2 } }, t.label), /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 12, color: T.muted, lineHeight: 1.5 } }, t.desc)))), /* @__PURE__ */ import_react.default.createElement(Card, null, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 10 } }, "The Covenant Path"), YW_DATA.covenantPath.map((c, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { padding: "8px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none" } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 13, fontWeight: 700, color: T.text, marginBottom: 2 } }, c.step), /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 12, color: T.muted, lineHeight: 1.5 } }, c.note))))));
-  }
-  function PanelPrayer() {
-    const [prayers, setP] = (0, import_react.useState)(() => {
-      try {
-        return JSON.parse(localStorage.getItem("mm3_pray") || "[]");
-      } catch {
-        return [];
-      }
-    });
-    const [nm, setNm] = (0, import_react.useState)("");
-    const [nt, setNt] = (0, import_react.useState)("");
-    const sv = (l) => {
-      setP(l);
-      try {
-        localStorage.setItem("mm3_pray", JSON.stringify(l));
-      } catch {
-      }
-    };
-    const add = () => {
-      if (!nm.trim()) return;
-      sv([...prayers, { id: Date.now(), name: nm.trim(), note: nt.trim() }]);
-      setNm("");
-      setNt("");
-    };
-    return /* @__PURE__ */ import_react.default.createElement("div", { className: "fade" }, /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 14 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 8 } }, "Add to prayer list"), /* @__PURE__ */ import_react.default.createElement("input", { value: nm, onChange: (e) => setNm(e.target.value), onKeyDown: (e) => e.key === "Enter" && add(), placeholder: "Who or what?", style: { ...s.input, marginBottom: 6 } }), /* @__PURE__ */ import_react.default.createElement("input", { value: nt, onChange: (e) => setNt(e.target.value), placeholder: "Specifically what? (optional)", style: { ...s.input, fontSize: 12, padding: "8px 10px", marginBottom: 8 } }), /* @__PURE__ */ import_react.default.createElement("button", { onClick: add, style: { ...s.btn, width: "100%" } }, "Add")), prayers.length === 0 && /* @__PURE__ */ import_react.default.createElement("p", { style: { textAlign: "center", padding: 32, color: T.hint, fontSize: 13 } }, "No one on the list yet."), prayers.map((p) => /* @__PURE__ */ import_react.default.createElement(Card, { key: p.id, style: { marginBottom: 8 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "flex-start" } }, /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontWeight: 600, fontSize: 15, color: T.text, marginBottom: p.note ? 4 : 0 } }, p.name), p.note && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 13, color: T.hint, lineHeight: 1.5 } }, p.note)), /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => sv(prayers.filter((x) => x.id !== p.id)), style: { background: "none", border: "none", cursor: "pointer", color: T.border, fontSize: 18, padding: 0, marginLeft: 8 } }, "\xD7")))));
-  }
-  function PanelChurch() {
-    const [tab, setTab] = (0, import_react.useState)("RS Lesson");
-    const CHURCH_TABS = ["RS Lesson", "Ward Activities", "Reminders"];
-    return /* @__PURE__ */ import_react.default.createElement("div", { className: "fade" }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 4, marginBottom: 16, flexWrap: "wrap" } }, CHURCH_TABS.map((t) => /* @__PURE__ */ import_react.default.createElement(
-      "button",
-      {
-        key: t,
-        onClick: () => setTab(t),
-        style: {
-          fontSize: 11,
-          fontWeight: 600,
-          padding: "5px 10px",
-          borderRadius: 99,
-          border: `1.5px solid ${tab === t ? T.accent : T.border}`,
-          background: tab === t ? T.accent : "transparent",
-          color: tab === t ? "#fff" : T.muted,
-          cursor: "pointer",
-          whiteSpace: "nowrap"
-        }
-      },
-      t
-    ))), tab === "RS Lesson" && /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 10 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 6 } }, "Current lesson"), /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 15, fontWeight: 700, color: T.text, marginBottom: 4, lineHeight: 1.4 } }, '"Lost Luggage, Redeemed Souls"'), /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 12, color: T.hint, marginBottom: 12 } }, "Gary E. Stevenson \xB7 General Conference"), /* @__PURE__ */ import_react.default.createElement(
-      "a",
-      {
-        href: "https://www.churchofjesuschrist.org/study/general-conference",
-        target: "_blank",
-        rel: "noopener noreferrer",
-        style: { fontSize: 12, fontWeight: 600, color: T.accent, textDecoration: "none", padding: "7px 14px", border: `1.5px solid ${T.accent}`, borderRadius: 8, display: "inline-block" }
-      },
-      "Open in Gospel Library \u2192"
-    )), /* @__PURE__ */ import_react.default.createElement(Card, null, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 8 } }, "Sunday schedule"), [
-      { time: "9:00am", name: "Sacrament Meeting" },
-      { time: "10:05am", name: "Sunday School" },
-      { time: "11:00am", name: "Young Women / Relief Society" }
-    ].map((s2, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { display: "flex", gap: 12, padding: "8px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none" } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 12, fontWeight: 600, color: T.accent, minWidth: 60 } }, s2.time), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 13, color: T.text } }, s2.name))))), tab === "Ward Activities" && /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 10 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 10 } }, "Upcoming ward events"), [
-      { date: "July 4", title: "Ward BBQ & Fireworks", loc: "Church parking lot", note: "Bring a side dish" },
-      { date: "July 24", title: "Pioneer Day Breakfast", loc: "Cultural Hall", note: "7am \u2014 Dutch oven potatoes, eggs, OJ" },
-      { date: "Aug TBD", title: "Back to School Family Night", loc: "Church", note: "" }
-    ].map((e, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { padding: "10px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none" } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 12 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { minWidth: 56, flexShrink: 0 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 13, fontWeight: 700, color: T.blue } }, e.date)), /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontWeight: 600, fontSize: 13, color: T.text, marginBottom: 2 } }, e.title), /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 11, color: T.hint } }, e.loc), e.note && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 11, color: T.muted, fontStyle: "italic", marginTop: 2 } }, e.note)))))), /* @__PURE__ */ import_react.default.createElement(Card, null, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 8 } }, "Quick links"), [
-      { label: "Gospel Library", url: "https://www.churchofjesuschrist.org/study", note: "Scriptures, manuals, talks" },
-      { label: "General Conference", url: "https://www.churchofjesuschrist.org/study/general-conference", note: "Latest April 2026 sessions" },
-      { label: "Come Follow Me 2026", url: "https://www.churchofjesuschrist.org/study/come-follow-me/old-testament", note: "Old Testament study guide" },
-      { label: "Lehi Utah Temple", url: "https://www.churchofjesuschrist.org/temples/details/lehi-utah-temple", note: "Check schedule and appointments" }
-    ].map((l, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { display: "flex", justifyContent: "space-between", alignItems: "flex-start", padding: "7px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none" } }, /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 13, fontWeight: 600, color: T.text } }, l.label), /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 11, color: T.hint } }, l.note)), /* @__PURE__ */ import_react.default.createElement("a", { href: l.url, target: "_blank", rel: "noopener noreferrer", style: { fontSize: 11, color: T.accent, fontWeight: 600, textDecoration: "none", flexShrink: 0, marginLeft: 10 } }, "Open \u2192"))))), tab === "Reminders" && /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 10 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 8 } }, "Weekly recurring"), [
-      { day: "Thursday", task: "Text YW teacher \u2014 confirm topic and any needs" },
-      { day: "Thursday", task: "Grocery order \u2014 plan meals and events for upcoming week" },
-      { day: "Sunday AM", task: "Text presidency reminder morning of" },
-      { day: "Sunday", task: "Have opening song chosen before class starts" },
-      { day: "Sunday", task: "Journal + Diabetes reset (upload Clarity report)" },
-      { day: "Sunday", task: "Plan Monday family night" }
-    ].map((r, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { display: "flex", gap: 10, padding: "7px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none" } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, fontWeight: 700, color: T.accent, minWidth: 72, flexShrink: 0 } }, r.day), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 13, color: T.text, lineHeight: 1.4 } }, r.task)))), /* @__PURE__ */ import_react.default.createElement(Card, null, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 8 } }, "Monthly"), [
-      "Fast Sunday \u2014 prepare testimony",
-      "First Sunday \u2014 ward council or presidency meeting",
-      "Review upcoming activities \u2014 check prep list",
-      "Birthday acknowledgment for YW class members"
-    ].map((r, i) => /* @__PURE__ */ import_react.default.createElement("p", { key: i, style: { fontSize: 13, color: T.text, padding: "6px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none", lineHeight: 1.5 } }, "\u2022 ", r)))));
-  }
-  function SectionBusiness() {
-    return /* @__PURE__ */ import_react.default.createElement("div", { className: "fade", style: { display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: "55vh", textAlign: "center", padding: "40px 16px" } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { width: 64, height: 64, borderRadius: 16, background: T.surface, border: `1.5px solid ${T.border}`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 28, marginBottom: 20 } }, "\u{1F3D7}\uFE0F"), /* @__PURE__ */ import_react.default.createElement("h2", { style: { fontSize: 28, fontWeight: 700, color: T.text, marginBottom: 10, letterSpacing: "-0.02em" } }, "Business"), /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 14, color: T.muted, maxWidth: 320, lineHeight: 1.8, marginBottom: 28 } }, "Rental property, maintenance tracker, and resources. More details to come."), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 8, flexWrap: "wrap", justifyContent: "center" } }, ["Rental Property", "Maintenance", "Resources", "Documents"].map(
-      (x) => /* @__PURE__ */ import_react.default.createElement("span", { key: x, style: { padding: "8px 14px", borderRadius: 10, background: T.card, border: `1px solid ${T.border}`, fontSize: 12, color: T.hint, fontWeight: 500 } }, x)
-    )));
-  }
   function BottomNav({ active, onChange }) {
-    const items = [
-      { id: "home", label: "Home", icon: (on) => /* @__PURE__ */ import_react.default.createElement("svg", { width: "22", height: "22", viewBox: "0 0 24 24", fill: "none", stroke: on ? "none" : T.hint, strokeWidth: "1.8", strokeLinecap: "round", strokeLinejoin: "round" }, on ? /* @__PURE__ */ import_react.default.createElement(import_react.default.Fragment, null, /* @__PURE__ */ import_react.default.createElement("path", { d: "M3 10l9-7 9 7v10a2 2 0 01-2 2H5a2 2 0 01-2-2V10z", fill: T.accent }), /* @__PURE__ */ import_react.default.createElement("rect", { x: "9", y: "14", width: "6", height: "8", rx: "0.5", fill: "#fff" })) : /* @__PURE__ */ import_react.default.createElement(import_react.default.Fragment, null, /* @__PURE__ */ import_react.default.createElement("path", { d: "M3 10l9-7 9 7v10a2 2 0 01-2 2H5a2 2 0 01-2-2V10z" }), /* @__PURE__ */ import_react.default.createElement("polyline", { points: "9,22 9,14 15,14 15,22" }))) },
-      { id: "family", label: "Family", icon: (on) => /* @__PURE__ */ import_react.default.createElement("svg", { width: "22", height: "22", viewBox: "0 0 24 24", fill: "none", stroke: on ? "none" : T.hint, strokeWidth: "1.8", strokeLinecap: "round", strokeLinejoin: "round" }, on ? /* @__PURE__ */ import_react.default.createElement(import_react.default.Fragment, null, /* @__PURE__ */ import_react.default.createElement("circle", { cx: "9", cy: "9", r: "3.5", fill: T.accent }), /* @__PURE__ */ import_react.default.createElement("path", { d: "M2 21v-2a4.5 4.5 0 014.5-4.5h5A4.5 4.5 0 0116 19v2", fill: T.accent }), /* @__PURE__ */ import_react.default.createElement("circle", { cx: "18", cy: "9", r: "2.5", fill: T.accent, opacity: "0.65" }), /* @__PURE__ */ import_react.default.createElement("path", { d: "M22 21v-1.5a3.5 3.5 0 00-2.5-3.36", stroke: T.accent, strokeWidth: "2" })) : /* @__PURE__ */ import_react.default.createElement(import_react.default.Fragment, null, /* @__PURE__ */ import_react.default.createElement("circle", { cx: "9", cy: "9", r: "3.5" }), /* @__PURE__ */ import_react.default.createElement("path", { d: "M2 21v-2a4.5 4.5 0 014.5-4.5h5A4.5 4.5 0 0116 19v2" }), /* @__PURE__ */ import_react.default.createElement("circle", { cx: "18", cy: "9", r: "2.5" }), /* @__PURE__ */ import_react.default.createElement("path", { d: "M22 21v-1.5a3.5 3.5 0 00-2.5-3.36" }))) },
-      { id: "health", label: "Health", icon: (on) => /* @__PURE__ */ import_react.default.createElement("svg", { width: "22", height: "22", viewBox: "0 0 24 24", fill: "none" }, /* @__PURE__ */ import_react.default.createElement("path", { d: "M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z", fill: on ? T.accent : "none", stroke: on ? "none" : T.hint, strokeWidth: "1.8", strokeLinecap: "round", strokeLinejoin: "round" })) },
-      { id: "faith", label: "Faith", icon: (on) => /* @__PURE__ */ import_react.default.createElement("svg", { width: "22", height: "22", viewBox: "0 0 24 24", fill: "none", stroke: on ? "none" : T.hint, strokeWidth: "1.8", strokeLinecap: "round", strokeLinejoin: "round" }, on ? /* @__PURE__ */ import_react.default.createElement(import_react.default.Fragment, null, /* @__PURE__ */ import_react.default.createElement("path", { d: "M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z", fill: T.accent }), /* @__PURE__ */ import_react.default.createElement("path", { d: "M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z", fill: T.accent, opacity: "0.75" })) : /* @__PURE__ */ import_react.default.createElement(import_react.default.Fragment, null, /* @__PURE__ */ import_react.default.createElement("path", { d: "M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z" }), /* @__PURE__ */ import_react.default.createElement("path", { d: "M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z" }))) },
-      { id: "business", label: "Business", icon: (on) => /* @__PURE__ */ import_react.default.createElement("svg", { width: "22", height: "22", viewBox: "0 0 24 24", fill: "none", stroke: on ? "none" : T.hint, strokeWidth: "1.8", strokeLinecap: "round", strokeLinejoin: "round" }, on ? /* @__PURE__ */ import_react.default.createElement(import_react.default.Fragment, null, /* @__PURE__ */ import_react.default.createElement("rect", { x: "1", y: "7", width: "22", height: "14", rx: "2", fill: T.accent }), /* @__PURE__ */ import_react.default.createElement("path", { d: "M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2", stroke: T.accent, strokeWidth: "1.8" })) : /* @__PURE__ */ import_react.default.createElement(import_react.default.Fragment, null, /* @__PURE__ */ import_react.default.createElement("rect", { x: "1", y: "7", width: "22", height: "14", rx: "2" }), /* @__PURE__ */ import_react.default.createElement("path", { d: "M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" }))) }
+    const tabs = [
+      { id: "home", label: "Home", icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>' },
+      { id: "family", label: "Family", icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>' },
+      { id: "health", label: "Health", icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>' },
+      { id: "faith", label: "Faith", icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>' }
     ];
-    return /* @__PURE__ */ import_react.default.createElement("nav", { style: { position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 100, background: "rgba(250,250,248,0.92)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)", borderTop: `1px solid ${T.border}`, paddingBottom: "max(8px,env(safe-area-inset-bottom))", paddingTop: 6 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "grid", gridTemplateColumns: "repeat(5,1fr)", maxWidth: 500, margin: "0 auto" } }, items.map((n) => {
-      const on = active === n.id;
-      return /* @__PURE__ */ import_react.default.createElement("button", { key: n.id, onClick: () => onChange(n.id), style: { display: "flex", flexDirection: "column", alignItems: "center", gap: 3, padding: "4px 0", background: "none", border: "none", cursor: "pointer" } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { width: 28, height: 28, display: "flex", alignItems: "center", justifyContent: "center" } }, n.icon(on)), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 9, fontWeight: on ? 700 : 500, color: on ? T.accent : T.hint, letterSpacing: "0.02em" } }, n.label));
-    })));
+    return /* @__PURE__ */ import_react.default.createElement("nav", { style: { position: "fixed", bottom: 0, left: 0, right: 0, background: "rgba(255,255,255,0.95)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)", borderTop: `1px solid ${T.border}`, display: "flex", zIndex: 100, paddingBottom: "env(safe-area-inset-bottom)" } }, tabs.map((t) => {
+      const on = active === t.id;
+      return /* @__PURE__ */ import_react.default.createElement("button", { key: t.id, onClick: () => onChange(t.id), style: { flex: 1, display: "flex", flexDirection: "column", alignItems: "center", padding: "8px 0 6px", background: "none", border: "none", cursor: "pointer", color: on ? T.accent : T.hint, gap: 2 } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { color: on ? T.accent : T.hint }, dangerouslySetInnerHTML: { __html: t.icon } }), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 10, fontWeight: on ? 700 : 400 } }, t.label));
+    }));
   }
-  var SECTIONS = { home: SectionHome, family: SectionFamily, health: SectionHealth, faith: SectionFaith, business: SectionBusiness };
+  var SECTIONS = { home: SectionHome, family: SectionFamily, health: SectionHealth, faith: SectionFaith };
   function MillsManor() {
     const [active, setActive] = (0, import_react.useState)("home");
     const [subTab, setSubTab] = (0, import_react.useState)(null);
