@@ -13,7 +13,7 @@
 </head>
 <body>
   <div id="root"></div>
-  <script>/* v1782687458 */
+  <script>/* v1782704937 */
 (() => {
   var __create = Object.create;
   var __defProp = Object.defineProperty;
@@ -7594,7 +7594,7 @@ button,input,select,textarea{font-family:inherit}
       }
     });
     const [open, setOpen] = (0, import_react.useState)(null);
-    const [filter, setFilter] = (0, import_react.useState)("all");
+    const [filter, setFilter] = (0, import_react.useState)("goal");
     const [inp, setInp] = (0, import_react.useState)("");
     function buildInit() {
       const items = [];
@@ -7616,7 +7616,7 @@ button,input,select,textarea{font-family:inherit}
       sv([...goals, { id: Date.now(), text: t, type, who, done: false }]);
       setInp("");
     };
-    return /* @__PURE__ */ import_react.default.createElement("div", { className: "fade" }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 6, marginBottom: 16 } }, [["all", "All"], ["goal", "Goals"], ["bucket", "Bucket List"]].map(([k, l]) => /* @__PURE__ */ import_react.default.createElement(Chip, { key: k, on: filter === k, onClick: () => setFilter(k) }, l))), PEOPLE.map((p) => {
+    return /* @__PURE__ */ import_react.default.createElement("div", { className: "fade" }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 6, marginBottom: 16 } }, [["goal", "Goals"], ["bucket", "Bucket List"]].map(([k, l]) => /* @__PURE__ */ import_react.default.createElement(Chip, { key: k, on: filter === k, onClick: () => setFilter(k) }, l))), PEOPLE.map((p) => {
       const items = goals.filter((g) => g.who === p && (filter === "all" || g.type === filter));
       const done = items.filter((i) => i.done).length;
       const isOpen = open === p;
@@ -8008,8 +8008,8 @@ button,input,select,textarea{font-family:inherit}
           { name: "Dumbbell RDL", sets: "3\xD710", tip: "Hinge at hips, soft knee. Pelvic floor: brace before hinge, exhale at lockout.", swaps: ["Single leg RDL 2\xD710 each", "KB deadlift 3\xD710"] }
         ],
         core: [
-          { name: "Dead bugs", sets: "3\xD710 each", tip: "Postpartum essential. Low back flat throughout. Exhale as arm/leg extend. Never let the low back arch.", swaps: ["Bird dog 3\xD710 each", "Hollow body hold 2\xD720 sec"] },
-          { name: "Pallof press", sets: "2\xD712 each", tip: "Anti-rotation at cable station. Brace before pressing out. Deep core and pelvic floor.", swaps: ["Band Pallof press 2\xD712 each", "Side plank 2\xD720 sec each"] }
+          { name: "Dead bugs", weighted: false, sets: "3\xD710 each", tip: "Postpartum essential. Low back flat throughout. Exhale as arm/leg extend. Never let the low back arch.", swaps: ["Bird dog 3\xD710 each", "Hollow body hold 2\xD720 sec"] },
+          { name: "Pallof press", weighted: false, sets: "2\xD712 each", tip: "Anti-rotation at cable station. Brace before pressing out. Deep core and pelvic floor.", swaps: ["Band Pallof press 2\xD712 each", "Side plank 2\xD720 sec each"] }
         ]
       },
       Tuesday: {
@@ -8039,11 +8039,11 @@ button,input,select,textarea{font-family:inherit}
           { name: "Leg press", sets: "3\xD710", tip: "Same machine area. Shoulder-width feet, full range, heels drive back.", swaps: ["Hack squat machine 3\xD710", "Belt squat 3\xD710"] },
           { name: "Leg extension", sets: "3\xD712", tip: "A1 Wk3+. Quad isolation. Pause at top. 3-0-1 tempo Wk5+.", swaps: ["Step-ups with DB 3\xD710 each"] },
           { name: "Hamstring curl", sets: "3\xD712", tip: "A2 Wk3+. 3 sec eccentric \u2014 this is where hamstring work actually happens.", swaps: ["Nordic curl 3\xD78", "Single leg curl 3\xD710 each"] },
-          { name: "Calf raises", sets: "3\xD715", tip: "Calf machine or Smith. Pause at top and bottom. Can superset with something else if short on time.", swaps: ["Seated calf raise 3\xD715", "Leg press calf raise 3\xD715"] }
+          { name: "Calf raises", weighted: false, sets: "3\xD715", tip: "Calf machine or Smith. Pause at top and bottom. Can superset with something else if short on time.", swaps: ["Seated calf raise 3\xD715", "Leg press calf raise 3\xD715"] }
         ],
         core: [
-          { name: "Pallof press", sets: "2\xD712 each", tip: "Anti-rotation. Brace before pressing out. Deep core and pelvic floor.", swaps: ["Dead bugs 3\xD710 each", "Side plank 2\xD720 sec each"] },
-          { name: "Incline sit-up", sets: "3\xD712", tip: "Decline bench set to low incline. Full range \u2014 all the way up, all the way back. Add a DB to chest to progress.", swaps: ["Stability ball crunch 3\xD712", "Weighted crunch 3\xD712"] }
+          { name: "Pallof press", weighted: false, sets: "2\xD712 each", tip: "Anti-rotation. Brace before pressing out. Deep core and pelvic floor.", swaps: ["Dead bugs 3\xD710 each", "Side plank 2\xD720 sec each"] },
+          { name: "Incline sit-up", weighted: false, sets: "3\xD712", tip: "Decline bench set to low incline. Full range \u2014 all the way up, all the way back. Add a DB to chest to progress.", swaps: ["Stability ball crunch 3\xD712", "Weighted crunch 3\xD712"] }
         ]
       },
       Thursday: {
@@ -8076,8 +8076,8 @@ button,input,select,textarea{font-family:inherit}
         ],
         core: [
           { name: "Captain's chair knee raise", sets: "3\xD712", tip: "Arms on pads, hang freely. Drive knees to chest with control. Progress to straight leg raises over the program.", swaps: ["Hanging knee raise 3\xD710", "Lying leg raises 3\xD712"] },
-          { name: "Incline sit-up", sets: "3\xD712", tip: "Full range. Control the lowering. Add DB at chest to progress over weeks.", swaps: ["Stability ball crunch 3\xD712", "Weighted crunch 3\xD712", "Ab machine 3\xD712"] },
-          { name: "Ab rollout (kneeling)", sets: "2\xD78", tip: "Wheel or slider from knees. Only go as far as you can keep a flat back. Stop if you see coning. Build range over weeks.", swaps: ["Body saw 2\xD710", "Plank hold 2\xD730 sec"] }
+          { name: "Incline sit-up", weighted: false, sets: "3\xD712", tip: "Full range. Control the lowering. Add DB at chest to progress over weeks.", swaps: ["Stability ball crunch 3\xD712", "Weighted crunch 3\xD712", "Ab machine 3\xD712"] },
+          { name: "Ab rollout (kneeling)", weighted: false, sets: "2\xD78", tip: "Wheel or slider from knees. Only go as far as you can keep a flat back. Stop if you see coning. Build range over weeks.", swaps: ["Body saw 2\xD710", "Plank hold 2\xD730 sec"] }
         ]
       },
       Saturday: { title: "Active Recovery", rest: true, note: "Deep stretch at Vasa, outdoor walk, or light yoga. No structured lifting." },
@@ -8091,12 +8091,12 @@ button,input,select,textarea{font-family:inherit}
         bgNote: "Cardio = mild BG rise early, then drop. Check CGM.",
         note: "Mobility done early. Cardio is the main event. One upper, one lower, two core.",
         strength: [
-          { name: "Push ups", sets: "3\xD712", tip: "Full range. Use DB handles if available \u2014 protects wrists and adds depth.", swaps: ["DB chest press on floor 3\xD710", "Band press 3\xD712"] },
+          { name: "Push ups", weighted: false, sets: "3\xD712", tip: "Full range. Use DB handles if available \u2014 protects wrists and adds depth.", swaps: ["DB chest press on floor 3\xD710", "Band press 3\xD712"] },
           { name: "DB RDL", sets: "3\xD710", tip: "Pelvic floor: brace before hinge, exhale at lockout. Full hamstring stretch.", swaps: ["Single leg RDL 2\xD710 each", "Good morning with band 3\xD712"] }
         ],
         core: [
-          { name: "Dead bugs", sets: "3\xD710 each", tip: "Low back flat. Exhale on extension.", swaps: ["Bird dog 3\xD710 each"] },
-          { name: "Body saw", sets: "2\xD710", tip: "Forearms on sliders or socks on hard floor. Plank position, slide forward and back. Deep core at home.", swaps: ["Plank hold 2\xD730 sec", "Plank shoulder taps 2\xD720"] }
+          { name: "Dead bugs", weighted: false, sets: "3\xD710 each", tip: "Low back flat. Exhale on extension.", swaps: ["Bird dog 3\xD710 each"] },
+          { name: "Body saw", weighted: false, sets: "2\xD710", tip: "Forearms on sliders or socks on hard floor. Plank position, slide forward and back. Deep core at home.", swaps: ["Plank hold 2\xD730 sec", "Plank shoulder taps 2\xD720"] }
         ]
       },
       Tuesday: {
@@ -8119,14 +8119,14 @@ button,input,select,textarea{font-family:inherit}
         warmup: "Walk outside or march in place 10 min",
         bgNote: "Lower body at home still drops BG. Under 100 = eat 15g carbs before starting.",
         strength: [
-          { name: "Goblet squat", sets: "4\xD712", tip: "DB at chest. Elbows inside knees. Full depth. Pelvic floor: brace on descent, exhale up.", swaps: ["Band squat 4\xD715", "Sumo squat 4\xD712"] },
-          { name: "Reverse lunge", sets: "3\xD710 each", tip: "Add DB if available. Control the descent. Weight stays in front heel.", swaps: ["Split squat hold 3\xD730 sec each", "Curtsy lunge 3\xD710 each"] },
-          { name: "Single leg glute bridge", sets: "3\xD712 each", tip: "Foot flat, drive through heel, squeeze at top. Exhale on drive.", swaps: ["DB hip thrust on floor 3\xD712", "Frog pump 3\xD720"] },
-          { name: "Sumo squat", sets: "3\xD712", tip: "Wide stance, toes out. Sit into hips. DB optional.", swaps: ["Lateral squat 3\xD710 each"] },
+          { name: "Goblet squat", weighted: false, sets: "4\xD712", tip: "DB at chest. Elbows inside knees. Full depth. Pelvic floor: brace on descent, exhale up.", swaps: ["Band squat 4\xD715", "Sumo squat 4\xD712"] },
+          { name: "Reverse lunge", weighted: false, sets: "3\xD710 each", tip: "Add DB if available. Control the descent. Weight stays in front heel.", swaps: ["Split squat hold 3\xD730 sec each", "Curtsy lunge 3\xD710 each"] },
+          { name: "Single leg glute bridge", weighted: false, sets: "3\xD712 each", tip: "Foot flat, drive through heel, squeeze at top. Exhale on drive.", swaps: ["DB hip thrust on floor 3\xD712", "Frog pump 3\xD720"] },
+          { name: "Sumo squat", weighted: false, sets: "3\xD712", tip: "Wide stance, toes out. Sit into hips. DB optional.", swaps: ["Lateral squat 3\xD710 each"] },
           { name: "Calf raises on step", sets: "3\xD715", tip: "Stair or step. Full range, pause at top.", swaps: ["Single-leg raise 3\xD712 each"] }
         ],
         core: [
-          { name: "Dead bugs", sets: "3\xD710 each", tip: "Low back flat. Exhale on extension.", swaps: ["Bird dog 3\xD710 each"] },
+          { name: "Dead bugs", weighted: false, sets: "3\xD710 each", tip: "Low back flat. Exhale on extension.", swaps: ["Bird dog 3\xD710 each"] },
           { name: "Reverse crunch", sets: "3\xD712", tip: "On your back, knees to chest. Drive hips off the floor. Lower slow. Great lower ab work.", swaps: ["Stability ball crunch 3\xD712", "Flutter kicks 3\xD720 sec"] }
         ]
       },
@@ -8159,7 +8159,7 @@ button,input,select,textarea{font-family:inherit}
         core: [
           { name: "Lying leg raises", sets: "3\xD712", tip: "On your back. Lower back presses into floor. Slow lowering. Progress to flutter kicks.", swaps: ["Reverse crunch 3\xD712", "Bent knee raise 3\xD712"] },
           { name: "Stability ball crunch", sets: "3\xD712", tip: "Full range over the ball. Add light DB to chest as you progress. Great for T1D \u2014 no BP-spiking breath hold.", swaps: ["Incline sit-up 3\xD712", "Dead bugs 3\xD710 each"] },
-          { name: "Body saw", sets: "2\xD710", tip: "Forearms on ball or socks on floor. Plank position, slide forward and back. Deep core.", swaps: ["Plank hold 2\xD730 sec", "Plank shoulder taps 2\xD720"] }
+          { name: "Body saw", weighted: false, sets: "2\xD710", tip: "Forearms on ball or socks on floor. Plank position, slide forward and back. Deep core.", swaps: ["Plank hold 2\xD730 sec", "Plank shoulder taps 2\xD720"] }
         ]
       },
       Saturday: { title: "Active Recovery", rest: true, note: "Deep stretch at Vasa, outdoor walk, or yoga at home." },
@@ -8174,7 +8174,7 @@ button,input,select,textarea{font-family:inherit}
     { name: "Standing hamstring stretch", duration: "30 sec each side", cue: "Step one foot forward, slight bend in back knee, hinge at hips. Feel the pull behind the thigh." },
     { name: "Seated forward fold", duration: "60 sec", cue: "Legs straight in front. Reach for toes or shins. Don't round the lower back \u2014 hinge from hips." },
     { name: "Hip flexor stretch (kneeling)", duration: "45 sec each side", cue: "Low lunge. Drive hips forward. Tuck pelvis under slightly. Feel the front of the back hip." },
-    { name: "Glute bridge hold", duration: "3\xD710 sec", cue: "Feet flat, knees bent. Drive hips up, squeeze glutes hard at top. Hold. Slow down." }
+    { name: "Glute bridge hold", weighted: false, duration: "3\xD710 sec", cue: "Feet flat, knees bent. Drive hips up, squeeze glutes hard at top. Hold. Slow down." }
   ];
   var VASA_CLASSES = {
     Monday: { name: "Deep Stretch", times: ["6:00\u20137:00am", "7:45\u20138:45pm"], note: "Saratoga Springs \xB7 check app to confirm" },
@@ -8607,17 +8607,17 @@ button,input,select,textarea{font-family:inherit}
         note: "Rest 60 sec between rounds. Move through all 4 before resting.",
         exercises: [
           { name: "Squat", sets: "15 reps", tip: "Bodyweight. Full depth, chest up, drive through heels.", swaps: ["Sumo squat 15", "Pulse squat 20", "Wall sit 45 sec"] },
-          { name: "Reverse lunge", sets: "10 each", tip: "Step back, knee hovers, weight stays in front heel.", swaps: ["Forward lunge 10 each", "Lateral lunge 10 each"] },
+          { name: "Reverse lunge", weighted: false, sets: "10 each", tip: "Step back, knee hovers, weight stays in front heel.", swaps: ["Forward lunge 10 each", "Lateral lunge 10 each"] },
           { name: "Glute bridge", sets: "15 reps", tip: "Feet flat, drive through heels, squeeze 1 sec at top. Exhale on the drive.", swaps: ["Single leg bridge 10 each", "Frog pump 20"] },
-          { name: "Calf raises", sets: "20 reps", tip: "Use a step if available. Full range, pause at top.", swaps: ["Single leg 12 each"] }
+          { name: "Calf raises", weighted: false, sets: "20 reps", tip: "Use a step if available. Full range, pause at top.", swaps: ["Single leg 12 each"] }
         ]
       },
       {
         label: "Circuit B \u2014 Upper body (3 rounds)",
         note: "Rest 60 sec between rounds.",
         exercises: [
-          { name: "Push ups", sets: "10\u201315 reps", tip: "Hands shoulder-width, elbows 45\xB0. Scale on knees. No flat barbell needed.", swaps: ["Incline push-up on bed 15", "Pike push-up 10", "Wall push-up 20"] },
-          { name: "Tricep dips", sets: "12 reps", tip: "Hands on chair, couch, or bed edge. Elbows back, lower slow.", swaps: ["Overhead extension with water bottle 12", "Close grip push-up 10"] },
+          { name: "Push ups", weighted: false, sets: "10\u201315 reps", tip: "Hands shoulder-width, elbows 45\xB0. Scale on knees. No flat barbell needed.", swaps: ["Incline push-up on bed 15", "Pike push-up 10", "Wall push-up 20"] },
+          { name: "Tricep dips", weighted: false, sets: "12 reps", tip: "Hands on chair, couch, or bed edge. Elbows back, lower slow.", swaps: ["Overhead extension with water bottle 12", "Close grip push-up 10"] },
           { name: "Superman hold", sets: "10 reps", tip: "On the floor. Squeeze glutes and back at the top. Hold 2 sec.", swaps: ["Prone Y raise 12", "Back extension on bed 12"] },
           { name: "Shoulder tap plank", sets: "20 total", tip: "High plank. Tap opposite shoulder, resist rotation.", swaps: ["Plank hold 30 sec", "Side plank 20 sec each"] }
         ]
@@ -8626,9 +8626,9 @@ button,input,select,textarea{font-family:inherit}
         label: "Circuit C \u2014 Core (2 rounds)",
         note: "Rest 45 sec between rounds. Postpartum \u2014 stop if you see coning at midline.",
         exercises: [
-          { name: "Dead bugs", sets: "10 each", tip: "Lower back flat the whole time. Exhale as arm/leg extend.", swaps: ["Bird dog 10 each"] },
+          { name: "Dead bugs", weighted: false, sets: "10 each", tip: "Lower back flat the whole time. Exhale as arm/leg extend.", swaps: ["Bird dog 10 each"] },
           { name: "Reverse crunch", sets: "12 reps", tip: "On back, knees to chest. Drive hips off the floor. Slow lowering.", swaps: ["Leg raises 10", "Flutter kicks 20"] },
-          { name: "Side plank", sets: "20 sec each", tip: "Stack feet or stagger. Build to 30 sec over time.", swaps: ["Elbow plank 30 sec"] },
+          { name: "Side plank", weighted: false, sets: "20 sec each", tip: "Stack feet or stagger. Build to 30 sec over time.", swaps: ["Elbow plank 30 sec"] },
           { name: "Mountain climbers", sets: "20 total", tip: "Hands under shoulders. Drive knees in alternating. Stay controlled.", swaps: ["Slow climbers 10 each", "Plank shoulder taps 20"] }
         ]
       },
@@ -8682,11 +8682,378 @@ button,input,select,textarea{font-family:inherit}
       return /* @__PURE__ */ import_react.default.createElement("div", { key: i, onClick: () => setMobilityDone((p) => ({ ...p, [i]: !p[i] })), style: { display: "flex", alignItems: "flex-start", gap: 10, padding: "7px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none", cursor: "pointer", opacity: d ? 0.45 : 1 } }, /* @__PURE__ */ import_react.default.createElement(Chk, { checked: d, onChange: () => setMobilityDone((p) => ({ ...p, [i]: !p[i] })), sz: 16 }), /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 12, fontWeight: 500, color: T.text, textDecoration: d ? "line-through" : "none" } }, ex.name), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, color: T.hint, marginLeft: 6 } }, ex.duration), /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 11, color: T.muted, marginTop: 1, fontStyle: "italic", lineHeight: 1.4 } }, ex.cue)));
     }))), vasa && /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement("div", { onClick: () => setOpen(open === "vasa" ? null : "vasa"), style: { display: "flex", alignItems: "center", gap: 12, padding: "9px 0", cursor: "pointer" } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { width: 16, height: 16, borderRadius: "50%", background: `${T.accent}20`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 } }, /* @__PURE__ */ import_react.default.createElement("svg", { width: "10", height: "10", viewBox: "0 0 24 24", fill: "none", stroke: T.accent, strokeWidth: "2.5" }, /* @__PURE__ */ import_react.default.createElement("path", { d: "M12 2L4 12a8 8 0 1016 0z" }))), /* @__PURE__ */ import_react.default.createElement("div", { style: { flex: 1 } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 13, fontWeight: 500, color: T.text } }, "Deep Stretch class"), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, color: T.hint, marginLeft: 8 } }, vasa.times.join(" \xB7 "))), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 10, fontWeight: 700, color: T.accent } }, "VASA")), open === "vasa" && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 12, color: T.muted, padding: "4px 0 8px 28px", lineHeight: 1.5 } }, vasa.note)));
   }
+  var WORKOUT_QUOTES = [
+    { text: "The only bad workout is the one that didn't happen.", source: "Unknown" },
+    { text: "Take care of your body. It's the only place you have to live.", source: "Jim Rohn" },
+    { text: "You don't have to be extreme, just consistent.", source: "Unknown" },
+    { text: "Strength doesn't come from what you can do. It comes from overcoming the things you once thought you couldn't.", source: "Rikki Rogers" },
+    { text: "Progress, not perfection.", source: "Unknown" },
+    { text: "Your body can stand almost anything. It's your mind you have to convince.", source: "Unknown" },
+    { text: "Don't stop when you're tired. Stop when you're done.", source: "Unknown" },
+    { text: "A one-hour workout is 4% of your day. No excuses.", source: "Unknown" },
+    { text: "Fitness is not about being better than someone else. It's about being better than you used to be.", source: "Unknown" },
+    { text: "The pain you feel today will be the strength you feel tomorrow.", source: "Unknown" },
+    { text: "Train your mind to see the good in every workout.", source: "Unknown" },
+    { text: "Push yourself because no one else is going to do it for you.", source: "Unknown" },
+    { text: "Sweat is fat crying.", source: "Unknown" },
+    { text: "The hardest lift of all is lifting your butt off the couch.", source: "Unknown" },
+    { text: "Your health is an investment, not an expense.", source: "Unknown" },
+    { text: "Motivation is what gets you started. Habit is what keeps you going.", source: "Jim Rohn" },
+    { text: "You are one workout away from a good mood.", source: "Unknown" },
+    { text: "If it doesn't challenge you, it doesn't change you.", source: "Fred DeVito" },
+    { text: "Discipline is choosing between what you want now and what you want most.", source: "Unknown" },
+    { text: "Make time for it. Just get it done. Nobody ever got strong or fit by thinking about it.", source: "Jim Wendler" },
+    { text: "Strong women lift each other up \u2014 and also some heavy weights.", source: "Unknown" },
+    { text: "The best project you'll ever work on is you.", source: "Unknown" },
+    { text: "Work hard in silence, let your results be your noise.", source: "Frank Ocean" },
+    { text: "Be stronger than your excuses.", source: "Unknown" },
+    { text: "You didn't come this far to only come this far.", source: "Unknown" },
+    { text: "It always seems impossible until it's done.", source: "Nelson Mandela" },
+    { text: "Champions aren't made in comfort zones.", source: "Unknown" },
+    { text: "Every accomplishment starts with the decision to try.", source: "John F. Kennedy" },
+    { text: "Show up even when you don't want to. Especially when you don't want to.", source: "Unknown" },
+    { text: "You are what you repeatedly do. Excellence is a habit.", source: "Aristotle" },
+    { text: "Your future self is watching you right now through your memories.", source: "Unknown" },
+    { text: "Fall in love with taking care of yourself.", source: "Unknown" },
+    { text: "Small daily improvements lead to stunning results.", source: "Robin Sharma" },
+    { text: "Believe in yourself and all that you are.", source: "Christian D. Larson" },
+    { text: "Nourish your body. Honor your strength. Trust the process.", source: "Unknown" },
+    { text: "Being healthy is a way of life, not a punishment.", source: "Unknown" },
+    { text: "Her life is what her thoughts make it.", source: "Marcus Aurelius" },
+    { text: "You have to be comfortable being uncomfortable.", source: "Unknown" },
+    { text: "Commitment means staying loyal to what you said you were going to do.", source: "Unknown" },
+    { text: "The comeback is always stronger than the setback.", source: "Unknown" },
+    { text: "You are never too busy to take care of yourself.", source: "Unknown" },
+    { text: "Do something today that your future self will thank you for.", source: "Sean Patrick Flanery" },
+    { text: "Energy and persistence conquer all things.", source: "Benjamin Franklin" },
+    { text: "Endurance is not just the ability to bear a hard thing, but to turn it into glory.", source: "William Barclay" },
+    { text: "What seems impossible today will one day become your warm-up.", source: "Unknown" },
+    { text: "Train like a beast. Look like a beauty.", source: "Unknown" },
+    { text: "She believed she could, so she did.", source: "R.S. Grey" },
+    { text: "You are your only competition.", source: "Unknown" },
+    { text: "Hustle for that muscle.", source: "Unknown" },
+    { text: "Run when you can, walk if you have to, crawl if you must \u2014 just never give up.", source: "Dean Karnazes" },
+    { text: "Lift heavy, love deeply, live fully.", source: "Unknown" },
+    { text: "One rep at a time. One meal at a time. One day at a time.", source: "Unknown" },
+    { text: "Nothing will work unless you do.", source: "Maya Angelou" },
+    { text: "Tough times never last, but tough people do.", source: "Robert H. Schuller" },
+    { text: "I can and I will. Watch me.", source: "Carrie Green" },
+    { text: "Make your body the sexiest outfit you own.", source: "Unknown" },
+    { text: "Invest in your health or pay for your illness.", source: "Unknown" },
+    { text: "The only person you need to be better than is who you were yesterday.", source: "Unknown" },
+    { text: "Stop wishing. Start doing.", source: "Unknown" },
+    { text: "Strength is built in the moments you want to quit but don't.", source: "Unknown" },
+    { text: "Mind over matter. If you don't mind, it doesn't matter.", source: "Unknown" },
+    { text: "Every workout is a step toward the version of you that you're working to become.", source: "Unknown" },
+    { text: "You don't have to be great to start, but you have to start to be great.", source: "Zig Ziglar" },
+    { text: "Be the girl who decided to go for it.", source: "Unknown" },
+    { text: "It's not about perfect. It's about effort.", source: "Jillian Michaels" },
+    { text: "Discipline is the bridge between goals and accomplishment.", source: "Jim Rohn" },
+    { text: "You don't get what you wish for. You get what you work for.", source: "Unknown" },
+    { text: "The secret of getting ahead is getting started.", source: "Mark Twain" },
+    { text: "Every rep, every set, every day. That's how champions are built.", source: "Unknown" },
+    { text: "Good things come to those who sweat.", source: "Unknown" },
+    { text: "There is no shortcut to any place worth going.", source: "Beverly Sills" },
+    { text: "It's supposed to be hard. If it were easy, everyone would do it.", source: "Tom Hanks" },
+    { text: "Your body achieves what your mind believes.", source: "Unknown" },
+    { text: "The difference between try and triumph is a little umph.", source: "Marvin Phillips" },
+    { text: "Earn it.", source: "Unknown" },
+    { text: "Results happen over time, not overnight. Work hard, stay consistent, be patient.", source: "Unknown" },
+    { text: "Success is walking from failure to failure with no loss of enthusiasm.", source: "Winston Churchill" },
+    { text: "Wake up. Work out. Look hot. Kick ass.", source: "Unknown" },
+    { text: "The pain you feel today will be the strength you feel tomorrow.", source: "Unknown" },
+    { text: "You don't have to be rich to get fit, but you do have to be committed.", source: "Unknown" },
+    { text: "Every workout is progress.", source: "Unknown" },
+    { text: "It never gets easier. You just get stronger.", source: "Unknown" },
+    { text: "Once you see results, it becomes an addiction.", source: "Unknown" },
+    { text: "Train insane or remain the same.", source: "Unknown" },
+    { text: "Don't count the days. Make the days count.", source: "Muhammad Ali" },
+    { text: "Excuses don't burn calories.", source: "Unknown" },
+    { text: "Fitness is a lifestyle, not a punishment.", source: "Unknown" },
+    { text: "Sore today, strong tomorrow.", source: "Unknown" },
+    { text: "Your health is your wealth.", source: "Unknown" },
+    { text: "Don't wish for a good body. Work for it.", source: "Unknown" },
+    { text: "Set your goals high and don't stop until you get there.", source: "Bo Jackson" },
+    { text: "The last three or four reps is what makes the muscle grow.", source: "Arnold Schwarzenegger" },
+    { text: "To give anything less than your best is to sacrifice the gift.", source: "Steve Prefontaine" },
+    { text: "Champions aren't made in gyms. Champions are made from something deep inside them.", source: "Muhammad Ali" },
+    { text: "Run when you can, walk if you have to, crawl if you must; just never give up.", source: "Dean Karnazes" },
+    { text: "You have to believe in yourself when no one else does.", source: "Serena Williams" },
+    { text: "Gold medals are made out of sweat, blood, and tears.", source: "Mary Lou Retton" },
+    { text: "Winning isn't everything, but wanting to win is.", source: "Vince Lombardi" },
+    { text: "The harder the battle, the sweeter the victory.", source: "Les Brown" },
+    { text: "It's not about perfect. It's about effort.", source: "Jillian Michaels" },
+    { text: "No pain, no gain. Shut up and train.", source: "Unknown" },
+    { text: "Be stronger than your excuses.", source: "Unknown" },
+    { text: "Your only competition is who you were yesterday.", source: "Unknown" },
+    { text: "Strive for progress, not perfection.", source: "Unknown" },
+    { text: "If you want something you've never had, you must be willing to do something you've never done.", source: "Thomas Jefferson" },
+    { text: "Hard work beats talent when talent doesn't work hard.", source: "Tim Notke" },
+    { text: "The body achieves what the mind conceives.", source: "Napoleon Hill" },
+    { text: "Obsessed is a word the lazy use to describe the dedicated.", source: "Unknown" },
+    { text: "You're only one workout away from a good mood.", source: "Unknown" },
+    { text: "Train like a beast. Look like a beauty.", source: "Unknown" },
+    { text: "Transformation is not a future event. It is a present activity.", source: "Jillian Michaels" },
+    { text: "Strength is not given. It is built.", source: "Unknown" },
+    { text: "You can feel sore tomorrow or you can feel sorry tomorrow. You choose.", source: "Unknown" },
+    { text: "The only workout you regret is the one you didn't do.", source: "Unknown" },
+    { text: "Success is usually just around the corner from where you gave up.", source: "Unknown" },
+    { text: "Your body grew a human. Now watch what else it can do.", source: "Unknown" },
+    { text: "The strength you discover after having a child is unlike any other.", source: "Unknown" },
+    { text: "Motherhood is the greatest test of physical and mental endurance.", source: "Unknown" },
+    { text: "Strong moms raise strong kids.", source: "Unknown" },
+    { text: "You are not just bouncing back. You are rebuilding something stronger.", source: "Unknown" },
+    { text: "Postpartum is not a sprint. It's a marathon. Run your own race.", source: "Unknown" },
+    { text: "Every step forward is a step toward the version of you that you're becoming.", source: "Unknown" },
+    { text: "Your comeback story starts now.", source: "Unknown" },
+    { text: "Be the woman who makes other women want to level up.", source: "Unknown" },
+    { text: "She is fierce. She is focused. She is unstoppable.", source: "Unknown" },
+    { text: "A strong woman knows she has strength enough for the journey.", source: "Unknown" },
+    { text: "Women who sweat together, succeed together.", source: "Unknown" },
+    { text: "Don't tell me the sky is the limit when there are footprints on the moon.", source: "Paul Brandt" },
+    { text: "A woman who knows her worth doesn't need anyone to validate it.", source: "Unknown" },
+    { text: "Lift like a girl. Because girls lift.", source: "Unknown" },
+    { text: "I am not afraid of storms, for I am learning how to sail my ship.", source: "Louisa May Alcott" },
+    { text: "She turned her can'ts into cans and her dreams into plans.", source: "Kobi Yamada" },
+    { text: "The most beautiful thing a woman can wear is confidence.", source: "Blake Lively" },
+    { text: "She who is brave is free.", source: "Seneca" },
+    { text: "Move your body. It's medicine.", source: "Unknown" },
+    { text: "Exercise is the closest thing we have to a magic pill.", source: "Dr. Robert Butler" },
+    { text: "Movement is a medicine for creating change.", source: "Carol Welch" },
+    { text: "Take care of your body \u2014 it's the only one you have.", source: "Unknown" },
+    { text: "Your body is a reflection of your lifestyle.", source: "Unknown" },
+    { text: "Fitness is not about the number on the scale. It's about how you feel.", source: "Unknown" },
+    { text: "Nourish your body. Honor your strength. Trust the process.", source: "Unknown" },
+    { text: "Taking care of yourself is the most powerful thing you can do.", source: "Unknown" },
+    { text: "The groundwork for all happiness is good health.", source: "Leigh Hunt" },
+    { text: "To keep the body in good health is a duty.", source: "Buddha" },
+    { text: "Physical strength is the most important thing in life.", source: "Mark Rippetoe" },
+    { text: "The greatest wealth is health.", source: "Virgil" },
+    { text: "An investment in your health is an investment in your future.", source: "Unknown" },
+    { text: "Let food be thy medicine and medicine be thy food.", source: "Hippocrates" },
+    { text: "Your immune system doesn't get sick days. Neither should your workout.", source: "Unknown" },
+    { text: "The mind is the most powerful muscle.", source: "Unknown" },
+    { text: "Mental toughness is doing the right thing for the team when it's not the best thing for you.", source: "Bill Belichick" },
+    { text: "You are tougher than you think.", source: "Unknown" },
+    { text: "When you feel like quitting, think about why you started.", source: "Unknown" },
+    { text: "Pain is temporary. Quitting lasts forever.", source: "Lance Armstrong" },
+    { text: "Fall down seven times, get up eight.", source: "Japanese Proverb" },
+    { text: "Tough times don't last. Tough people do.", source: "Robert H. Schuller" },
+    { text: "The only way to prove you are a good sport is to lose.", source: "Ernie Banks" },
+    { text: "Mental will is a muscle that needs exercise just like muscles of the body.", source: "Lynn Jennings" },
+    { text: "Strength does not come from physical capacity. It comes from an indomitable will.", source: "Gandhi" },
+    { text: "Pain is inevitable. Suffering is optional.", source: "Haruki Murakami" },
+    { text: "If it was easy, everyone would do it.", source: "Unknown" },
+    { text: "Hard things take time to do. Impossible things take a little longer.", source: "Unknown" },
+    { text: "The will to win means nothing without the will to prepare.", source: "Juma Ikangaa" },
+    { text: "You were not born a winner, and you were not born a loser. You are what you make yourself be.", source: "Lou Holtz" },
+    { text: "Just one more rep.", source: "Unknown" },
+    { text: "Earn your rest.", source: "Unknown" },
+    { text: "Sweat now. Shine later.", source: "Unknown" },
+    { text: "Do it for the after photo.", source: "Unknown" },
+    { text: "Show up. Suit up. Never give up.", source: "Unknown" },
+    { text: "Run, lift, sweat, repeat.", source: "Unknown" },
+    { text: "Fit is a feeling.", source: "Unknown" },
+    { text: "Results require action.", source: "Unknown" },
+    { text: "Today's effort. Tomorrow's strength.", source: "Unknown" },
+    { text: "No shortcuts. No excuses. Just work.", source: "Unknown" },
+    { text: "Make it happen.", source: "Unknown" },
+    { text: "Go hard or go home.", source: "Unknown" },
+    { text: "Dig deep.", source: "Unknown" },
+    { text: "Push past your limits.", source: "Unknown" },
+    { text: "Own your strength.", source: "Unknown" },
+    { text: "Start somewhere.", source: "Unknown" },
+    { text: "Every rep counts.", source: "Unknown" },
+    { text: "Don't stop now.", source: "Unknown" },
+    { text: "Fight for it.", source: "Unknown" },
+    { text: "Earn it every day.", source: "Unknown" },
+    { text: "Level up.", source: "Unknown" },
+    { text: "Built not born.", source: "Unknown" },
+    { text: "Progress is progress, no matter how small.", source: "Unknown" },
+    { text: "Stronger every day.", source: "Unknown" },
+    { text: "One workout at a time.", source: "Unknown" },
+    { text: "This is your moment.", source: "Unknown" },
+    { text: "Commit. Show up. Win.", source: "Unknown" },
+    { text: "Train hard, recover harder.", source: "Unknown" },
+    { text: "Lift more than just weights. Lift your spirits.", source: "Unknown" },
+    { text: "Believe in your progress.", source: "Unknown" },
+    { text: "I hated every minute of training, but I said: don't quit. Suffer now and live the rest of your life as a champion.", source: "Muhammad Ali" },
+    { text: "It's not whether you get knocked down; it's whether you get up.", source: "Vince Lombardi" },
+    { text: "You have to expect things of yourself before you can do them.", source: "Michael Jordan" },
+    { text: "I've failed over and over and over again in my life. And that is why I succeed.", source: "Michael Jordan" },
+    { text: "You have to do something in your life that is honorable and not cowardly if you are to live in peace with yourself.", source: "Larry Brown" },
+    { text: "You dream. You plan. You reach. There will be obstacles. There will be doubters. There will be mistakes. But with hard work, with belief, with confidence and trust in yourself and those around you, there are no limits.", source: "Michael Phelps" },
+    { text: "Somewhere behind the athlete you've become and the hours of practice and the coaches who have pushed you is a little girl who fell in love with the game and never looked back. Play for her.", source: "Mia Hamm" },
+    { text: "You have to train your mind like you train your body.", source: "Bruce Jenner" },
+    { text: "I don't count my sit-ups; I only start counting when it starts hurting.", source: "Muhammad Ali" },
+    { text: "The more difficult the victory, the greater the happiness in winning.", source: "Pel\xE9" },
+    { text: "Most people give up just when they're about to achieve success.", source: "Ross Perot" },
+    { text: "Continuous effort \u2014 not strength or intelligence \u2014 is the key to unlocking our potential.", source: "Winston Churchill" },
+    { text: "It's not the size of the dog in the fight, it's the size of the fight in the dog.", source: "Mark Twain" },
+    { text: "What seems impossible today will one day become your warm-up.", source: "Unknown" },
+    { text: "She does it anyway.", source: "Unknown" },
+    { text: "Success isn't always about greatness. It's about consistency.", source: "Dwayne Johnson" },
+    { text: "Consistency is what transforms average into excellence.", source: "Unknown" },
+    { text: "Greatness is not this wonderful, esoteric thing. It's simply doing what you do best as well as you can.", source: "Oprah Winfrey" },
+    { text: "You don't have to be extreme, just consistent.", source: "Unknown" },
+    { text: "Small disciplines repeated with consistency every day lead to great achievements.", source: "John Maxwell" },
+    { text: "Success is the sum of small efforts, repeated day in and day out.", source: "Robert Collier" },
+    { text: "We are what we repeatedly do. Excellence, then, is not an act, but a habit.", source: "Aristotle" },
+    { text: "Habits are the compound interest of self-improvement.", source: "James Clear" },
+    { text: "Show up every day. Not just on the days you feel like it.", source: "Unknown" },
+    { text: "You'll never always be motivated. You have to learn to be disciplined.", source: "Unknown" },
+    { text: "Motivation gets you started. Discipline keeps you going.", source: "Unknown" },
+    { text: "Inspiration is for amateurs. The rest of us just show up and get to work.", source: "Chuck Close" },
+    { text: "The professional shows up every day. The amateur shows up when they feel like it.", source: "Steven Pressfield" },
+    { text: "One day or day one. You decide.", source: "Unknown" },
+    { text: "Build the habit and the motivation will follow.", source: "Unknown" },
+    { text: "What you do every day matters more than what you do once in a while.", source: "Gretchen Rubin" },
+    { text: "Your habits will determine your future.", source: "Jack Canfield" },
+    { text: "Consistency over intensity. Every single time.", source: "Unknown" },
+    { text: "Small steps taken consistently will always beat big leaps taken rarely.", source: "Unknown" },
+    { text: "You don't rise to the level of your goals. You fall to the level of your systems.", source: "James Clear" },
+    { text: "Rest when you're weary. Refresh and renew yourself, your body, your mind, your spirit.", source: "Ralph Marston" },
+    { text: "Recovery is where the magic happens.", source: "Unknown" },
+    { text: "Sleep is the best legal performance-enhancing drug.", source: "Matthew Walker" },
+    { text: "Your body is always talking to you. The question is whether you're listening.", source: "Unknown" },
+    { text: "Progress requires both effort and recovery.", source: "Unknown" },
+    { text: "Taking a rest day is part of the program.", source: "Unknown" },
+    { text: "You can't pour from an empty cup. Rest, recover, return.", source: "Unknown" },
+    { text: "Honor your rest the same way you honor your workout.", source: "Unknown" },
+    { text: "Active recovery is still recovery.", source: "Unknown" },
+    { text: "Showing up for yourself includes knowing when to rest.", source: "Unknown" },
+    { text: "Eat like you love yourself.", source: "Unknown" },
+    { text: "Food is fuel. Choose premium.", source: "Unknown" },
+    { text: "You can't out-train a bad diet, but you can out-eat a great one.", source: "Unknown" },
+    { text: "Eat real food. Mostly plants. Not too much.", source: "Michael Pollan" },
+    { text: "Let your food be your medicine.", source: "Unknown" },
+    { text: "Protein is non-negotiable.", source: "Unknown" },
+    { text: "Hydration is not optional.", source: "Unknown" },
+    { text: "Your plate should work as hard as you do.", source: "Unknown" },
+    { text: "What you eat in private, you wear in public.", source: "Unknown" },
+    { text: "Feed your body the way you want your body to perform.", source: "Unknown" },
+    { text: "Whether you think you can, or you think you can't \u2014 you're right.", source: "Henry Ford" },
+    { text: "The only limit is the one you set yourself.", source: "Unknown" },
+    { text: "Change your mindset. Change your life.", source: "Unknown" },
+    { text: "A champion is someone who gets up when they can't.", source: "Jack Dempsey" },
+    { text: "You already have everything you need to start.", source: "Unknown" },
+    { text: "Don't limit your challenges. Challenge your limits.", source: "Unknown" },
+    { text: "Believe you can and you're halfway there.", source: "Theodore Roosevelt" },
+    { text: "Act as if what you do makes a difference. It does.", source: "William James" },
+    { text: "Start where you are. Use what you have. Do what you can.", source: "Arthur Ashe" },
+    { text: "You are capable of more than you know.", source: "E.O. Wilson" },
+    { text: "The greatest discovery of any generation is that a human being can alter their life by altering their attitude.", source: "William James" },
+    { text: "Your mindset is your superpower.", source: "Unknown" },
+    { text: "Think big. Start small. Move fast.", source: "Unknown" },
+    { text: "Don't be afraid to be a beginner.", source: "Unknown" },
+    { text: "Compete with who you were yesterday.", source: "Unknown" },
+    { text: "The only person standing in the way is you.", source: "Unknown" },
+    { text: "Change happens at the edge of your comfort zone.", source: "Unknown" },
+    { text: "Growth requires discomfort.", source: "Unknown" },
+    { text: "If you don't challenge yourself, you'll never realize what you can become.", source: "Unknown" },
+    { text: "Dream it. Believe it. Achieve it.", source: "Unknown" },
+    { text: "A woman with goals is unstoppable.", source: "Unknown" },
+    { text: "She remembered who she was and the game changed.", source: "Lalah Delia" },
+    { text: "Be a woman who makes things happen.", source: "Unknown" },
+    { text: "There's no such thing as a strong woman who doesn't lift.", source: "Unknown" },
+    { text: "Girls who sweat together stay together.", source: "Unknown" },
+    { text: "Run like a girl. Lift like a girl. Be proud of it.", source: "Unknown" },
+    { text: "She made broken look beautiful and strong look invincible.", source: "Ariana Dancu" },
+    { text: "The most courageous act is still to think for yourself. Aloud.", source: "Coco Chanel" },
+    { text: "A girl should be two things: who and what she wants.", source: "Coco Chanel" },
+    { text: "Women belong in all places where decisions are being made \u2014 including the weight room.", source: "Unknown" },
+    { text: "She is her own before she is anyone else's.", source: "Unknown" },
+    { text: "Invest in yourself. It pays the best interest.", source: "Benjamin Franklin" },
+    { text: "She decided to start living the life she'd always imagined.", source: "Unknown" },
+    { text: "You are allowed to be both a masterpiece and a work in progress.", source: "Sophia Bush" },
+    { text: "No one can make you feel inferior without your consent.", source: "Eleanor Roosevelt" },
+    { text: "I can do all things through Christ who strengthens me.", source: "Philippians 4:13" },
+    { text: "God gave you this body as a gift. Honor it.", source: "Unknown" },
+    { text: "The Lord is my strength and my shield.", source: "Psalm 28:7" },
+    { text: "Be strong and courageous. Do not be afraid.", source: "Joshua 1:9" },
+    { text: "God doesn't call the equipped. He equips the called.", source: "Unknown" },
+    { text: "Your strength comes from the Lord.", source: "Unknown" },
+    { text: "Even when you feel weak, you are strong enough with God.", source: "Unknown" },
+    { text: "Run with endurance the race that is set before you.", source: "Hebrews 12:1" },
+    { text: "The body is a temple. Keep it sacred.", source: "1 Corinthians 6:19" },
+    { text: "Trust in the Lord with all your heart. He will direct your path.", source: "Proverbs 3:5\u20136" },
+    { text: "Train your mind first. Your body will follow.", source: "Unknown" },
+    { text: "Every drop of sweat is a step toward your goal.", source: "Unknown" },
+    { text: "Do what others won't so you can live how others can't.", source: "Unknown" },
+    { text: "Strength is built in the struggle.", source: "Unknown" },
+    { text: "Today's workout is tomorrow's energy.", source: "Unknown" },
+    { text: "Be relentless.", source: "Unknown" },
+    { text: "Get comfortable being uncomfortable.", source: "Unknown" },
+    { text: "Champions train. Losers complain.", source: "Unknown" },
+    { text: "Suffer the pain of discipline or suffer the pain of regret.", source: "Unknown" },
+    { text: "You are what you do every day.", source: "Unknown" },
+    { text: "The body you want is the body you're building today.", source: "Unknown" },
+    { text: "Showing up is 80% of success.", source: "Woody Allen" },
+    { text: "Your future self is watching. Make her proud.", source: "Unknown" },
+    { text: "Do it scared. Do it tired. Just do it.", source: "Unknown" },
+    { text: "The grind never lies.", source: "Unknown" },
+    { text: "Build habits. Not motivation.", source: "Unknown" },
+    { text: "Sweat is just fat crying.", source: "Unknown" },
+    { text: "One more. Always one more.", source: "Unknown" },
+    { text: "Give it everything you've got \u2014 every single time.", source: "Unknown" },
+    { text: "You don't have to be great to start. You have to start to be great.", source: "Unknown" },
+    { text: "The work is the reward.", source: "Unknown" },
+    { text: "Results speak louder than words.", source: "Unknown" },
+    { text: "Let your work ethic speak for you.", source: "Unknown" },
+    { text: "Outwork everyone.", source: "Unknown" },
+    { text: "Build the life you want to live \u2014 one workout at a time.", source: "Unknown" },
+    { text: "Fitness is a journey, not a destination.", source: "Unknown" },
+    { text: "Every master was once a disaster.", source: "Unknown" },
+    { text: "Progress is the goal. Perfection is the enemy.", source: "Unknown" },
+    { text: "Hard work always pays off.", source: "Unknown" },
+    { text: "Do the work. See the results. Love the process.", source: "Unknown" },
+    { text: "You get out what you put in.", source: "Unknown" },
+    { text: "Work hard in silence. Let success make the noise.", source: "Unknown" },
+    { text: "Don't look back \u2014 you're not going that way.", source: "Unknown" },
+    { text: "Keep going. You're closer than you think.", source: "Unknown" },
+    { text: "The clock is ticking. Make it count.", source: "Unknown" },
+    { text: "Invest in yourself. No one else will do it for you.", source: "Unknown" },
+    { text: "Your best is enough. Give it.", source: "Unknown" },
+    { text: "Execute. Don't overthink.", source: "Unknown" },
+    { text: "The gym is my therapy.", source: "Unknown" },
+    { text: "Fitness saved my life \u2014 mentally and physically.", source: "Unknown" },
+    { text: "Training is a privilege. Treat it that way.", source: "Unknown" },
+    { text: "Don't just exist. Thrive.", source: "Unknown" },
+    { text: "Every session counts. Never miss twice.", source: "Unknown" },
+    { text: "Energy flows where attention goes.", source: "Tony Robbins" },
+    { text: "What you think, you become.", source: "Buddha" },
+    { text: "You are your habits.", source: "Unknown" },
+    { text: "Do something today that your future self will thank you for.", source: "Sean Patrick Flanery" },
+    { text: "The pain of today is the victory of tomorrow.", source: "Unknown" },
+    { text: "Tired but not quitting.", source: "Unknown" },
+    { text: "Fall in love with the process.", source: "Unknown" },
+    { text: "Focus on the process. The results will come.", source: "Unknown" },
+    { text: "Never miss a Monday.", source: "Unknown" },
+    { text: "Rise and grind.", source: "Unknown" },
+    { text: "Make it count.", source: "Unknown" },
+    { text: "Train hard. Rest smart. Eat well.", source: "Unknown" },
+    { text: "Fuel the machine.", source: "Unknown" },
+    { text: "Stronger in all the ways that matter.", source: "Unknown" },
+    { text: "You've survived 100% of your hard days so far.", source: "Unknown" },
+    { text: "Brick by brick.", source: "Unknown" },
+    { text: "Day by day, strength by strength.", source: "Unknown" },
+    { text: "Be a student of your own body.", source: "Unknown" },
+    { text: "Listen to your body. Push your mind.", source: "Unknown" },
+    { text: "The mirror is progress. The scale is just a number.", source: "Unknown" },
+    { text: "Muscles don't lie. Work.", source: "Unknown" },
+    { text: "Lift heavy. Live light.", source: "Unknown" },
+    { text: "Strong is the new skinny.", source: "Unknown" },
+    { text: "Fit looks different on everybody.", source: "Unknown" },
+    { text: "Celebrate every win. Even the small ones.", source: "Unknown" },
+    { text: "Ten seconds of courage. That's all you need to start.", source: "Unknown" },
+    { text: "Go further than you think you can.", source: "Unknown" },
+    { text: "Your limits are not your destiny.", source: "Unknown" }
+  ];
   function PanelWorkout() {
     const today = /* @__PURE__ */ new Date();
     const todayName = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][today.getDay()];
-    const quoteIdx = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 864e5) % DAILY_QUOTES.length;
-    const quote = DAILY_QUOTES[quoteIdx];
+    const quoteIdx = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 864e5) % WORKOUT_QUOTES.length;
+    const quote = WORKOUT_QUOTES[quoteIdx];
     const [programStart, setProgramStart] = (0, import_react.useState)(() => {
       try {
         return localStorage.getItem("mm_prog_start") || today.toISOString().slice(0, 10);
@@ -8734,13 +9101,7 @@ button,input,select,textarea{font-family:inherit}
       } catch {
       }
     };
-    const [location, setLocation] = (0, import_react.useState)(() => {
-      try {
-        return localStorage.getItem("mm_location") || "gym";
-      } catch {
-        return "gym";
-      }
-    });
+    const [manualLocation, setManualLocation] = (0, import_react.useState)(null);
     const [mode, setMode] = (0, import_react.useState)(() => {
       try {
         return localStorage.getItem("mm_mode") || "default";
@@ -8756,12 +9117,14 @@ button,input,select,textarea{font-family:inherit}
       }
     });
     const [selDay, setSelDay] = (0, import_react.useState)(todayName);
+    const defaultLocation = selDay === "Monday" ? "home" : "gym";
+    const location = manualLocation !== null ? manualLocation : defaultLocation;
     const saveLocation = (v) => {
-      setLocation(v);
-      try {
-        localStorage.setItem("mm_location", v);
-      } catch {
-      }
+      setManualLocation(v);
+    };
+    const handleDayChange = (day) => {
+      setSelDay(day);
+      setManualLocation(null);
     };
     const saveMode = (v) => {
       setMode(v);
@@ -8851,7 +9214,7 @@ button,input,select,textarea{font-family:inherit}
       const full = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"][i];
       const on = selDay === full;
       const isToday = full === todayName;
-      return /* @__PURE__ */ import_react.default.createElement("button", { key: i, onClick: () => setSelDay(full), style: { fontSize: 12, fontWeight: 600, padding: "8px 2px", borderRadius: 8, border: "none", cursor: "pointer", background: on ? T.accent : "transparent", color: on ? "#fff" : isToday ? T.accent : T.hint, position: "relative" } }, d, isToday && !on && /* @__PURE__ */ import_react.default.createElement("div", { style: { position: "absolute", bottom: 2, left: "50%", transform: "translateX(-50%)", width: 4, height: 4, borderRadius: "50%", background: T.accent } }));
+      return /* @__PURE__ */ import_react.default.createElement("button", { key: i, onClick: () => handleDayChange(full), style: { fontSize: 12, fontWeight: 600, padding: "8px 2px", borderRadius: 8, border: "none", cursor: "pointer", background: on ? T.accent : "transparent", color: on ? "#fff" : isToday ? T.accent : T.hint, position: "relative" } }, d, isToday && !on && /* @__PURE__ */ import_react.default.createElement("div", { style: { position: "absolute", bottom: 2, left: "50%", transform: "translateX(-50%)", width: 4, height: 4, borderRadius: "50%", background: T.accent } }));
     })), /* @__PURE__ */ import_react.default.createElement(DailyHabitsCard, { wo, selDay, walkDone, toggleWalk }), wo && wo.rest ? /* @__PURE__ */ import_react.default.createElement(Card, null, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 18, fontWeight: 600, color: T.text, marginBottom: 6 } }, wo.title), /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 14, color: T.hint, lineHeight: 1.6 } }, wo.note)) : wo && /* @__PURE__ */ import_react.default.createElement(Card, null, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 14 } }, /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 4 } }, selDay, " \xB7 ", location), /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 20, fontWeight: 700, color: T.text } }, wo.title)), /* @__PURE__ */ import_react.default.createElement("div", { style: { textAlign: "right" } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 28, fontWeight: 700, color: T.accent, lineHeight: 1 } }, doneCount, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 13, color: T.hint } }, "/", applyMode(allItems).length)), /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 10, color: T.hint } }, "done"))), wo.warmup && /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 12, color: T.hint, marginBottom: 10, padding: "8px 12px", background: T.surface, borderRadius: 8, lineHeight: 1.5 } }, "Warm-up: ", wo.warmup), (wo.bgNote || wo.note) && /* @__PURE__ */ import_react.default.createElement("div", { style: { marginBottom: 12, padding: "8px 12px", background: `${T.accent}07`, borderRadius: 8, borderLeft: `3px solid ${T.accent}` } }, blockData && /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 10, fontWeight: 700, color: T.accent, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 4 } }, "Block ", yearBlock, " \u2014 ", blockData.label, " \xB7 ", weekData?.label), wo.note && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 12, color: T.muted, lineHeight: 1.6, marginBottom: wo.bgNote ? 6 : 0 } }, wo.note), wo.bgNote && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 11, color: T.muted, lineHeight: 1.6, borderTop: `1px solid ${T.border}`, paddingTop: 6, marginTop: wo.note ? 0 : 0 } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontWeight: 700, color: T.text } }, "BG: "), wo.bgNote)), workoutNote && /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", alignItems: "flex-start", gap: 8, fontSize: 12, padding: "8px 12px", background: bg === "low" ? `${T.warn}12` : bg === "high" ? `${T.accent}10` : T.blueLight, borderRadius: 8, marginBottom: 14, color: bg === "stable" ? T.blue : T.warn, lineHeight: 1.6, borderLeft: `3px solid ${bg === "low" ? T.warn : bg === "high" ? T.accent : T.blue}` } }, (bg === "low" || bg === "high") && /* @__PURE__ */ import_react.default.createElement("svg", { width: "14", height: "14", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2.5", strokeLinecap: "round", strokeLinejoin: "round", style: { flexShrink: 0, marginTop: 2 } }, /* @__PURE__ */ import_react.default.createElement("path", { d: "M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" }), /* @__PURE__ */ import_react.default.createElement("line", { x1: "12", y1: "9", x2: "12", y2: "13" }), /* @__PURE__ */ import_react.default.createElement("line", { x1: "12", y1: "17", x2: "12.01", y2: "17" })), /* @__PURE__ */ import_react.default.createElement("span", null, workoutNote)), applyMode(wo.strength || []).length > 0 && /* @__PURE__ */ import_react.default.createElement("div", { style: { marginBottom: (wo.core || []).length > 0 ? 16 : 0 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 10 } }, "Strength"), applyMode(wo.strength).map((ex, i) => {
       const k = `${location}_${selDay}_${dateKey}_${i}`;
       const isDone = !!done[k];
@@ -8868,7 +9231,7 @@ button,input,select,textarea{font-family:inherit}
     const [showTip, setShowTip] = (0, import_react.useState)(false);
     const [showSwaps, setShowSwaps] = (0, import_react.useState)(false);
     const sets = mode === "push" ? ex.sets.replace(/(\d+)×/, (m) => parseInt(m) + 1 + "\xD7") : ex.sets;
-    return /* @__PURE__ */ import_react.default.createElement("div", { style: { padding: "10px 0", borderTop: `1px solid ${T.border}`, opacity: isDone ? 0.4 : 1 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", alignItems: "center", gap: 10 } }, /* @__PURE__ */ import_react.default.createElement(Chk, { checked: isDone, onChange: onCheck }), /* @__PURE__ */ import_react.default.createElement("div", { style: { flex: 1 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", alignItems: "baseline", gap: 8, flexWrap: "wrap" } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 14, color: T.text, textDecoration: isDone ? "line-through" : "none", fontWeight: 500 } }, ex.name), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, color: T.hint } }, sets), ex.tip && /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => setShowTip((p) => !p), style: { fontSize: 10, color: T.muted, background: "none", border: "none", cursor: "pointer", padding: 0 } }, "tip"), ex.swaps && /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => setShowSwaps((p) => !p), style: { fontSize: 10, color: T.accent, background: "none", border: "none", cursor: "pointer", padding: 0, fontWeight: 600 } }, "swap")), showTip && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 11, color: T.muted, marginTop: 3, fontStyle: "italic" } }, ex.tip), showSwaps && ex.swaps && /* @__PURE__ */ import_react.default.createElement("div", { style: { marginTop: 6, padding: "8px 10px", background: T.surface, borderRadius: 8 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 10, fontWeight: 700, color: T.muted, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 5 } }, "Swap options"), ex.swaps.map((sw, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { fontSize: 12, color: T.text, padding: "3px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none" } }, sw)))), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", alignItems: "center", gap: 4, flexShrink: 0 } }, /* @__PURE__ */ import_react.default.createElement("input", { type: "number", value: weightVal, onChange: (e) => onWeight(e.target.value), placeholder: "lbs", style: { width: 52, fontSize: 12, padding: "5px 6px", border: `1px solid ${T.border}`, borderRadius: 7, background: T.surface, color: T.text, outline: "none", textAlign: "center" } }))));
+    return /* @__PURE__ */ import_react.default.createElement("div", { style: { padding: "10px 0", borderTop: `1px solid ${T.border}`, opacity: isDone ? 0.4 : 1 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", alignItems: "center", gap: 10 } }, /* @__PURE__ */ import_react.default.createElement(Chk, { checked: isDone, onChange: onCheck }), /* @__PURE__ */ import_react.default.createElement("div", { style: { flex: 1 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", alignItems: "baseline", gap: 8, flexWrap: "wrap" } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 14, color: T.text, textDecoration: isDone ? "line-through" : "none", fontWeight: 500 } }, ex.name), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, color: T.hint } }, sets), ex.tip && /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => setShowTip((p) => !p), style: { fontSize: 10, color: T.muted, background: "none", border: "none", cursor: "pointer", padding: 0 } }, "tip"), ex.swaps && /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => setShowSwaps((p) => !p), style: { fontSize: 10, color: T.accent, background: "none", border: "none", cursor: "pointer", padding: 0, fontWeight: 600 } }, "swap")), showTip && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 11, color: T.muted, marginTop: 3, fontStyle: "italic" } }, ex.tip), showSwaps && ex.swaps && /* @__PURE__ */ import_react.default.createElement("div", { style: { marginTop: 6, padding: "8px 10px", background: T.surface, borderRadius: 8 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 10, fontWeight: 700, color: T.muted, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 5 } }, "Swap options"), ex.swaps.map((sw, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { fontSize: 12, color: T.text, padding: "3px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none" } }, sw)))), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", alignItems: "center", gap: 4, flexShrink: 0 } }, ex.weighted !== false && /* @__PURE__ */ import_react.default.createElement("input", { type: "number", value: weightVal, onChange: (e) => onWeight(e.target.value), placeholder: "lbs", style: { width: 52, fontSize: 12, padding: "5px 6px", border: `1px solid ${T.border}`, borderRadius: 7, background: T.surface, color: T.text, outline: "none", textAlign: "center" } }))));
   }
   var ANNUAL_PLAN = [
     { week: "Jun 21\u201327", protein: "Chicken + Beef", meals: [{ day: "Sun", meal: "Burger Bowls", cost: "$", bg: "stable", note: "Adjust rice portion to manage BG. Sides: tomatoes, pickles, red onion, sour cream.", url: "https://laurelbmills-sudo.github.io/familyrecipebox/#burger-bowls" }, { day: "Tue", meal: "Chicken Pillows", cost: "$$", bg: "watch", note: "Crescent dough spikes faster \u2014 pre-bolus 15 min. Sides: roasted broccoli." }, { day: "Wed", meal: "Chicken Tacos", cost: "$", bg: "watch", note: "Small corn tortillas \u2014 pre-bolus lightly. Sides: pico de gallo, lime crema, avocado.", url: "https://laurelbmills-sudo.github.io/familyrecipebox/#chicken-tacos" }], costco: "Ground beef + chicken breast", snack: "Watermelon + cottage cheese, protein balls" },
@@ -9393,13 +9756,13 @@ button,input,select,textarea{font-family:inherit}
       } catch {
       }
     };
-    return /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 6, marginBottom: 16, flexWrap: "wrap" } }, [["thisweek", "This Week"], ["grocery", "Grocery List"], ["snacks", "Snacks"], ["plan", "Annual Plan"]].map(([k, l]) => /* @__PURE__ */ import_react.default.createElement(Chip, { key: k, on: view === k, onClick: () => setView(k) }, l))), view === "thisweek" && /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 12 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, null, "Today's macros"), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, color: T.hint } }, "Protein first")), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 } }, [["cal", "Calories", macros_targets.cal], ["pro", "Protein g", macros_targets.pro], ["carb", "Carbs g", macros_targets.carb], ["fat", "Fat g", macros_targets.fat]].map(([k, lbl, tgt]) => {
+    return /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 6, marginBottom: 16, flexWrap: "wrap" } }, [["thisweek", "This Week"], ["grocery", "Grocery List"], ["plan", "Annual Plan"]].map(([k, l]) => /* @__PURE__ */ import_react.default.createElement(Chip, { key: k, on: view === k, onClick: () => setView(k) }, l))), view === "thisweek" && /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 12 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, null, "Today's macros"), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, color: T.hint } }, "Protein first")), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 } }, [["cal", "Calories", macros_targets.cal], ["pro", "Protein g", macros_targets.pro], ["carb", "Carbs g", macros_targets.carb], ["fat", "Fat g", macros_targets.fat]].map(([k, lbl, tgt]) => {
       const v = today[k] || 0;
       const pct = Math.min(100, Math.round(v / tgt * 100));
       const met = v >= tgt;
       const over = v > tgt * 1.1;
       return /* @__PURE__ */ import_react.default.createElement("div", { key: k }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", justifyContent: "space-between", marginBottom: 3 } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, fontWeight: 600, color: T.muted, textTransform: "uppercase", letterSpacing: "0.04em" } }, lbl), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, fontWeight: 700, color: over ? T.warn : met ? T.accent : T.text } }, v, "/", tgt, met && !over ? " \u2713" : "")), /* @__PURE__ */ import_react.default.createElement("div", { style: { height: 4, background: T.surface, borderRadius: 99, overflow: "hidden", marginBottom: 6 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { height: "100%", width: `${pct}%`, background: over ? T.warn : met ? T.accent : T.muted, borderRadius: 99, transition: "width .3s" } })), /* @__PURE__ */ import_react.default.createElement("input", { type: "number", value: v || "", onChange: (e) => updM(k, e.target.value), placeholder: "0", style: { width: "100%", fontSize: 13, fontWeight: 600, padding: "6px 8px", border: `1px solid ${T.border}`, borderRadius: 6, background: T.surface, color: T.text, outline: "none", textAlign: "center" } }));
-    })), /* @__PURE__ */ import_react.default.createElement(MacroTips, { today, targets: macros_targets })), /* @__PURE__ */ import_react.default.createElement(MealWeekCard, { meals, sv, tn, label: "This week", defaultOpen: false, weekOffset: 0 }), /* @__PURE__ */ import_react.default.createElement(MealWeekCard, { meals: mealsNext, sv: svNext, tn: null, label: "Next week", defaultOpen: false, weekOffset: 1 })), view === "grocery" && /* @__PURE__ */ import_react.default.createElement(GroceryList, { key: "grocery", meals, mealsNext }), view === "snacks" && /* @__PURE__ */ import_react.default.createElement(SnackList, { key: "snacks" }), view === "plan" && /* @__PURE__ */ import_react.default.createElement(AnnualMealPlan, { key: "plan" }));
+    })), /* @__PURE__ */ import_react.default.createElement(MacroTips, { today, targets: macros_targets })), /* @__PURE__ */ import_react.default.createElement(MealWeekCard, { meals, sv, tn, label: "This week", defaultOpen: false, weekOffset: 0 }), /* @__PURE__ */ import_react.default.createElement(MealWeekCard, { meals: mealsNext, sv: svNext, tn: null, label: "Next week", defaultOpen: false, weekOffset: 1 }), /* @__PURE__ */ import_react.default.createElement("div", { style: { marginTop: 4 } }, /* @__PURE__ */ import_react.default.createElement(Card, null, /* @__PURE__ */ import_react.default.createElement(SnackIdeasCollapsible, null)))), view === "grocery" && /* @__PURE__ */ import_react.default.createElement(GroceryList, { key: "grocery", meals, mealsNext }), view === "plan" && /* @__PURE__ */ import_react.default.createElement(AnnualMealPlan, { key: "plan" }));
   }
   function AnnualMealPlan() {
     const grouped = {};
@@ -9601,6 +9964,10 @@ button,input,select,textarea{font-family:inherit}
   }
   function GroceryList({ meals, mealsNext }) {
     return /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement(GroceryWeekBlock, { label: "This week", meals }), /* @__PURE__ */ import_react.default.createElement(GroceryWeekBlock, { label: "Next week", meals: mealsNext }));
+  }
+  function SnackIdeasCollapsible() {
+    const [open, setOpen] = (0, import_react.useState)(false);
+    return /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => setOpen((o) => !o), style: { width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center", background: "none", border: "none", cursor: "pointer", padding: 0 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, null, "Snack ideas this week"), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 16, color: T.hint, transition: "transform .2s", transform: open ? "rotate(45deg)" : "none" } }, "+")), open && /* @__PURE__ */ import_react.default.createElement("div", { style: { marginTop: 10 } }, /* @__PURE__ */ import_react.default.createElement(SnackList, null)));
   }
   function SnackList() {
     return /* @__PURE__ */ import_react.default.createElement("div", null, SNACK_STAPLES.map((s2, i) => /* @__PURE__ */ import_react.default.createElement(Card, { key: i, style: { marginBottom: 8 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontWeight: 600, fontSize: 14, color: T.text, marginBottom: 3 } }, s2.name), /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 12, color: T.muted, lineHeight: 1.5 } }, s2.note))), /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginTop: 8, background: `${T.accent}06`, border: `1px solid ${T.accent}20` } }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 8 } }, "T1D snack rule"), /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 13, color: T.text, lineHeight: 1.7 } }, "Protein + fat = stable. Carbs alone = spike. Always pair a carb snack with protein. Check CGM 1 hr after any new snack to learn your response.")));
