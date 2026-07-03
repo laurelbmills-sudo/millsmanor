@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/><meta name="mobile-web-app-capable" content="yes"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="mobile-web-app-capable" content="yes"/>
   <meta name="apple-mobile-web-app-capable" content="yes"/>
   <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
   <meta name="apple-mobile-web-app-title" content="Mills Manor"/>
@@ -12,7 +13,7 @@
 </head>
 <body>
   <div id="root"></div>
-  <script>/* v1783103805 */
+  <script>/* v1783106082 */
 (() => {
   var __create = Object.create;
   var __defProp = Object.defineProperty;
@@ -8684,13 +8685,9 @@ button,input,select,textarea{font-family:inherit}
     const mobCount = MOBILITY_ROUTINE.filter((_, i) => !!checks[mobKey(i)]).length;
     const [open, setOpen] = (0, import_react.useState)(null);
     const vasa = VASA_CLASSES[selDay];
-    const hasMobility = wo?.mobility;
+    const hasMobility = true;
     const allMobDone = mobCount === MOBILITY_ROUTINE.length;
     return /* @__PURE__ */ import_react.default.createElement(Card, { style: { marginBottom: 14 } }, /* @__PURE__ */ import_react.default.createElement(Lbl, { style: { marginBottom: 12 } }, "Today's extras"), /* @__PURE__ */ import_react.default.createElement("div", { onClick: toggleWalk, style: { display: "flex", alignItems: "center", gap: 12, padding: "9px 0", borderBottom: `1px solid ${T.border}`, cursor: "pointer" } }, /* @__PURE__ */ import_react.default.createElement(Chk, { checked: walkDone, onChange: toggleWalk }), /* @__PURE__ */ import_react.default.createElement("div", { style: { flex: 1 } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 13, fontWeight: 500, color: T.text } }, "Afternoon walk"), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, color: T.hint, marginLeft: 8 } }, "10-15 min post-lunch")), walkDone && /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, fontWeight: 700, color: T.accent } }, "Done")), hasMobility && /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement("div", { onClick: () => setOpen(open === "mobility" ? null : "mobility"), style: { display: "flex", alignItems: "center", gap: 12, padding: "9px 0", borderBottom: `1px solid ${T.border}`, cursor: "pointer" } }, /* @__PURE__ */ import_react.default.createElement(Chk, { checked: allMobDone, onChange: () => {
-      MOBILITY_ROUTINE.forEach((_, i) => {
-        toggleCheck(mobKey(i));
-        if (!allMobDone) toggleCheck(mobKey(i));
-      });
       if (allMobDone) {
         MOBILITY_ROUTINE.forEach((_, i) => {
           if (checks[mobKey(i)]) toggleCheck(mobKey(i));
@@ -8701,8 +8698,8 @@ button,input,select,textarea{font-family:inherit}
         });
       }
     } }), /* @__PURE__ */ import_react.default.createElement("div", { style: { flex: 1 } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 13, fontWeight: 500, color: T.text } }, "Morning mobility"), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, color: T.hint, marginLeft: 8 } }, "hip & hamstring \xB7 8-10 min")), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, color: T.hint } }, mobCount, "/", MOBILITY_ROUTINE.length), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 14, color: T.hint, transition: "transform .2s", transform: open === "mobility" ? "rotate(45deg)" : "none", marginLeft: 6 } }, "+")), open === "mobility" && /* @__PURE__ */ import_react.default.createElement("div", { style: { paddingTop: 8, paddingBottom: 4 } }, MOBILITY_ROUTINE.map((ex, i) => {
-      const d = !!mobilityDone[i];
-      return /* @__PURE__ */ import_react.default.createElement("div", { key: i, onClick: () => setMobilityDone((p) => ({ ...p, [i]: !p[i] })), style: { display: "flex", alignItems: "flex-start", gap: 10, padding: "7px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none", cursor: "pointer", opacity: d ? 0.45 : 1 } }, /* @__PURE__ */ import_react.default.createElement(Chk, { checked: d, onChange: () => toggleCheck(mobKey(i)), sz: 16 }), /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 12, fontWeight: 500, color: T.text, textDecoration: d ? "line-through" : "none" } }, ex.name), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, color: T.hint, marginLeft: 6 } }, ex.duration), /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 11, color: T.muted, marginTop: 1, fontStyle: "italic", lineHeight: 1.4 } }, ex.cue)));
+      const d = !!checks[mobKey(i)];
+      return /* @__PURE__ */ import_react.default.createElement("div", { key: i, style: { display: "flex", alignItems: "flex-start", gap: 10, padding: "7px 0", borderTop: i > 0 ? `1px solid ${T.border}` : "none", opacity: d ? 0.45 : 1 } }, /* @__PURE__ */ import_react.default.createElement(Chk, { checked: d, onChange: () => toggleCheck(mobKey(i)), sz: 16 }), /* @__PURE__ */ import_react.default.createElement("div", { onClick: () => toggleCheck(mobKey(i)), style: { cursor: "pointer", flex: 1 } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 12, fontWeight: 500, color: T.text, textDecoration: d ? "line-through" : "none" } }, ex.name), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, color: T.hint, marginLeft: 6 } }, ex.duration), /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 11, color: T.muted, marginTop: 1, fontStyle: "italic", lineHeight: 1.4 } }, ex.cue)));
     }))), vasa && /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement("div", { onClick: () => setOpen(open === "vasa" ? null : "vasa"), style: { display: "flex", alignItems: "center", gap: 12, padding: "9px 0", cursor: "pointer" } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { width: 16, height: 16, borderRadius: "50%", background: `${T.accent}20`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 } }, /* @__PURE__ */ import_react.default.createElement("svg", { width: "10", height: "10", viewBox: "0 0 24 24", fill: "none", stroke: T.accent, strokeWidth: "2.5" }, /* @__PURE__ */ import_react.default.createElement("path", { d: "M12 2L4 12a8 8 0 1016 0z" }))), /* @__PURE__ */ import_react.default.createElement("div", { style: { flex: 1 } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 13, fontWeight: 500, color: T.text } }, "Deep Stretch class"), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 11, color: T.hint, marginLeft: 8 } }, vasa.times.join(" \xB7 "))), /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 10, fontWeight: 700, color: T.accent } }, "VASA")), open === "vasa" && /* @__PURE__ */ import_react.default.createElement("p", { style: { fontSize: 12, color: T.muted, padding: "4px 0 8px 28px", lineHeight: 1.5 } }, vasa.note)));
   }
   var WORKOUT_QUOTES = [
